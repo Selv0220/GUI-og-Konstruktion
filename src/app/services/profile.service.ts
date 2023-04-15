@@ -1,11 +1,16 @@
 import { Injectable } from '@angular/core';
-import contactData from 'src/app/jsonData/contact.json'
+import { Contact } from 'src/app/interfaces/contact'
+import { Message } from 'src/app/interfaces/message'
+import contactData from 'src/app/jsonData/contact.json' 
+import messageData from 'src/app/jsonData/message.json' 
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProfileService {
 
+  contacts: any[] = contactData;
+  messages: Message[] = messageData;
   loggedInId: number = 1;
 
   constructor() { }
@@ -29,4 +34,72 @@ export class ProfileService {
 
     return MyContacts;
   }
+
+  getContactById(id: number): any{
+    for (let i = 0; i < contactData.length; i++){
+      if(contactData[i].ContactId == id) return contactData[i];
+    }
+    return null;
+  }
+
+  getMessagesBetweenContacts(ohterContactId: number): Message[] {
+    let tempMessages: Message[] = [];
+    let allMessages: Message[] = this.messages;
+
+    //console.log(ohterContactId);
+    console.log(allMessages);
+    
+    for (let i = 0; i < allMessages.length; i++){
+      if(allMessages[i].SenderContactId == ohterContactId){
+        tempMessages.push(allMessages[i]);
+      }
+    }
+    console.log(tempMessages);
+    return tempMessages;
+  }
+
+  myMessages(): Message[] {
+    this.messages.sort((a, b) => {
+      return <any>new Date(b.DateTime) - <any>new Date(a.DateTime);
+    });
+    return [];
+  }
+
+  // Function that returns the all contacts sorted by the latest message
+  getMyContacts(): Contact[] {
+    this.myMessages();
+
+    let MyContacts: Contact[] = [];
+    let MyMessages: Message[] = [];
+
+    for (let i = 0; i < this.messages.length; i++) {
+      if (this.messages[i].ReceiverContactId == this.loggedInId) {
+        MyMessages.push(this.messages[i]);
+      }
+    }
+
+    //console.log(MyMessages);
+    
+    MyMessages = this.removeDuplicates(MyMessages, 'SenderContactId');
+
+    for (let i = 0; i < MyMessages.length; i++) {
+      for (let j = 0; j < this.contacts.length; j++) {
+        if (this.contacts[j].ContactId == MyMessages[i].SenderContactId) {
+          this.contacts[j].LatestMessage = MyMessages[i].Message;
+          this.contacts[j].DateTime = MyMessages[i].DateTime;
+          MyContacts.push(this.contacts[j]);
+          break;
+        }
+      }
+    }
+
+    return MyContacts;
+  }
+
+  removeDuplicates(myArray: any[], Prop: any) {
+    return myArray.filter((obj, pos, arr) => {
+      return arr.map((mapObj) => mapObj[Prop]).indexOf(obj[Prop]) === pos;
+    });
+  }
+
 }
