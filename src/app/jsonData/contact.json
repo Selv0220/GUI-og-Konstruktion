@@ -2,16 +2,22 @@
     {
     "ContactId": 1,
     "Name": "gary",
-    "PngPath": "https://ionicframework.com/docs/img/demos/card-media.png"
+    "PngPath": "https://images.unsplash.com/photo-1581382575275-97901c2635b7",
+    "age": 23
     },
     {
     "ContactId": 2,
     "Name": "Sophie",
-    "PngPath": "https://ionicframework.com/docs/img/demos/card-media.png"
+    "PngPath": "https://images.unsplash.com/photo-1565720503653-b28da48b1422",
+    "age": 25
     },
     {
     "ContactId": 3,
     "Name": "Steven",
-    "PngPath": "https://ionicframework.com/docs/img/demos/card-media.png"
-    }
+    "PngPath": "https://images.unsplash.com/photo-1615109398623-88346a601842",
+    "age": 26
+    },
+    { "ContactId": 4,"name": "Matilde", "age": 22, "img": "https://images.unsplash.com/photo-1494790108377-be9c29b29330" },
+    { "ContactId": 5,"name": "Tobias", "age": 19, "img": "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6" },
+    { "ContactId": 6,"name": "Julia", "age": 20, "img": "https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e" }
 ]
