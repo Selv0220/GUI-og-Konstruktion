@@ -22,6 +22,16 @@ export class ProfileService {
       }
     }
   }
+  
+  getRandomProfile(): any {
+    let randomId = Math.floor(Math.random() * contactData.length) + 1;
+    for (let i = 0; i < contactData.length; i++) {
+      if (contactData[i].ContactId == randomId && contactData[i].ContactId != this.loggedInId) {
+        return contactData[i];
+      }
+    }
+    return this.getRandomProfile();
+  }
 
   getContacts(): any[] {
     let MyContacts: any[] = [];
