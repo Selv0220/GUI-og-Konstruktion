@@ -74,6 +74,8 @@
   --ion-color-light-contrast-rgb: 0, 0, 0;
   --ion-color-light-shade: #d7d8da;
   --ion-color-light-tint: #f5f6f9;
+
+  --ion-toolbar-background: linear-gradient(120deg, rgba(109,203,190,1) 0%, rgba(128,229,163,1) 100%);
 }
 
 @media (prefers-color-scheme: dark) {
