@@ -4,7 +4,7 @@ import { Message } from 'src/app/interfaces/message';
 import contact from 'src/app/jsonData/contact.json';
 import messageData from 'src/app/jsonData/message.json';
 import matchData from 'src/app/jsonData/match.json';
-import { Firestore, collection, collectionData } from '@angular/fire/firestore';
+import { Firestore, addDoc, collection, collectionData, deleteDoc, doc } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -14,24 +14,45 @@ export class ProfileService {
   contacts: any[] = contact;
   observableContacts: Observable<any[]>;
   messages: Message[] = messageData;
+  observableMessages: Observable<any[]>;
   matches: any[] = [];
+  observableMatches: Observable<any[]>;
   loggedInId: number = 1;
   firestore: Firestore = inject(Firestore);
+  lastContact: number = -1;
 
   constructor() {
-    const aCollection = collection(this.firestore, 'contacts')
-    this.observableContacts = collectionData(aCollection);
+    this.observableMatches = collectionData(collection(this.firestore, 'matches'));
+    this.observableMatches.subscribe(data => {
+      this.matches = data;
+    });
+    this.observableContacts = collectionData(collection(this.firestore, 'contacts'));
     this.observableContacts.subscribe(data => {
       this.contacts = data;
     });
+    this.observableMessages = collectionData(collection(this.firestore, 'messages'));
+    this.observableMessages.subscribe(data => {
+      this.messages = data;
+    });
+  }
+
+  addMatch(ContactId: number, Match: boolean): void {
+    console.log("Match added: " + ContactId + " " + Match)
+    //addDoc(collection(this.firestore, 'matches'), { ContactId: this.loggedInId, MatchedContactId: ContactId, Match: Match, Datetime: new Date() });
+    //deleteDoc(collection(this.firestore, 'matches'));
   }
 
   checkViewed(contactId: number): boolean {
-    for (let i = 0; i < matchData.length; i++) {
-      if (matchData[i].ContactId == this.loggedInId && matchData[i].MatchedContactId == contactId) {
-        return true;
+    try {
+      for (let i = 0; i < this.matches.length; i++) {
+        if (this.matches[i].ContactId == this.loggedInId && this.matches[i].MatchedContactId == contactId) {
+          return true;
+        }
       }
+    } catch (error) {
+      console.log(error);
     }
+
     return false;
   }
 
@@ -42,11 +63,12 @@ export class ProfileService {
       }
     }
   }
-  
+
   getRandomProfile(): any {
     let randomId = Math.floor(Math.random() * this.contacts.length);
     for (let i = 0; i < this.contacts.length; i++) {
       if (i == randomId && this.contacts[i].ContactId != this.loggedInId && !this.checkViewed(this.contacts[i].ContactId)) {
+        this.lastContact = this.contacts[i].ContactId;
         return this.contacts[i];
       }
     }
@@ -65,9 +87,9 @@ export class ProfileService {
     return MyContacts;
   }
 
-  getContactById(id: number): any{
-    for (let i = 0; i < this.contacts.length; i++){
-      if(this.contacts[i].ContactId == id) return this.contacts[i];
+  getContactById(id: number): any {
+    for (let i = 0; i < this.contacts.length; i++) {
+      if (this.contacts[i].ContactId == id) return this.contacts[i];
     }
     return null;
   }
@@ -75,9 +97,9 @@ export class ProfileService {
   getMessagesBetweenContacts(ohterContactId: number): Message[] {
     let myMessages: Message[] = [];
     let allMessages: Message[] = this.messages;
-    
-    for (let i = 0; i < allMessages.length; i++){
-      if(allMessages[i].SenderContactId == ohterContactId || allMessages[i].ReceiverContactId == ohterContactId){
+
+    for (let i = 0; i < allMessages.length; i++) {
+      if (allMessages[i].SenderContactId == ohterContactId || allMessages[i].ReceiverContactId == ohterContactId) {
         myMessages.push(allMessages[i]);
       }
     }
@@ -112,7 +134,7 @@ export class ProfileService {
     }
 
     //console.log(MyMessages);
-    
+
     MyMessages = this.removeDuplicates(MyMessages, 'SenderContactId');
 
     for (let i = 0; i < MyMessages.length; i++) {
