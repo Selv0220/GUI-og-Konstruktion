@@ -37,6 +37,7 @@ export class ChatPage implements OnInit {
   }
 
   sendMessage(){
+    if(this.messageToSend == "") return;
     let newMessage =  {
       "SenderContactId": this.profileService.loggedInId,
       "ReceiverContactId": this.otherContact.ContactId,

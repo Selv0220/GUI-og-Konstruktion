@@ -6,25 +6,25 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
+<ion-content class="background" [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
       <ion-title size="large">Tab 3</ion-title>
     </ion-toolbar>
   </ion-header>
 
-  <ion-list lines="inset">
-    <ion-item *ngFor="let contact of getMyContacts()" [routerLink]="['chat/', contact.ContactId]">
+  <ion-list lines="full">
+    <ion-item class="contact" *ngFor="let contact of getMyContacts()" [routerLink]="['chat/', contact.ContactId]">
       <ion-card-header>
-        <img class="profileImage" [src]="contact.PngPath">
+        <ion-avatar>
+          <img class="profileImage" [src]="contact.PngPath">
+         </ion-avatar>
       </ion-card-header>
-      <div>
+      <div class="nameAndMessage">
         <ion-card-title> {{ contact.Name }}</ion-card-title>
         <ion-card-subtitle>{{ contact.LatestMessage }}</ion-card-subtitle>
-        <ion-card-subtitle>{{ contact.DateTime }}</ion-card-subtitle>
       </div>
-      <ion-label slot="end" class="hours"></ion-label>
-
+      <ion-label slot="end" class="hours">{{ contact.DateTime | date}}</ion-label>
       
     </ion-item>
   </ion-list>

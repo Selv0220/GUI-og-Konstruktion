@@ -1,17 +1,37 @@
-ion-input{
-    border-color: aqua;
-}
-
 ion-icon{
     cursor: pointer;
 }
 
 .profileImage{
-    border-radius: 50%;
-    width: 40px;
-    height: 40px;
+    width: 50px;
+    height: 50px;
 }
 
 .sendBtn{
     transform: translate(350px,0);
+}
+
+.typingBox{
+    background-color: #EFE8DE;
+    border-color: red;
+}
+
+.messageBox{
+    color: #2F4858;;
+}
+
+.background{
+    --ion-background-color:#EFE8DE;
+}
+
+.typingInput{
+    border-radius: 18px; // looks realy pixelated, what is going on?
+    background-color:#EFE8DE;
+    border: solid 5px #2F4858; // omg why what that so hard to find an answer for
+}
+
+.matchedDate{
+    color: #2F4858;;
+    transform: translate(150px,0);
+    font-weight: 600;
 }

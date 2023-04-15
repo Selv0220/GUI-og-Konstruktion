@@ -4,22 +4,27 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
+<ion-content class="background" [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
       <ion-title size="large">chat</ion-title>
     </ion-toolbar>
   </ion-header>
   
-  
+  <h5 class="matchedDate">Matchede 11/04</h5>
   <ion-item>
     <ion-card-header>
+      <ion-avatar>
       <img class="profileImage" [src]="otherContact.PngPath">
+     </ion-avatar>
     </ion-card-header>
   </ion-item>
-  <ion-list lines="inset">
+
+  <ion-list lines="full">
     <ion-item *ngFor="let message of messages">
-        <ion-label>{{message.DateTime}}</ion-label>
+      <ion-card>
+      </ion-card>
+        <ion-label>{{message.DateTime | date}}</ion-label>
       <div *ngIf="message.SenderContactId === otherContact.ContactId; else elseBlock">
         <ion-text>
           {{message.Message}} other
@@ -31,21 +36,13 @@
         </ion-text>
       </ng-template>
       
-      <!-- <div>
-        <ion-card-title> {{ contact.Name }}</ion-card-title>
-        <ion-card-subtitle>{{ contact.LatestMessage }}</ion-card-subtitle>
-        <ion-card-subtitle>{{ contact.DateTime }}</ion-card-subtitle>
-      </div>
-      <ion-label slot="end" class="hours"></ion-label> -->
-      
     </ion-item>
   </ion-list>
 
-  <ion-card>
-    <ion-input icon-only type="text" [(ngModel)]="messageToSend" placeholder="Sig hej til Philip"><ion-icon class="sendBtn" (click)="sendMessage()" name="send-outline"></ion-icon>
+  <ion-card class="typingBox">
+    <ion-input class="typingInput" icon-only type="text" [(ngModel)]="messageToSend" [placeholder]="['Sig hej til ' + otherContact.Name]"><ion-icon class="sendBtn" (click)="sendMessage()" name="send-outline"></ion-icon>
   </ion-input>
-  <ion-button (click)="sendMessage()">send</ion-button>
+  <ion-button (click)="sendMessage()"><ion-icon slot="end" class="sendBtn" (click)="sendMessage()" name="send-outline"></ion-icon>send</ion-button>
   </ion-card>
   
-
 </ion-content>
