@@ -41,8 +41,10 @@ export class MatchProfileComponent implements AfterViewInit {
 
           if(ev.deltaX > 150) {
             card.nativeElement.style.transform = 'translateX(200vw) rotate(40deg)';
+            setTimeout(() => card.nativeElement.remove(),500);
           } else if(ev.deltaX < -150) {
             card.nativeElement.style.transform = 'translateX(-200vw) rotate(-40deg)';
+            setTimeout(() => card.nativeElement.remove(),500);
           } else {
             card.nativeElement.style.transform = '';
           }
