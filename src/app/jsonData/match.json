@@ -1,2 +1,8 @@
 [
+    {
+        "DateTime": "2023-04-15 08:26",
+        "ContactId": 1,
+        "MatchedContactId": 2,
+        "Match": true
+    }
 ]

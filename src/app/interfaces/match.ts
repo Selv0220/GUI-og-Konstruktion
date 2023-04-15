@@ -1,5 +1,5 @@
 export interface Match {
-    DateTime: Date;
+    DateTime: string;
     ContactId: number;
     MatchedContactId: number;
     Match: boolean;
