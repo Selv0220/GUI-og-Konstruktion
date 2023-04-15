@@ -1,7 +1,7 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Halløj Halløj
+      Profil
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -13,5 +13,75 @@
     </ion-toolbar>
   </ion-header>
 
-  <app-explore-container name="Tab 1 page"></app-explore-container>
+  <ion-grid>
+    <ion-row>
+      <ion-col size-md="6" offset-md="3">
+        <div class="profile-image-container">
+          <ion-avatar class="profile-image">
+            <img src="assets/images/profilepic.jpg" alt="Profile Image" style="width: 400px; height: 265px; border-radius: 48%;">
+          </ion-avatar>
+        </div>
+        <ion-card-title class="ion-text-center">Amalie, 23 </ion-card-title>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <div class="icon-container">
+      <ion-icon name="create" class="edit-icon"></ion-icon>
+      <ion-icon name="camera" class="camera-icon"></ion-icon>
+      <ion-icon name="settings" class="custom-icon"></ion-icon>
+  </div>
+
+  <style>
+   .profile-image-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    margin-right:228px;
+  }
+
+  .icon-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.icon-container ion-icon {
+  color: #2F4858;
+  font-size: 3rem;
+  border: 3px solid #2F4858;
+  padding: 7px;
+  border-radius: 48%;
+}
+
+.icon-container .edit-icon {
+  margin-right: 30px;
+}
+
+.icon-container .camera-icon {
+  transform: translateY(35px);
+  margin-left: 10px;
+}
+
+.icon-container .custom-icon {
+  margin-left: 40px;
+}
+
+  ion-content {
+  --background: #EFE8DE; }
+
+  ion-card-title {
+  color: #2F4858;
+  font-family: Raleway;
+  margin-top: 210px;
+  font-size: 25px;
+  font-weight: bold;
+}
+
+img{
+  max-width: 450%;
+}
+
+  </style>
 </ion-content>
