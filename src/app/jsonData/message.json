@@ -2,8 +2,14 @@
     {
       "SenderContactId": 1,
       "ReceiverContactId": 2,
-      "Message": "Halløjsa",
+      "Message": "Haya",
       "DateTime": "2023-04-15 08:26"
+    },
+    {
+        "SenderContactId": 1,
+        "ReceiverContactId": 2,
+        "Message": "Hai",
+        "DateTime": "2023-04-15 08:31"
     },
     {
         "SenderContactId": 1,
@@ -14,7 +20,7 @@
     {
         "SenderContactId": 2,
         "ReceiverContactId": 1,
-        "Message": "Hej :)",
+        "Message": "yo",
         "DateTime": "2023-04-15 08:27"
     }
     ,

@@ -53,26 +53,29 @@ export class ProfileService {
   }
 
   getMessagesBetweenContacts(ohterContactId: number): Message[] {
-    let tempMessages: Message[] = [];
+    let myMessages: Message[] = [];
     let allMessages: Message[] = this.messages;
-
-    //console.log(ohterContactId);
-    console.log(allMessages);
     
     for (let i = 0; i < allMessages.length; i++){
-      if(allMessages[i].SenderContactId == ohterContactId){
-        tempMessages.push(allMessages[i]);
+      if(allMessages[i].SenderContactId == ohterContactId || allMessages[i].ReceiverContactId == ohterContactId){
+        myMessages.push(allMessages[i]);
       }
     }
-    console.log(tempMessages);
-    return tempMessages;
+
+    return this.sortMyMessages(myMessages);
   }
 
-  myMessages(): Message[] {
+  sortMyMessages(sendtMessages: Message[]): Message[] {
+    sendtMessages.sort((a, b) => {
+      return <any>new Date(b.DateTime) - <any>new Date(a.DateTime);
+    });
+    return sendtMessages;
+  }
+
+  myMessages() {
     this.messages.sort((a, b) => {
       return <any>new Date(b.DateTime) - <any>new Date(a.DateTime);
     });
-    return [];
   }
 
   // Function that returns the all contacts sorted by the latest message
