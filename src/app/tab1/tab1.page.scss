@@ -1,0 +1,51 @@
+.profile-image-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    margin-right: 228px;
+  }
+  
+  .icon-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  
+    ion-icon {
+      color: #2F4858;
+      font-size: 3rem;
+      border: 3px solid #2F4858;
+      padding: 7px;
+      border-radius: 48%;
+  
+      &.edit-icon {
+        margin-right: 30px;
+      }
+  
+      &.camera-icon {
+        transform: translateY(35px);
+        margin-left: 10px;
+      }
+  
+      &.custom-icon {
+        margin-left: 40px;
+      }
+    }
+  }
+  
+  ion-content {
+    --background: #EFE8DE;
+  }
+  
+  ion-card-title {
+    color: #2F4858;
+    font-family: Raleway;
+    margin-top: 210px;
+    font-size: 25px;
+    font-weight: bold;
+  }
+  
+  img {
+    max-width: 450%;
+  }
+  

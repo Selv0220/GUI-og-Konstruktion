@@ -1,7 +1,7 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Halløj Halløj
+      Profil
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -13,5 +13,22 @@
     </ion-toolbar>
   </ion-header>
 
-  <app-explore-container name="Tab 1 page"></app-explore-container>
+  <ion-grid>
+    <ion-row>
+      <ion-col size-md="6" offset-md="3">
+        <div class="profile-image-container">
+          <ion-avatar class="profile-image">
+            <img src="assets/images/profilepic.jpg" alt="Profile Image" style="width: 400px; height: 265px; border-radius: 48%;">
+          </ion-avatar>
+        </div>
+        <ion-card-title class="ion-text-center">Amalie, 23 </ion-card-title>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <div class="icon-container">
+      <ion-icon name="create" class="edit-icon" routerLink="/page1"></ion-icon>
+      <ion-icon name="camera" class="camera-icon" routerLink="/page2"></ion-icon>
+      <ion-icon name="settings" class="custom-icon" routerLink="/page3"></ion-icon>
+  </div>
 </ion-content>
