@@ -4,6 +4,7 @@ import { Message } from 'src/app/interfaces/message';
 import contactData from 'src/app/jsonData/contact.json'; 
 import messageData from 'src/app/jsonData/message.json';
 import matchData from 'src/app/jsonData/match.json';
+import { reverse } from 'dns';
 
 @Injectable({
   providedIn: 'root'
@@ -72,7 +73,7 @@ export class ProfileService {
       }
     }
 
-    return this.sortMyMessages(myMessages);
+    return (this.sortMyMessages(myMessages)).reverse();
   }
 
   sortMyMessages(sendtMessages: Message[]): Message[] {
