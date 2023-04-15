@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input, AfterViewInit, ViewChildren, ElementRef, QueryList, NgZone } from '@angular/core';
-import { GestureController, IonCard, IonicModule, Platform } from '@ionic/angular';
-import { log } from 'console';
+import { Component, Input, AfterViewInit, ViewChildren, ElementRef, QueryList } from '@angular/core';
+import { GestureController, IonCard, IonicModule } from '@ionic/angular';
+import contactData from 'src/app/jsonData/contact.json' 
 
 @Component({
   selector: 'app-match-profile',
@@ -12,11 +12,7 @@ import { log } from 'console';
 })
 export class MatchProfileComponent implements AfterViewInit {
   @Input() name?: string;
-  people = [
-    { name: 'Matilde', age: 22, img: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330' },
-    { name: 'Tobias', age: 19, img: 'https://images.unsplash.com/photo-1539571696357-5a69c17a67c6' },
-    { name: 'Julia', age: 20, img: 'https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e' },
-  ]
+  contacts: any[] = contactData;
 
   @ViewChildren(IonCard, { read: ElementRef }) cards!: QueryList<ElementRef>;
 
