@@ -19,9 +19,18 @@
   </ion-item>
   <ion-list lines="inset">
     <ion-item *ngFor="let message of messages">
-      <ion-text>
-        {{message.Message}}
-      </ion-text>
+        <ion-label>{{message.DateTime}}</ion-label>
+      <div *ngIf="message.SenderContactId === otherContact.ContactId; else elseBlock">
+        <ion-text>
+          {{message.Message}} other
+        </ion-text>
+      </div>
+      <ng-template #elseBlock>
+        <ion-text>
+         {{message.Message}} me
+        </ion-text>
+      </ng-template>
+      
       <!-- <div>
         <ion-card-title> {{ contact.Name }}</ion-card-title>
         <ion-card-subtitle>{{ contact.LatestMessage }}</ion-card-subtitle>
