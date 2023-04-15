@@ -1,0 +1,17 @@
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { EditingPage } from './editing.page';
+
+describe('EditingPage', () => {
+  let component: EditingPage;
+  let fixture: ComponentFixture<EditingPage>;
+
+  beforeEach(async(() => {
+    fixture = TestBed.createComponent(EditingPage);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+  }));
+
+  it('should create', () => {
+    expect(component).toBeTruthy();
+  });
+});

@@ -9,5 +9,9 @@ export const routes: Routes = [
     path: 'chat',
     loadComponent: () => import('./tab3/chat/chat.page').then( m => m.ChatPage)
   },
+  {
+    path: 'editing',
+    loadComponent: () => import('./tab1/editing/editing.page').then( m => m.EditingPage)
+  },
 
 ];
