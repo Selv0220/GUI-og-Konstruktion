@@ -1,6 +1,11 @@
 ion-item{
-    // make seperation line thicker
-}
+    --ion-item-background: #EFE8DE;
+    --ion-border-color: #2F4858;
+  }
+
+  .list-md-lines-full .item-lines-default {
+    --border-width: 0px 0px 3px 0px;
+  }
 
 .profileImage{
     width: 50px;
@@ -10,11 +15,19 @@ ion-item{
 .hours{
     margin: 0px;
     //transform: translate(150px,0); //hacks
+    color: #2F4858;
+    font-family: Raleway;
+    font-weight: bold;
+    font-size: 20px;
 }
 
-.background{
-    --ion-background-color:#EFE8DE;
-}
+ion-content {
+    --background: #EFE8DE;
+  }
+
+  ion-list{
+    background-color: #EFE8DE;
+  }
 
 .contact{
     --highlight-height: 20px;
@@ -22,4 +35,17 @@ ion-item{
 
 .nameAndMessage{
     transform: translate(0,-5px);
+
 }
+
+ion-card-title {
+    color: #2F4858;
+    font-family: Raleway;
+    font-weight: bold;
+  }
+
+  ion-card-subtitle {
+    color: #2F4858;
+    font-family: Raleway;
+  }
+  
