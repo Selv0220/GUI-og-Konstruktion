@@ -17,4 +17,18 @@
         "Message": "Hej :)",
         "DateTime": "2023-04-15 08:27"
     }
+    ,
+    {
+        "SenderContactId": 3,
+        "ReceiverContactId": 1,
+        "Message": "Hej :)",
+        "DateTime": "2023-04-15 09:27"
+    }
+    ,
+    {
+        "SenderContactId": 3,
+        "ReceiverContactId": 1,
+        "Message": "Hej igen :D",
+        "DateTime": "2023-04-15 12:27"
+    }
 ]

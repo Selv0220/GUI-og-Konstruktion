@@ -14,13 +14,14 @@
   </ion-header>
 
   <ion-list lines="inset">
-    <ion-item *ngFor="let contact of contacts">
+    <ion-item *ngFor="let contact of getMyContacts()">
       <ion-card-header>
         <img class="profileImage" [src]="contact.PngPath">
       </ion-card-header>
       <div>
         <ion-card-title> {{ contact.Name }}</ion-card-title>
-        <ion-card-subtitle>Get latest message</ion-card-subtitle>
+        <ion-card-subtitle>{{ contact.LatestMessage }}</ion-card-subtitle>
+        <ion-card-subtitle>{{ contact.DateTime }}</ion-card-subtitle>
       </div>
       <ion-label slot="end" class="hours"></ion-label>
   
