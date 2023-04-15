@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, Input, AfterViewInit, ViewChildren, ElementRef, QueryList } from '@angular/core';
 import { GestureController, IonCard, IonicModule } from '@ionic/angular';
-import contactData from 'src/app/jsonData/contact.json' 
+import { ProfileService } from '../services/profile.service';
 
 @Component({
   selector: 'app-match-profile',
@@ -11,12 +11,11 @@ import contactData from 'src/app/jsonData/contact.json'
   imports: [IonicModule,CommonModule],
 })
 export class MatchProfileComponent implements AfterViewInit {
-  @Input() name?: string;
-  contacts: any[] = contactData;
+  contacts: any[] = this.profile.getContacts();
 
   @ViewChildren(IonCard, { read: ElementRef }) cards!: QueryList<ElementRef>;
 
-  constructor(private gestureCtrl: GestureController) {}
+  constructor(private gestureCtrl: GestureController, private profile: ProfileService) {}
 
   ngAfterViewInit(): void {
     const cardArray = this.cards.toArray();
