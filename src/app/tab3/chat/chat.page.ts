@@ -25,7 +25,7 @@ export class ChatPage implements OnInit {
   constructor(public profileService: ProfileService, private route: ActivatedRoute) { 
     const id = this.route.snapshot.paramMap.get('ContactId');
     let actualId = id !== null ? JSON.parse(id) : null;
-    console.log(actualId);
+
     this.otherContact = this.profileService.getContactById(actualId);
     this.messages = this.profileService.getMessagesBetweenContacts(actualId);
 
