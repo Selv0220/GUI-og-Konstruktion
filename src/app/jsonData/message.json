@@ -1,0 +1,20 @@
+[
+    {
+      "SenderContactId": 1,
+      "ReceiverContactId": 2,
+      "Message": "Halløjsa",
+      "DateTime": "2023-04-15 08:26"
+    },
+    {
+        "SenderContactId": 1,
+        "ReceiverContactId": 3,
+        "Message": "Halløjsa",
+        "DateTime": "2023-04-15 08:40"
+    },
+    {
+        "SenderContactId": 2,
+        "ReceiverContactId": 1,
+        "Message": "Hej :)",
+        "DateTime": "2023-04-15 08:27"
+    }
+]
