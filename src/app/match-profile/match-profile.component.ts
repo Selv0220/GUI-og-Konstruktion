@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input, AfterViewInit, ViewChildren, ElementRef, QueryList } from '@angular/core';
+import { Component, Input, AfterViewInit, ViewChildren, ElementRef, QueryList, NgZone } from '@angular/core';
 import { GestureController, IonCard, IonicModule } from '@ionic/angular';
 import { ProfileService } from '../services/profile.service';
 
@@ -11,13 +11,17 @@ import { ProfileService } from '../services/profile.service';
   imports: [IonicModule,CommonModule],
 })
 export class MatchProfileComponent implements AfterViewInit {
-  contacts: any[] = this.profile.getContacts();
+  contacts: any[] = [];
 
   @ViewChildren(IonCard, { read: ElementRef }) cards!: QueryList<ElementRef>;
 
-  constructor(private gestureCtrl: GestureController, private profile: ProfileService) {}
+  constructor(private gestureCtrl: GestureController, private profile: ProfileService, private ngZone: NgZone) {
+    this.contacts.push(this.profile.getRandomProfile())
+    this.contacts.push(this.profile.getRandomProfile());
+  }
 
   ngAfterViewInit(): void {
+    
     const cardArray = this.cards.toArray();
     this.useSwipe(cardArray);
   }
@@ -40,10 +44,10 @@ export class MatchProfileComponent implements AfterViewInit {
 
           if(ev.deltaX > 150) {
             card.nativeElement.style.transform = 'translateX(200vw) rotate(40deg)';
-            setTimeout(() => card.nativeElement.remove(),500);
+            this.addCard(card);
           } else if(ev.deltaX < -150) {
             card.nativeElement.style.transform = 'translateX(-200vw) rotate(-40deg)';
-            setTimeout(() => card.nativeElement.remove(),500);
+            this.addCard(card);
           } else {
             card.nativeElement.style.transform = '';
           }
@@ -52,5 +56,14 @@ export class MatchProfileComponent implements AfterViewInit {
 
       gesture.enable(true);
     }
+  }
+
+  addCard(card: any) {
+    setTimeout(() => card.nativeElement.remove(),500);
+    this.ngZone.run(() => {
+      this.contacts.push(this.profile.getRandomProfile());
+      const cardArray = this.cards.toArray();
+      this.useSwipe([cardArray[cardArray.length - 1]]);
+    });
   }
 }

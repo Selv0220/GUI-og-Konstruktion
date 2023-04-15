@@ -1,9 +1,11 @@
 import { Injectable } from '@angular/core';
-import { reverse } from 'dns';
 import { Contact } from 'src/app/interfaces/contact'
 import { Message } from 'src/app/interfaces/message'
+import { Match } from '../interfaces/match';
 import contactData from 'src/app/jsonData/contact.json' 
 import messageData from 'src/app/jsonData/message.json' 
+import matchData from 'src/app/jsonData/match.json';
+import { reverse } from 'dns';
 
 @Injectable({
   providedIn: 'root'
@@ -12,9 +14,19 @@ export class ProfileService {
 
   contacts: any[] = contactData;
   messages: Message[] = messageData;
+  matches: Match[] = matchData;
   loggedInId: number = 1;
 
   constructor() { }
+
+  checkViewed(contactId: number): boolean {
+    for (let i = 0; i < matchData.length; i++) {
+      if (matchData[i].ContactId == this.loggedInId && matchData[i].MatchedContactId == contactId) {
+        return true;
+      }
+    }
+    return false;
+  }
 
   getMyProfile(): any {
     for (let i = 0; i < contactData.length; i++) {
@@ -22,6 +34,16 @@ export class ProfileService {
         return contactData[i];
       }
     }
+  }
+  
+  getRandomProfile(): any {
+    let randomId = Math.floor(Math.random() * contactData.length) + 1;
+    for (let i = 0; i < contactData.length; i++) {
+      if (contactData[i].ContactId == randomId && contactData[i].ContactId != this.loggedInId && !this.checkViewed(contactData[i].ContactId)) {
+        return contactData[i];
+      }
+    }
+    return this.getRandomProfile();
   }
 
   getContacts(): any[] {
