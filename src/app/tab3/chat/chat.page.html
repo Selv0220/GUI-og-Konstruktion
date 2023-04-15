@@ -10,7 +10,8 @@
       <ion-title size="large">chat</ion-title>
     </ion-toolbar>
   </ion-header>
-
+  
+  
   <ion-item>
     <ion-card-header>
       <img class="profileImage" [src]="otherContact.PngPath">
@@ -27,8 +28,15 @@
         <ion-card-subtitle>{{ contact.DateTime }}</ion-card-subtitle>
       </div>
       <ion-label slot="end" class="hours"></ion-label> -->
-
+      
     </ion-item>
   </ion-list>
+
+  <ion-card>
+    <ion-input icon-only type="text" [(ngModel)]="messageToSend" placeholder="Sig hej til Philip"><ion-icon class="sendBtn" (click)="sendMessage()" name="send-outline"></ion-icon>
+  </ion-input>
+  <ion-button (click)="sendMessage()">send</ion-button>
+  </ion-card>
+  
 
 </ion-content>

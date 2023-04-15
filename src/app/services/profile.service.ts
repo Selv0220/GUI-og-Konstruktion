@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { reverse } from 'dns';
 import { Contact } from 'src/app/interfaces/contact'
 import { Message } from 'src/app/interfaces/message'
 import contactData from 'src/app/jsonData/contact.json' 
@@ -52,7 +53,7 @@ export class ProfileService {
       }
     }
 
-    return this.sortMyMessages(myMessages);
+    return (this.sortMyMessages(myMessages)).reverse();
   }
 
   sortMyMessages(sendtMessages: Message[]): Message[] {

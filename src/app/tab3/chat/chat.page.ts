@@ -22,6 +22,8 @@ export class ChatPage implements OnInit {
   otherContact: any = null;
   messages: Message[] = messageData;
 
+  messageToSend = "";
+
   constructor(public profileService: ProfileService, private route: ActivatedRoute) { 
     const id = this.route.snapshot.paramMap.get('ContactId');
     let actualId = id !== null ? JSON.parse(id) : null;
@@ -32,6 +34,18 @@ export class ChatPage implements OnInit {
   }
 
   ngOnInit() {
+  }
+
+  sendMessage(){
+    let newMessage =  {
+      "SenderContactId": this.profileService.loggedInId,
+      "ReceiverContactId": this.otherContact.ContactId,
+      "Message": this.messageToSend,
+      "DateTime": new Date().toDateString()
+    }
+
+    this.messages.push(newMessage);
+    this.messageToSend = "";
   }
 
 }
