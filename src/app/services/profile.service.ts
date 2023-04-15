@@ -1,7 +1,6 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { Contact } from 'src/app/interfaces/contact';
 import { Message } from 'src/app/interfaces/message';
-import { Match } from 'src/app/interfaces/match';
 import contactData from 'src/app/jsonData/contact.json'; 
 import messageData from 'src/app/jsonData/message.json';
 import matchData from 'src/app/jsonData/match.json';
@@ -10,13 +9,12 @@ import matchData from 'src/app/jsonData/match.json';
   providedIn: 'root'
 })
 export class ProfileService {
-
   contacts: any[] = contactData;
   messages: Message[] = messageData;
-  matches: Match[] = matchData;
+  matches: any[] = [];
   loggedInId: number = 1;
 
-  constructor() { }
+  constructor() {}
 
   checkViewed(contactId: number): boolean {
     for (let i = 0; i < matchData.length; i++) {

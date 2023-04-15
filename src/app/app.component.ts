@@ -9,8 +9,11 @@ import { CommonModule } from '@angular/common';
   standalone: true,
   imports: [IonicModule, CommonModule],
 })
+
 export class AppComponent {
+
   public environmentInjector = inject(EnvironmentInjector);
 
-  constructor() {}
+  constructor(
+  ) {}
 }
