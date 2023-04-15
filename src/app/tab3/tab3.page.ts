@@ -20,7 +20,7 @@ export class Tab3Page {
 
   loggedInId: number = 1;
 
-  contacts: any = contactData;
+  contacts: any[] = contactData;
   messages: Message[] = messageData;
 
   constructor() {}
