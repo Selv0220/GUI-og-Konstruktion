@@ -16,14 +16,23 @@ export class MatchProfileComponent implements AfterViewInit {
   @ViewChildren(IonCard, { read: ElementRef }) cards!: QueryList<ElementRef>;
 
   constructor(private gestureCtrl: GestureController, private profile: ProfileService, private ngZone: NgZone) {
-    this.contacts.push(this.profile.getRandomProfile())
-    this.contacts.push(this.profile.getRandomProfile());
+    this.loadRealData();
+  }
+
+  loadRealData() {
+    setTimeout(() => {
+      if (this.profile.getRandomProfile().Name != "Error") {
+        this.addCard();
+      }
+      else {
+        this.loadRealData();
+      }
+    },25);
+    
   }
 
   ngAfterViewInit(): void {
-    
-    const cardArray = this.cards.toArray();
-    this.useSwipe(cardArray);
+    this.loadRealData();
   }
 
   useSwipe(cardArray: any) {
@@ -44,10 +53,12 @@ export class MatchProfileComponent implements AfterViewInit {
 
           if(ev.deltaX > 150) {
             card.nativeElement.style.transform = 'translateX(200vw) rotate(40deg)';
-            this.addCard(card);
+            setTimeout(() => card.nativeElement.remove(),500);
+            this.addCard();
           } else if(ev.deltaX < -150) {
             card.nativeElement.style.transform = 'translateX(-200vw) rotate(-40deg)';
-            this.addCard(card);
+            setTimeout(() => card.nativeElement.remove(),500);
+            this.addCard();
           } else {
             card.nativeElement.style.transform = '';
           }
@@ -58,8 +69,7 @@ export class MatchProfileComponent implements AfterViewInit {
     }
   }
 
-  addCard(card: any) {
-    setTimeout(() => card.nativeElement.remove(),500);
+  addCard() {
     this.ngZone.run(() => {
       this.contacts.push(this.profile.getRandomProfile());
       const cardArray = this.cards.toArray();

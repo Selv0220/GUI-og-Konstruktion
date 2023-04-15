@@ -1,21 +1,30 @@
 import { Injectable, inject } from '@angular/core';
 import { Contact } from 'src/app/interfaces/contact';
 import { Message } from 'src/app/interfaces/message';
-import contactData from 'src/app/jsonData/contact.json'; 
+import contact from 'src/app/jsonData/contact.json';
 import messageData from 'src/app/jsonData/message.json';
 import matchData from 'src/app/jsonData/match.json';
-import { reverse } from 'dns';
+import { Firestore, collection, collectionData } from '@angular/fire/firestore';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProfileService {
-  contacts: any[] = contactData;
+  contacts: any[] = contact;
+  observableContacts: Observable<any[]>;
   messages: Message[] = messageData;
   matches: any[] = [];
   loggedInId: number = 1;
+  firestore: Firestore = inject(Firestore);
 
-  constructor() {}
+  constructor() {
+    const aCollection = collection(this.firestore, 'contacts')
+    this.observableContacts = collectionData(aCollection);
+    this.observableContacts.subscribe(data => {
+      this.contacts = data;
+    });
+  }
 
   checkViewed(contactId: number): boolean {
     for (let i = 0; i < matchData.length; i++) {
@@ -27,18 +36,18 @@ export class ProfileService {
   }
 
   getMyProfile(): any {
-    for (let i = 0; i < contactData.length; i++) {
-      if (contactData[i].ContactId == this.loggedInId) {
-        return contactData[i];
+    for (let i = 0; i < this.contacts.length; i++) {
+      if (this.contacts[i].ContactId == this.loggedInId) {
+        return this.contacts[i];
       }
     }
   }
   
   getRandomProfile(): any {
-    let randomId = Math.floor(Math.random() * contactData.length) + 1;
-    for (let i = 0; i < contactData.length; i++) {
-      if (contactData[i].ContactId == randomId && contactData[i].ContactId != this.loggedInId && !this.checkViewed(contactData[i].ContactId)) {
-        return contactData[i];
+    let randomId = Math.floor(Math.random() * this.contacts.length);
+    for (let i = 0; i < this.contacts.length; i++) {
+      if (i == randomId && this.contacts[i].ContactId != this.loggedInId && !this.checkViewed(this.contacts[i].ContactId)) {
+        return this.contacts[i];
       }
     }
     return this.getRandomProfile();
@@ -47,9 +56,9 @@ export class ProfileService {
   getContacts(): any[] {
     let MyContacts: any[] = [];
 
-    for (let i = 0; i < contactData.length; i++) {
-      if (contactData[i].ContactId != this.loggedInId) {
-        MyContacts.push(contactData[i]);
+    for (let i = 0; i < this.contacts.length; i++) {
+      if (this.contacts[i].ContactId != this.loggedInId) {
+        MyContacts.push(this.contacts[i]);
       }
     }
 
@@ -57,8 +66,8 @@ export class ProfileService {
   }
 
   getContactById(id: number): any{
-    for (let i = 0; i < contactData.length; i++){
-      if(contactData[i].ContactId == id) return contactData[i];
+    for (let i = 0; i < this.contacts.length; i++){
+      if(this.contacts[i].ContactId == id) return this.contacts[i];
     }
     return null;
   }
