@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { IonicModule } from '@ionic/angular';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -11,49 +11,23 @@ import chipsData from '../../jsonData/chips.json';
   templateUrl: './editing.page.html',
   styleUrls: ['./editing.page.scss'],
   standalone: true,
-  imports: [
-    IonicModule,
-    CommonModule,
-    FormsModule,
-    ReactiveFormsModule,
+  imports: [IonicModule, CommonModule, FormsModule, ReactiveFormsModule,
   ],
 })
-export class EditingPage implements OnInit {
-  // loggedInPerson: any = {"Chips":["Rock","Pop","Action"],"ContactId":1,"PngPath":"https://images.unsplash.com/photo-1581382575275-97901c2635b7","Name":"Gary","Age":23}
+
+export class EditingPage implements OnInit{
+
+ // loggedInPerson: any = {"Chips":["Rock","Pop","Action"],"ContactId":1,"PngPath":"https://images.unsplash.com/photo-1581382575275-97901c2635b7","Name":"Gary","Age":23}
   loggedInPerson: any;
 
   changeForm!: FormGroup;
-  validationMessages:
-    | {
-        Name: { type: string; message: string }[];
-        Age: { type: string; message: string }[];
-      }
-    | undefined;
+  validationMessages: { Name: { type: string; message: string; }[]; Age: { type: string; message: string; }[]; } | undefined;
 
   musicGenre: string[] = chipsData.music;
   movieGenre: string[] = chipsData.movie;
   activity: string[] = chipsData.activity;
 
-  chosenMusic: boolean[] = []; // dude this is so wrong
-  chosenMovie: boolean[] = [];
-  chosenActivity: boolean[] = [];
-
-  constructor(
-    public profileService: ProfileService,
-    private formBuilder: FormBuilder
-  ) {}
-
-  checkList(tempList: string[], tagToMatch: string[]): boolean[] {
-    let matchList: boolean[] = [];
-    for (let i = 0; i < tempList.length; i++) {
-      if (tempList[i] == tagToMatch[i]) {
-        matchList.push(true);
-      } else {
-        matchList.push(false);
-      }
-    }
-    return matchList;
-  }
+  constructor(public profileService: ProfileService, private formBuilder: FormBuilder) {}
 
   ngOnInit(): void {
     this.loggedInPerson = this.profileService.getMyProfile(); // super laggy
@@ -124,41 +98,37 @@ export class EditingPage implements OnInit {
     // alert(JSON.stringify(this.chosenMovie));
     // alert(JSON.stringify(this.chosenActivity));
 
-    this.validationMessages = {
-      Name: [
+ this.validationMessages = {
+      'Name': [
         {
           type: 'required',
-          message: 'Name is required.',
+          message: 'Name is required.'
         },
         {
           type: 'minlength',
-          message: 'Name requires minimum 2 characters.',
-        },
+          message: 'Name requires minimum 2 characters.'
+        }
       ],
-      Age: [
+      'Age': [
         {
           type: 'required',
-          message: 'Age is required.',
+          message: 'Age is required.'
         },
         {
           type: 'min',
-          message: 'Age most be greater than 0.',
+          message: 'Age most be greater than 0.'
         },
         {
           type: 'max',
-          message: 'Age most be less than 100.',
-        },
+          message: 'Age most be less than 100.'
+        }
       ],
-    };
+    }
   }
 
-  chosenChip(name: string) {
-    alert(name);
-  }
-
-  saveChanges() {
+  saveChanges(){
     // push changes to firebase
     this.profileService.updateProfile(this.changeForm.value); /// NOT IMPLEMENTED
-    alert(JSON.stringify(this.changeForm.value));
+    alert(JSON.stringify(this.changeForm.value)); 
   }
 }
