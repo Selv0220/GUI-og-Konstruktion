@@ -73,7 +73,9 @@ export class MatchProfileComponent implements AfterViewInit {
     this.ngZone.run(() => {
       this.contacts.push(this.profile.getRandomProfile());
       const cardArray = this.cards.toArray();
-      this.useSwipe(cardArray[cardArray.length - 1]);
+      if (cardArray.length > 0) {
+        this.useSwipe(cardArray[cardArray.length - 1]);
+      }
     });
   }
 }
