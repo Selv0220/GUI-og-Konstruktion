@@ -11,42 +11,42 @@
     </ion-toolbar>
   </ion-header>
   
+  
   <ion-item>
     <ion-card-header>
       <ion-avatar>
       <img class="profileImage" [src]="otherContact.PngPath">
       <h5 class="matchedDate">Matchede 11/04</h5>
-     </ion-avatar>
+    </ion-avatar>
     </ion-card-header>
   </ion-item>
-  
 
-<ion-list lines="full" class="message-list">
-  <ion-item *ngFor="let message of messages" class="message-item">
-    <div *ngIf="message.SenderContactId === otherContact.ContactId; else elseBlock" class="message-bubble other">
-      <ion-text class="message-text">
-        {{message.Message}}
-        <ion-label class="date-time">{{message.DateTime | date}}</ion-label>
-        <img class="profile-image" [src]="otherContact.PngPath">
-      </ion-text>
-    </div>
-    <ng-template #elseBlock>
-      <div class="message-bubble me">
+  <ion-list lines="full" class="message-list">
+    <ion-item *ngFor="let message of messages" class="message-item">
+      <ion-card>
+      </ion-card>
+      <div *ngIf="message.SenderContactId === otherContact.ContactId; else elseBlock" class="message-bubble other">
         <ion-text class="message-text">
           {{message.Message}}
-          <ion-label class="date-time">{{message.DateTime | date}}</ion-label>
-          <img class="profile-image" [src]="">
         </ion-text>
+        <img class="profile-image" [src]="otherContact.PngPath">
+        <ion-label class="date-time">{{message.DateTime | date}}</ion-label>
       </div>
-    </ng-template>
-  </ion-item>
-</ion-list>
-
+      <ng-template #elseBlock>
+        <div class="message-bubble me">
+          <ion-text class="message-text">
+            {{message.Message}}
+          </ion-text>
+          <img class="profile-image" [src]="loggedInPerson.PngPath">
+          <ion-label class="date-time">{{message.DateTime | date}}</ion-label>
+        </div>
+      </ng-template>
+    </ion-item>
+  </ion-list>
 
   <ion-card class="typingBox">
     <ion-input class="typingInput" icon-only type="text" [(ngModel)]="messageToSend" [placeholder]="['Sig hej til ' + otherContact.Name]">
       <ion-button (click)="sendMessage()"><ion-icon slot="end" class="sendBtn" (click)="sendMessage()" name="send-outline"></ion-icon></ion-button>
     </ion-input>
   </ion-card>
-  
 </ion-content>
