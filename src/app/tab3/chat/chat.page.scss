@@ -15,7 +15,6 @@ ion-content {
   color: #2F4858;
   transform: translate(192px, 0);
   font-weight: 600;
-  margin: -37px;
   font-family: Raleway;
   font-weight: bold;
   font-size: 15px;
@@ -51,6 +50,11 @@ ion-content {
   }
 }
 
+* {
+  --inner-border-width: 0 !important;
+  --border-width: 0 !important;
+}
+
 ion-item {
   --background: #EFE8DE;
   --color: #2F4858;
@@ -61,66 +65,51 @@ ion-list {
   padding: 0px;
 }
 
-  .other-profile {
-    width: 1.5rem;
-    height: 1.5rem;
-    border-radius: 50%;
-    position: absolute;
-    top: 10px;
-    left: 10px;
-  }
+.message-list {
+  ion-item.message-item {
+    div.message-bubble {
+      display: flex;
+      align-items: center;
+      margin-top: 0.5rem;
+      margin-bottom: 0.5rem;
+      max-width: 80%;
+      padding: 0.8rem;
+      border-radius: 1.2rem;
+      box-shadow: 0px 3px 6px #00000029;
 
-.me-profile {
-    width: 1.5rem;
-    height: 1.5rem;
-    border-radius: 50%;
-    position: absolute;
-    top: 10px;
-    right: 10px;
-  }
-  
-  .message-list {
-    ion-item.message-item {
-        div.message-bubble {
-            display: flex;
-            align-items: center;
-            margin-top: 0.5rem;
-            margin-bottom: 0.5rem;
-            max-width: 80%;
-            padding: 0.8rem;
-            border-radius: 1.2rem;
-            box-shadow: 0px 3px 6px #00000029;
-            &.other {
-            margin-left: 24px;
-            background-color: #E8F1FF;
-            }
-            &.me {
-            margin-left: 244px;
-            background-color: #DCF8C6;
-            }
-            
-            ion-label.date-time {
-                font-size: 0.8rem;
-                color: #9B9B9B;
-                margin-left: 0.5rem;
-                margin-top: 2rem;
-                }
+      &.other {
+        background-color: #E8F1FF;
+      }
 
-            ion-text.message-text {
-                font-size: 0.9rem;
-                color: #444444;
-                margin-top: -31px;
-                margin-right: 0.5rem;
-            }
-        }
+      &.me {
+        background-color: #DCF8C6;
+      }
+
+      ion-label.date-time {
+        font-size: 0.8rem;
+        color: #9B9B9B;
+        margin-left: 0.5rem;
+        margin-top: 2rem;
+      }
+
+      ion-text.message-text {
+        font-size: 0.9rem;
+        color: #444444;
+        margin-top: -31px;
+        margin-right: 0.5rem;
+      }
     }
+  }
 }
-    
-    
-    
-    
-    
-    
-  
 
-  
+.navbarImage {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  margin-left: 10px;
+  position: absolute;
+  left: 50%;
+  top: 8px;
+  margin: 0;
+  transform: translateX(-50%);
+}

@@ -18,7 +18,9 @@
       <ion-col size-md="6" offset-md="3">
         <div class="profile-image-container">
           <ion-avatar class="profile-image">
-            <img [src]="loggedInPerson.PngPath" alt="Profile Image" style="width: 400px; height: 265px; border-radius: 50%;">
+            <img [src]="loggedInPerson.PngPath" alt="Profile Image" style="position: absolute;width: 70vw; height: 70vw; border-radius: 50%;left: 50%;
+            margin: 0;
+            transform: translateX(-50%);">
           </ion-avatar>
         </div>
         <ion-card-title class="ion-text-center">{{loggedInPerson.Name}}, {{loggedInPerson.Age}} </ion-card-title>

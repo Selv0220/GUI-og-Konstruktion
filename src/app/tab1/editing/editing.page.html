@@ -1,10 +1,16 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
+    <ion-title class="ion-text-center">
+      <ion-avatar>
+        <img class="navbarImage" [src]="loggedInPerson.PngPath">
+      </ion-avatar>
+    </ion-title>
     <ion-buttons slot="start">
-      <ion-back-button class="backButton" routerLink="../../tabs1"></ion-back-button>
+      <ion-back-button class="backButton" defaultHref="" routerLink="../../tabs1"></ion-back-button>
     </ion-buttons>
-    <ion-title> Profil </ion-title>
-
+    <ion-buttons slot="end">
+      <ion-back-button class="backButton" style="visibility: hidden;"></ion-back-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
