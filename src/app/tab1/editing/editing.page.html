@@ -32,7 +32,6 @@
       <ion-col size="0.5"> </ion-col>
       <ion-col size="5.5">
         <ion-card class="typingBox">
-          <ion-item>
           <ion-input class="typingInput" type="text" [(ngModel)]="loggedInPerson.Name" formControlName="Name" [placeholder]="[loggedInPerson.Name]"></ion-input>
           <ng-container *ngFor="let validation of validationMessages?.Name">
             <div class="error-message" *ngIf="changeForm.get('Name')
@@ -43,7 +42,6 @@
               {{ validation.message }} 
             </div>
           </ng-container>
-        </ion-item>
         </ion-card>
       </ion-col>
       <ion-col size="5.5">
