@@ -61,12 +61,18 @@ ion-item {
   display: inline-flex;
 }
 
+ion-footer { // don't know why but the footer is somehow not at the bottom by default on this page
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
 .typingInput{
   width: 240px;
 }
 
 .specialIcon{
-  margin: 5px;
+  margin: px;
   margin-left: 25px;
 }
 
