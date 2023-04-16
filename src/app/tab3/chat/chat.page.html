@@ -39,8 +39,12 @@
           <ion-label class="date-time">{{message.DateTime | date}}</ion-label>
         </div>
       </ng-template>
-      <img class="profile-image other-profile" [src]="otherContact.PngPath">
-      <img class="profile-image me-profile" [src]="loggedInPerson.PngPath">  
+      <div *ngIf="message.SenderContactId === otherContact.ContactId; else elsePic">
+        <img class="profile-image other-profile" [src]="otherContact.PngPath">
+      </div>
+      <ng-template #elsePic>
+        <img class="profile-image me-profile" [src]="loggedInPerson.PngPath">
+      </ng-template>
     </ion-item>
   </ion-list>
 
