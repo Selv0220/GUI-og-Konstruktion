@@ -27,3 +27,30 @@
 .profileImage {
   width: 100%;
 }
+
+ion-card {
+  visibility: hidden;
+  opacity:0;
+  transition:visibility 0.5s linear,opacity 0.5s linear;
+}
+
+ion-icon {
+  text-align: center;
+  z-index: -99999999;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  position: absolute;
+  opacity: 0;
+  font-size: 100vw;
+}
+
+#yes {
+  color: #4cd964;
+}
+
+#no {
+  color: #ff3b30;
+}

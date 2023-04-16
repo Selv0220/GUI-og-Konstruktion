@@ -1,6 +1,5 @@
 import { Component} from '@angular/core';
 import { IonicModule } from '@ionic/angular';
-import { ExploreContainerComponent } from '../explore-container/explore-container.component';
 import { Contact } from 'src/app/interfaces/contact'
 import { CommonModule } from '@angular/common';
 
@@ -14,7 +13,7 @@ import { RouterModule } from '@angular/router';
   templateUrl: 'tab3.page.html',
   styleUrls: ['tab3.page.scss'],
   standalone: true,
-  imports: [IonicModule, ExploreContainerComponent, CommonModule, RouterModule],
+  imports: [IonicModule, CommonModule, RouterModule],
 })
 export class Tab3Page {
 
