@@ -1,4 +1,6 @@
 <div id="container">
+  <ion-icon id="yes" name="checkmark"></ion-icon>
+  <ion-icon id="no" name="remove"></ion-icon>
   <ion-card *ngFor="let p of contacts; let i = index " class="profileCard" style.z-index="-{{i}}" id="{{p.ContactId}}">
     <img src="{{p.PngPath}}" class="profilePicture">
     <ion-card-header>
@@ -6,5 +8,6 @@
         {{p.Name}}, {{p.Age}}
       </ion-card-title>
     </ion-card-header>
+    <ion-chip *ngFor="let c of p.Chips" [outline]="true">{{c}}</ion-chip>
   </ion-card>
 </div>
