@@ -35,6 +35,17 @@ export class ProfileService {
     });
   }
 
+  sendMessage(contactId: number, message: string): void {
+    var date = new Date();
+    var dateStr =
+      ("00" + (date.getMonth() + 1)).slice(-2) + "-" +
+      ("00" + date.getDate()).slice(-2) + "-" +
+      date.getFullYear() + " " +
+      ("00" + date.getHours()).slice(-2) + ":" +
+      ("00" + date.getMinutes()).slice(-2);
+    addDoc(collection(this.firestore, 'messages'), { SenderContactId: this.loggedInId, ReceiverContactId: contactId, Message: message, DateTime: dateStr });
+  }
+
   addMatch(ContactId: number, Match: boolean): void {
     console.log("Match added: " + ContactId + " " + Match)
     //addDoc(collection(this.firestore, 'matches'), { ContactId: this.loggedInId, MatchedContactId: ContactId, Match: Match, Datetime: new Date() });
