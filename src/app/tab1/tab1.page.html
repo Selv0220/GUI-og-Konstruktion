@@ -12,13 +12,13 @@
       <ion-title size="large">Tab 1</ion-title>
     </ion-toolbar>
   </ion-header>
-
+  
   <ion-grid>
     <ion-row>
       <ion-col size-md="6" offset-md="3">
         <div class="profile-image-container">
           <ion-avatar class="profile-image">
-            <img src="assets/images/profilepic.jpg" alt="Profile Image" style="width: 400px; height: 265px; border-radius: 48%;">
+            <img [src]="loggedInPerson.PngPath" alt="Profile Image" style="width: 400px; height: 265px; border-radius: 50%;">
           </ion-avatar>
         </div>
         <ion-card-title class="ion-text-center">Amalie, 23 </ion-card-title>
@@ -28,7 +28,7 @@
 
   <div class="icon-container">
       <ion-icon name="create" class="edit-icon" routerLink="/editing"></ion-icon>
-      <ion-icon name="camera" class="camera-icon" routerLink="/page2"></ion-icon>
-      <ion-icon name="settings" class="custom-icon" routerLink="/page3"></ion-icon>
+      <ion-icon name="camera" class="camera-icon" routerLink="/camera"></ion-icon>
+      <ion-icon name="settings" class="custom-icon" routerLink="/settings"></ion-icon>
   </div>
 </ion-content>

@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component} from '@angular/core';
+import { IonicModule } from '@ionic/angular';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { IonicModule } from '@ionic/angular';
+import { ProfileService } from '../../services/profile.service';
 
 @Component({
   selector: 'app-editing',
@@ -10,11 +11,14 @@ import { IonicModule } from '@ionic/angular';
   standalone: true,
   imports: [IonicModule, CommonModule, FormsModule]
 })
-export class EditingPage implements OnInit {
+export class EditingPage{
 
-  constructor() { }
+  loggedInPerson: any;
+  nameChangeText: string = "";
+  ageChangeText: string = "";
 
-  ngOnInit() {
+  constructor(public profileService: ProfileService) {
+    this.loggedInPerson = this.profileService.getMyProfile();
   }
 
 }
