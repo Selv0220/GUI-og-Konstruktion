@@ -1,7 +1,5 @@
-import { Timestamp } from "firebase/firestore";
-
 export interface Match {
-    DateTime: Timestamp;
+    DateTime: string;
     ContactId: number;
     MatchedContactId: number;
     Match: boolean;
