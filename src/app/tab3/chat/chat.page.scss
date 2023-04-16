@@ -60,7 +60,7 @@ ion-item{
     padding: 0px;
   }
 
-  .other-profile {
+.other-profile {
     width: 1.5rem;
     height: 1.5rem;
     border-radius: 50%;
@@ -94,7 +94,8 @@ ion-item{
             background-color: #E8F1FF;
             }
             &.me {
-            margin-left: 244px;
+            margin-left: 24px;
+            margin-right: auto;
             background-color: #DCF8C6;
             }
             
@@ -113,7 +114,43 @@ ion-item{
             }
         }
     }
-}
+
+    @media only screen and (max-width: 600px) {
+        ion-item.message-item {
+          div.message-bubble {
+            max-width: 70%;
+          }
+    
+          div.message-bubble.other {
+            margin-left: 11px;
+          }
+    
+          div.message-bubble.me {
+            margin-left: 244px;
+          }
+        }
+    
+        .other-profile, .me-profile {
+          width: 1rem;
+          height: 1rem;
+          top: 8px;
+        }
+      }
+    
+      @media only screen and (max-width: 400px) {
+        ion-item.message-item {
+          div.message-bubble {
+            max-width: 60%;
+          }
+        }
+    
+        .other-profile, .me-profile {
+          width: 0.8rem;
+          height: 0.8rem;
+          top: 6px;
+        }
+      }
+    }
     
     
     
