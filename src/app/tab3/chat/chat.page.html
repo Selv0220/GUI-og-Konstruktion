@@ -17,9 +17,7 @@
 
 <ion-content [fullscreen]="true">
   <ion-item>
-    <ion-card-header>
-      <h5>Matchede 11/04</h5>
-    </ion-card-header>
+    <h5 class="matchedDate">Matchede 11/04</h5>
   </ion-item>
 
   <ion-list lines="full" class="message-list">
@@ -37,6 +35,12 @@
           </ion-text>
           <ion-label class="date-time">{{message.DateTime | date}}</ion-label>
         </div>
+      </ng-template>
+      <div *ngIf="message.SenderContactId === otherContact.ContactId; else elsePic">
+        <img class="profile-image other-profile" [src]="otherContact.PngPath">
+      </div>
+      <ng-template #elsePic>
+        <img class="profile-image me-profile" [src]="loggedInPerson.PngPath">
       </ng-template>
     </ion-item>
   </ion-list>
