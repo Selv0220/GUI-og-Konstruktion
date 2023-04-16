@@ -4,13 +4,15 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ProfileService } from '../../services/profile.service';
 import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
+import { RouterModule } from '@angular/router';
+import chips from '../../jsonData/chips.json'
 
 @Component({
   selector: 'app-editing',
   templateUrl: './editing.page.html',
   styleUrls: ['./editing.page.scss'],
   standalone: true,
-  imports: [IonicModule, CommonModule, FormsModule, ReactiveFormsModule]
+  imports: [IonicModule, CommonModule, FormsModule, ReactiveFormsModule, RouterModule]
 })
 export class EditingPage implements OnInit{
 
@@ -19,6 +21,10 @@ export class EditingPage implements OnInit{
 
   changeForm!: FormGroup;
   validationMessages: { Name: { type: string; message: string; }[]; Age: { type: string; message: string; }[]; } | undefined;
+
+  musicGenre: string[] = chips.music;
+  movieGenre: string[] = chips.movie;
+  activity: string[] = chips.activity;
 
   constructor(public profileService: ProfileService, private formBuilder: FormBuilder) {}
 
@@ -30,7 +36,6 @@ export class EditingPage implements OnInit{
       Age: ['', [Validators.required, Validators.min(0), Validators.max(120)]],
       // Sound: ['', [Validators.required, Validators.minLength(1)]]
     });
-
 
     this.validationMessages = {
       'Name': [
@@ -60,17 +65,9 @@ export class EditingPage implements OnInit{
     }
   }
 
-  
-
   saveChanges(){
     // push changes to firebase
-    this.changeForm.value;
-    alert(JSON.stringify(this.changeForm.value));
+    this.profileService.updateProfile(this.changeForm.value); /// NOT IMPLEMENTED
+    alert(JSON.stringify(this.changeForm.value)); 
   }
-
-
-  confirmChange(){
-    alert(JSON.stringify(this.changeForm.value));
-  }
-
 }

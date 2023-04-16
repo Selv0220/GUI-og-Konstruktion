@@ -37,6 +37,27 @@ ion-card-title{
     font-weight: bold;
   }
 
+  .chip{
+    height: 30px;
+
+    --background: #EFE8DE;
+    color:  #2F4858;
+
+    box-shadow: none;
+    border-radius: 7px;
+    border: solid 2px #2F4858;
+
+    font-weight: bold;
+    font-size: 10px;
+    
+  }
+
+  ion-footer { // don't know why but the footer is somehow not at the bottom by default on this page
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+  }
+
   .centered-div-bottom{
     color: #2F4858;
     --background: #EFE8DE;
@@ -45,8 +66,7 @@ ion-card-title{
 
     border: solid 2px #2F4858;
     scale: 1.5;
-    transform: translate(110px,30px);
-
+    transform: translate(110px, 80px);
   }
 
   .navbarImage {
