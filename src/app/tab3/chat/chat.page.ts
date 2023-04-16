@@ -7,6 +7,7 @@ import { Message } from 'src/app/interfaces/message'
 import contactData from 'src/app/jsonData/contact.json' 
 import messageData from 'src/app/jsonData/message.json' 
 import { ActivatedRoute } from '@angular/router';
+import { RouterModule } from '@angular/router';
 
 import { ProfileService } from '../../services/profile.service';
 
@@ -15,7 +16,7 @@ import { ProfileService } from '../../services/profile.service';
   templateUrl: './chat.page.html',
   styleUrls: ['./chat.page.scss'],
   standalone: true,
-  imports: [IonicModule, CommonModule, FormsModule]
+  imports: [IonicModule, CommonModule, FormsModule, RouterModule]
 })
 export class ChatPage implements OnInit {
 
