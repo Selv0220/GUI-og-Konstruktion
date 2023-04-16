@@ -37,28 +37,40 @@ export class MatchProfileComponent implements AfterViewInit {
   }
 
   useSwipe(card: any) {
-
+    const yes = document.getElementById('yes');
+    const no = document.getElementById('no');
     const gesture = this.gestureCtrl.create({
       el: card.nativeElement,
       gestureName: 'swipe',
       onStart: ev => {
-
+        if(yes != null && no != null) {
+          yes.style.opacity = '0';
+          no.style.opacity = '0';
+        }
       },
       onMove: ev => {
         card.nativeElement.style.transform = `translateX(${ev.deltaX}px) rotate(${ev.deltaX / 10}deg)`;
+        if(yes != null && no != null) {
+          if (ev.deltaX > 0) {
+            no.style.opacity = `${ev.deltaX / 500}`;
+          } else {
+            yes.style.opacity = `${ev.deltaX / -500}`;
+          }
+        }
+        
       },
       onEnd: ev => {
-        card.nativeElement.style.transition = 'transform 0.5s ease-in-out';
+        card.nativeElement.style.transition = 'transform 0.25s ease-in-out';
 
         if (ev.deltaX > 150) {
           this.profile.addMatch(card.nativeElement.id, false);
           card.nativeElement.style.transform = 'translateX(200vw) rotate(40deg)';
-          setTimeout(() => card.nativeElement.remove(), 500);
+          setTimeout(() => {card.nativeElement.remove();}, 250);
           this.addCard();
         } else if (ev.deltaX < -150) {
           this.profile.addMatch(card.nativeElement.id, true);
           card.nativeElement.style.transform = 'translateX(-200vw) rotate(-40deg)';
-          setTimeout(() => card.nativeElement.remove(), 500);
+          setTimeout(() => {card.nativeElement.remove();}, 250);
           this.addCard();
         } else {
           card.nativeElement.style.transform = '';
@@ -71,9 +83,14 @@ export class MatchProfileComponent implements AfterViewInit {
 
   addCard() {
     this.ngZone.run(() => {
-      this.contacts.push(this.profile.getRandomProfile());
       const cardArray = this.cards.toArray();
-      this.useSwipe(cardArray[cardArray.length - 1]);
+      const card = cardArray[cardArray.length - 1];
+      this.contacts.push(this.profile.getRandomProfile());
+      if (cardArray.length > 0 ) {
+        card.nativeElement.style.visibility = 'visible';
+        card.nativeElement.style.opacity = '1';
+        this.useSwipe(card);
+      }
     });
   }
 }

@@ -49,7 +49,9 @@ export class ChatPage implements OnInit {
     }
 
     this.messages.push(newMessage);
+    this.profileService.sendMessage(this.otherContact.ContactId, this.messageToSend);
     this.messageToSend = "";
+
   }
 
 }
