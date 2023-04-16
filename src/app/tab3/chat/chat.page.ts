@@ -19,6 +19,7 @@ import { ProfileService } from '../../services/profile.service';
 })
 export class ChatPage implements OnInit {
 
+  loggedInPerson: any;
   otherContact: any = null;
   messages: Message[] = messageData;
 
@@ -29,6 +30,8 @@ export class ChatPage implements OnInit {
     let actualId = id !== null ? JSON.parse(id) : null;
 
     this.otherContact = this.profileService.getContactById(actualId);
+    this.loggedInPerson = this.profileService.getMyProfile();
+
     this.messages = this.profileService.getMessagesBetweenContacts(actualId);
 
   }

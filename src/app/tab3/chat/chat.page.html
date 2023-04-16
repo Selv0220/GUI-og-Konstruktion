@@ -37,13 +37,12 @@
           <ion-text class="message-text">
             {{message.Message}}
           </ion-text>
-          <img class="profile-image" [src]="">
+          <img class="profile-image" [src]="loggedInPerson.PngPath">
           <ion-label class="date-time">{{message.DateTime | date}}</ion-label>
         </div>
       </ng-template>
     </ion-item>
   </ion-list>
-
 
   <ion-card class="typingBox">
     <ion-input class="typingInput" icon-only type="text" [(ngModel)]="messageToSend" [placeholder]="['Sig hej til ' + otherContact.Name]">
