@@ -64,7 +64,7 @@
       </ion-col>
       <ion-grid>
         <ion-row class="chips-row">
-          <ion-chip *ngFor="let music of musicGenre; let i = index" [attr.data-index]="i" [disabled]="chosenMusic[i]" [outline]="chosenMusic[i]" (click)="chosenChip(music)" class="chip">{{music}}</ion-chip>
+          <ion-chip *ngFor="let music of musicGenre; let i = index" [attr.data-index]="i" [outline]="!chosenMusic[i]" (click)="chosenChip(music)" class="chip">{{music}}</ion-chip>
         </ion-row>
       </ion-grid>
     </ion-row>
@@ -75,7 +75,7 @@
     </ion-col>
     <ion-grid>
       <ion-row class="chips-row">
-        <ion-chip *ngFor="let movie of movieGenre; let i = index" [attr.data-index]="i" [disabled]="chosenMovie[i]" [outline]="chosenMovie[i]" (click)="chosenChip(movie)" class="chip">{{movie}}</ion-chip>
+        <ion-chip *ngFor="let movie of movieGenre; let i = index" [attr.data-index]="i" [outline]="!chosenMovie[i]" (click)="chosenChip(movie)" class="chip">{{movie}}</ion-chip>
       </ion-row>
     </ion-grid>
   </ion-row>
@@ -86,7 +86,7 @@
     </ion-col>
     <ion-grid>
       <ion-row class="chips-row">
-        <ion-chip *ngFor="let acti of activity; let i = index" [attr.data-index]="i" [disabled]="chosenActivity[i]" [outline]="chosenActivity[i]" (click)="chosenChip(acti)" class="chip">{{acti}}</ion-chip>
+        <ion-chip *ngFor="let active of activity; let i = index" [attr.data-index]="i" [outline]="!chosenActivity[i]" (click)="chosenChip(active)" class="chip">{{active}}</ion-chip>
       </ion-row>
     </ion-grid>
     </ion-row>
