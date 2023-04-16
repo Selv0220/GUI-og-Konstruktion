@@ -25,6 +25,9 @@
 @import "@ionic/angular/css/text-transformation.css";
 @import "@ionic/angular/css/flex-utils.css";
 
+/* Font Ralway */
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;600;700&display=swap');
+
 ion-title {
     color: #2F4858;
 }
@@ -33,4 +36,8 @@ ion-title {
     background: rgb(119,215,178);
     background: linear-gradient(120deg, rgba(119,215,178,1) 0%, rgba(96,186,207,1) 100%);
     color: #2F4858;
+}
+
+* {
+    font-family: "Raleway", sans-serif;
 }

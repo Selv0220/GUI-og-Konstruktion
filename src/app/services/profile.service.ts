@@ -3,7 +3,6 @@ import { Contact } from 'src/app/interfaces/contact';
 import { Message } from 'src/app/interfaces/message';
 import contact from 'src/app/jsonData/contact.json';
 import messageData from 'src/app/jsonData/message.json';
-import matchData from 'src/app/jsonData/match.json';
 import { Firestore, addDoc, collection, collectionData, deleteDoc } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 

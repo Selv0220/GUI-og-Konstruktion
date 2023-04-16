@@ -1,4 +1,4 @@
-import { Component, EnvironmentInjector, inject } from '@angular/core';
+import { Component } from '@angular/core';
 import { IonicModule } from '@ionic/angular';
 import { CommonModule } from '@angular/common';
 
@@ -11,6 +11,5 @@ import { CommonModule } from '@angular/common';
 })
 export class TabsPage {
 
-  public environmentInjector = inject(EnvironmentInjector); // what the hell is this? the program works without it
 
 }
