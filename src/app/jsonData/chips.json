@@ -1,0 +1,44 @@
+[
+    {
+        "music": [
+            "Jazz",
+            "EDM",
+            "Pop",
+            "Rap",
+            "Rock",
+            "Raggae",
+            "Country",
+            "Hip Hop",
+            "Punk",
+            "Funk",
+            "Disco",
+            "Metal"
+        ]
+    },
+    {
+        "movie": [
+            "Action",
+            "Anime",
+            "Comedy",
+            "Crime",
+            "Drama",
+            "Horror",
+            "Romance",
+            "Sci-Fi",
+            "Thriller",
+            "Fantasy",
+            "Mystery",
+            "Adventure"
+        ]
+    },
+    {
+        "activity": [
+            "Hiking",
+            "Biking",
+            "Swimming",
+            "Camping",
+            "Climbing",
+            "Concerts"
+        ]
+    }
+]

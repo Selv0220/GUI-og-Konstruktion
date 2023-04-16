@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, Input, AfterViewInit, ViewChildren, ElementRef, QueryList, NgZone } from '@angular/core';
 import { GestureController, IonCard, IonicModule } from '@ionic/angular';
 import { ProfileService } from '../services/profile.service';
-import { addDoc } from '@angular/fire/firestore';
+import chips from 'src/app/jsonData/chips.json';
 
 @Component({
   selector: 'app-match-profile',
@@ -92,5 +92,15 @@ export class MatchProfileComponent implements AfterViewInit {
         this.useSwipe(card);
       }
     });
+  }
+
+  getChips(contactChips: any[]) {
+    let chipsData: any[];
+    for (let index = 0; index < contactChips.length; index++) {
+      
+      const element = array[index];
+      
+    }
+    return chips;
   }
 }
