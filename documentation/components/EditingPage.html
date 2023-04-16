@@ -1,0 +1,1268 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>wannago documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="../" class="navbar-brand">wannago documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li>Components</li>
+  <li
+  >
+  EditingPage</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li >
+            <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li >
+            <a href="#templateData" role="tab" id="templateData-tab" data-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li >
+            <a href="#styleData" role="tab" id="styleData-tab" data-toggle="tab" data-link="style">Styles</a>
+        </li>
+        <li >
+            <a href="#tree" role="tab" id="tree-tab" data-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="c-info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/tab1/editing/editing.page.ts</code>
+</p>
+
+
+
+
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                    <code><a href="https://angular.io/api/core/OnInit" target="_blank" >OnInit</a></code>
+    </p>
+
+
+<section>
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover metadata">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-editing</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">styleUrls</td>
+                <td class="col-md-9"><code>./editing.page.scss</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./editing.page.html</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#activity" >activity</a>
+                            </li>
+                            <li>
+                                <a href="#changeForm" >changeForm</a>
+                            </li>
+                            <li>
+                                <a href="#chosenActivity" >chosenActivity</a>
+                            </li>
+                            <li>
+                                <a href="#chosenMovie" >chosenMovie</a>
+                            </li>
+                            <li>
+                                <a href="#chosenMusic" >chosenMusic</a>
+                            </li>
+                            <li>
+                                <a href="#loggedInPerson" >loggedInPerson</a>
+                            </li>
+                            <li>
+                                <a href="#movieGenre" >movieGenre</a>
+                            </li>
+                            <li>
+                                <a href="#musicGenre" >musicGenre</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#profileService" >profileService</a>
+                            </li>
+                            <li>
+                                <a href="#validationMessages" >validationMessages</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#checkList" >checkList</a>
+                            </li>
+                            <li>
+                                <a href="#chosenChip" >chosenChip</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnInit" >ngOnInit</a>
+                            </li>
+                            <li>
+                                <a href="#saveChanges" >saveChanges</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(profileService: <a href="../injectables/ProfileService.html" target="_self">ProfileService</a>, formBuilder: <a href="https://angular.io/api/forms/FormBuilder" target="_blank">FormBuilder</a>)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="39" class="link-to-prism">src/app/tab1/editing/editing.page.ts:39</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>profileService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/ProfileService.html" target="_self" >ProfileService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>formBuilder</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="https://angular.io/api/forms/FormBuilder" target="_blank" >FormBuilder</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+
+
+
+
+    <section>
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="checkList"></a>
+                    <span class="name">
+                        <span ><b>checkList</b></span>
+                        <a href="#checkList"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>checkList(tempList: string[], tagToMatch: string[])</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="46"
+                            class="link-to-prism">src/app/tab1/editing/editing.page.ts:46</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>tempList</td>
+                                    <td>
+                                            <code>string[]</code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>tagToMatch</td>
+                                    <td>
+                                            <code>string[]</code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>boolean[]</code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="chosenChip"></a>
+                    <span class="name">
+                        <span ><b>chosenChip</b></span>
+                        <a href="#chosenChip"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>chosenChip(name: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="155"
+                            class="link-to-prism">src/app/tab1/editing/editing.page.ts:155</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>name</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnInit"></a>
+                    <span class="name">
+                        <span ><b>ngOnInit</b></span>
+                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnInit()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="58"
+                            class="link-to-prism">src/app/tab1/editing/editing.page.ts:58</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="saveChanges"></a>
+                    <span class="name">
+                        <span ><b>saveChanges</b></span>
+                        <a href="#saveChanges"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>saveChanges()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="159"
+                            class="link-to-prism">src/app/tab1/editing/editing.page.ts:159</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section>
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="activity"></a>
+                    <span class="name">
+                        <span ><b>activity</b></span>
+                        <a href="#activity"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>string[]</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>chipsData.activity</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="35" class="link-to-prism">src/app/tab1/editing/editing.page.ts:35</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="changeForm"></a>
+                    <span class="name">
+                        <span ><b>changeForm</b></span>
+                        <a href="#changeForm"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://angular.io/api/forms/FormGroup" target="_blank" >FormGroup</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="25" class="link-to-prism">src/app/tab1/editing/editing.page.ts:25</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="chosenActivity"></a>
+                    <span class="name">
+                        <span ><b>chosenActivity</b></span>
+                        <a href="#chosenActivity"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>boolean[]</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="39" class="link-to-prism">src/app/tab1/editing/editing.page.ts:39</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="chosenMovie"></a>
+                    <span class="name">
+                        <span ><b>chosenMovie</b></span>
+                        <a href="#chosenMovie"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>boolean[]</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="38" class="link-to-prism">src/app/tab1/editing/editing.page.ts:38</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="chosenMusic"></a>
+                    <span class="name">
+                        <span ><b>chosenMusic</b></span>
+                        <a href="#chosenMusic"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>boolean[]</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="37" class="link-to-prism">src/app/tab1/editing/editing.page.ts:37</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="loggedInPerson"></a>
+                    <span class="name">
+                        <span ><b>loggedInPerson</b></span>
+                        <a href="#loggedInPerson"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="23" class="link-to-prism">src/app/tab1/editing/editing.page.ts:23</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="movieGenre"></a>
+                    <span class="name">
+                        <span ><b>movieGenre</b></span>
+                        <a href="#movieGenre"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>string[]</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>chipsData.movie</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="34" class="link-to-prism">src/app/tab1/editing/editing.page.ts:34</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="musicGenre"></a>
+                    <span class="name">
+                        <span ><b>musicGenre</b></span>
+                        <a href="#musicGenre"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>string[]</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>chipsData.music</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="33" class="link-to-prism">src/app/tab1/editing/editing.page.ts:33</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="profileService"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>profileService</b></span>
+                        <a href="#profileService"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../injectables/ProfileService.html" target="_self" >ProfileService</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="42" class="link-to-prism">src/app/tab1/editing/editing.page.ts:42</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="validationMessages"></a>
+                    <span class="name">
+                        <span ><b>validationMessages</b></span>
+                        <a href="#validationMessages"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>literal type | undefined</code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="26" class="link-to-prism">src/app/tab1/editing/editing.page.ts:26</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+</section>
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="c-source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, OnInit } from &#x27;@angular/core&#x27;;
+import { IonicModule } from &#x27;@ionic/angular&#x27;;
+import { CommonModule } from &#x27;@angular/common&#x27;;
+import { FormsModule, ReactiveFormsModule } from &#x27;@angular/forms&#x27;;
+import { ProfileService } from &#x27;../../services/profile.service&#x27;;
+import { FormBuilder, FormGroup, FormControl, Validators } from &#x27;@angular/forms&#x27;;
+import chipsData from &#x27;../../jsonData/chips.json&#x27;;
+
+@Component({
+  selector: &#x27;app-editing&#x27;,
+  templateUrl: &#x27;./editing.page.html&#x27;,
+  styleUrls: [&#x27;./editing.page.scss&#x27;],
+  standalone: true,
+  imports: [
+    IonicModule,
+    CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
+  ],
+})
+export class EditingPage implements OnInit {
+  // loggedInPerson: any &#x3D; {&quot;Chips&quot;:[&quot;Rock&quot;,&quot;Pop&quot;,&quot;Action&quot;],&quot;ContactId&quot;:1,&quot;PngPath&quot;:&quot;https://images.unsplash.com/photo-1581382575275-97901c2635b7&quot;,&quot;Name&quot;:&quot;Gary&quot;,&quot;Age&quot;:23}
+  loggedInPerson: any;
+
+  changeForm!: FormGroup;
+  validationMessages:
+    | {
+        Name: { type: string; message: string }[];
+        Age: { type: string; message: string }[];
+      }
+    | undefined;
+
+  musicGenre: string[] &#x3D; chipsData.music;
+  movieGenre: string[] &#x3D; chipsData.movie;
+  activity: string[] &#x3D; chipsData.activity;
+
+  chosenMusic: boolean[] &#x3D; []; // dude this is so wrong
+  chosenMovie: boolean[] &#x3D; [];
+  chosenActivity: boolean[] &#x3D; [];
+
+  constructor(
+    public profileService: ProfileService,
+    private formBuilder: FormBuilder
+  ) {}
+
+  checkList(tempList: string[], tagToMatch: string[]): boolean[] {
+    let matchList: boolean[] &#x3D; [];
+    for (let i &#x3D; 0; i &lt; tempList.length; i++) {
+      if (tempList[i] &#x3D;&#x3D; tagToMatch[i]) {
+        matchList.push(true);
+      } else {
+        matchList.push(false);
+      }
+    }
+    return matchList;
+  }
+
+  ngOnInit(): void {
+    this.loggedInPerson &#x3D; this.profileService.getMyProfile(); // super laggy
+    //alert(JSON.stringify(this.loggedInPerson));
+    this.changeForm &#x3D; this.formBuilder.group({
+      Name: [&#x27;&#x27;, [Validators.required, Validators.minLength(2)]],
+      Age: [&#x27;&#x27;, [Validators.required, Validators.min(0), Validators.max(120)]],
+      // Sound: [&#x27;&#x27;, [Validators.required, Validators.minLength(1)]]
+    });
+
+    //alert(JSON.stringify( this.loggedInPerson.Chips));
+
+    //for (let i &#x3D; 0; i &lt; this.
+
+    //let myChips &#x3D; this.loggedInPerson.Chips;
+
+    // this.chosenMusic &#x3D; this.checkList(this.musicGenre, myChips);
+    // this.chosenMovie &#x3D; this.checkList(this.movieGenre, myChips);
+    // this.chosenActivity &#x3D; this.checkList(this.activity, myChips);
+    // alert(JSON.stringify(this.chosenMovie));
+    // alert(JSON.stringify(this.chosenMusic));
+    // alert(JSON.stringify(this.chosenActivity));
+
+
+    // for (let j &#x3D; 0; j &lt; myChips.length; j++) {
+    //   for (let i &#x3D; 0; i &lt; this.musicGenre.length; i++) {
+    //     if (myChips[j] &#x3D;&#x3D; this.musicGenre[i]) {
+    //       this.chosenMusic.push(true);
+    //       alert(&quot;succes&quot;);
+    //     } else {
+    //       this.chosenMusic.push(false);
+    //     }
+    //   }
+    // }
+
+    // for (let i &#x3D; 0; i &lt; this.musicGenre.length; i++) {
+      
+    //   for (let j &#x3D; 0; j &lt; myChips.length; j++) {
+    //     //alert(&#x27; myChip&#x27; + myChips[j] + &#x27; moviechip&#x27; + this.movieGenre[i]);
+    //     if (myChips[j] &#x3D;&#x3D; this.musicGenre[i]) {
+    //       alert(&quot;succes&quot; + myChips[j]);
+    //       this.chosenMusic.push(true);
+    //     } else {
+    //       this.chosenMusic.push(false);
+    //     }
+    //   }
+    // }
+
+    // alert(JSON.stringify(this.chosenMusic));
+
+    // for (let i &#x3D; 0; i &lt; this.movieGenre.length; i++) {
+    //   if (myChips[i] &#x3D;&#x3D; this.movieGenre[i]) {
+    //     this.chosenMovie.push(true);
+    //   } else {
+    //     this.chosenMovie.push(false);
+    //   }
+    // }
+
+    // for (let i &#x3D; 0; i &lt; this.activity.length; i++) {
+    //   if (myChips[i] &#x3D;&#x3D; this.movieGenre[i]) {
+    //     this.chosenActivity.push(true);
+    //   } else {
+    //     this.chosenActivity.push(false);
+    //   }
+    // }
+
+    // alert(JSON.stringify(this.chosenMusic));
+    // alert(JSON.stringify(this.chosenMovie));
+    // alert(JSON.stringify(this.chosenActivity));
+
+    this.validationMessages &#x3D; {
+      Name: [
+        {
+          type: &#x27;required&#x27;,
+          message: &#x27;Name is required.&#x27;,
+        },
+        {
+          type: &#x27;minlength&#x27;,
+          message: &#x27;Name requires minimum 2 characters.&#x27;,
+        },
+      ],
+      Age: [
+        {
+          type: &#x27;required&#x27;,
+          message: &#x27;Age is required.&#x27;,
+        },
+        {
+          type: &#x27;min&#x27;,
+          message: &#x27;Age most be greater than 0.&#x27;,
+        },
+        {
+          type: &#x27;max&#x27;,
+          message: &#x27;Age most be less than 100.&#x27;,
+        },
+      ],
+    };
+  }
+
+  chosenChip(name: string) {
+    alert(name);
+  }
+
+  saveChanges() {
+    // push changes to firebase
+    this.profileService.updateProfile(this.changeForm.value); /// NOT IMPLEMENTED
+    alert(JSON.stringify(this.changeForm.value));
+  }
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;ion-header [translucent]&#x3D;&quot;true&quot;&gt;
+  &lt;ion-toolbar&gt;
+    &lt;ion-title class&#x3D;&quot;ion-text-center&quot;&gt;
+      &lt;ion-avatar&gt;
+        &lt;img class&#x3D;&quot;navbarImage&quot; [src]&#x3D;&quot;loggedInPerson.PngPath&quot;&gt;
+      &lt;/ion-avatar&gt;
+    &lt;/ion-title&gt;
+    &lt;ion-buttons slot&#x3D;&quot;start&quot;&gt;
+      &lt;ion-back-button class&#x3D;&quot;backButton&quot; routerLink&#x3D;&quot;../../tabs1&quot;&gt;&lt;/ion-back-button&gt;
+    &lt;/ion-buttons&gt;
+    &lt;ion-buttons slot&#x3D;&quot;end&quot;&gt;
+      &lt;ion-back-button class&#x3D;&quot;backButton&quot; style&#x3D;&quot;visibility: hidden;&quot;&gt;&lt;/ion-back-button&gt;
+    &lt;/ion-buttons&gt;
+  &lt;/ion-toolbar&gt;
+&lt;/ion-header&gt;
+
+&lt;ion-content [fullscreen]&#x3D;&quot;true&quot;&gt;
+  &lt;ion-header collapse&#x3D;&quot;condense&quot;&gt;
+    &lt;ion-toolbar&gt;
+      &lt;ion-title size&#x3D;&quot;large&quot;&gt;Tab 1&lt;/ion-title&gt;
+    &lt;/ion-toolbar&gt;
+  &lt;/ion-header&gt;
+
+  &lt;ion-grid&gt;
+    &lt;form class&#x3D;&quot;centered-div&quot; [formGroup]&#x3D;&quot;changeForm&quot; (ngSubmit)&#x3D;&quot;saveChanges()&quot;&gt;
+    &lt;ion-row&gt;
+      &lt;ion-col size&#x3D;&quot;0.5&quot;&gt;&lt;/ion-col&gt;
+      &lt;ion-col size&#x3D;&quot;5.5&quot;&gt;
+        &lt;ion-card-title class&#x3D;&quot;ion-text-center&quot;&gt;Fornavn &lt;/ion-card-title&gt;
+      &lt;/ion-col&gt;
+      &lt;ion-col size&#x3D;&quot;5.5&quot;&gt;
+        &lt;ion-card-title class&#x3D;&quot;ion-text-center&quot;&gt;Alder &lt;/ion-card-title&gt;
+      &lt;/ion-col&gt;
+      &lt;ion-col size&#x3D;&quot;0.5&quot;&gt;&lt;/ion-col&gt;
+    &lt;/ion-row&gt;
+
+    &lt;ion-row&gt;
+      &lt;ion-col size&#x3D;&quot;0.5&quot;&gt;&lt;/ion-col&gt;
+      &lt;ion-col size&#x3D;&quot;5.5&quot;&gt;
+        &lt;ion-card class&#x3D;&quot;typingBox&quot;&gt;
+          &lt;ion-input class&#x3D;&quot;typingInput&quot; type&#x3D;&quot;text&quot; [(ngModel)]&#x3D;&quot;loggedInPerson.Name&quot; formControlName&#x3D;&quot;Name&quot; [placeholder]&#x3D;&quot;[loggedInPerson.Name]&quot;&gt;&lt;/ion-input&gt;
+          &lt;ng-container *ngFor&#x3D;&quot;let validation of validationMessages?.Name&quot;&gt;
+            &lt;div class&#x3D;&quot;error-message&quot; *ngIf&#x3D;&quot;changeForm.get(&#x27;Name&#x27;)
+                 ?.hasError(validation.type) 
+                 &amp;&amp; (changeForm.get(&#x27;Name&#x27;)?.dirty 
+                 &amp;&amp; changeForm.get(&#x27;Name&#x27;)?.touched)&quot;&gt;
+              &lt;ion-icon name&#x3D;&quot;flash&quot;&gt;&lt;/ion-icon&gt;
+              {{ validation.message }} 
+            &lt;/div&gt;
+          &lt;/ng-container&gt;
+        &lt;/ion-card&gt;
+      &lt;/ion-col&gt;
+      &lt;ion-col size&#x3D;&quot;5.5&quot;&gt;
+        &lt;ion-card class&#x3D;&quot;typingBox&quot;&gt;
+          &lt;ion-input class&#x3D;&quot;typingInput&quot; type&#x3D;&quot;number&quot; [(ngModel)]&#x3D;&quot;loggedInPerson.Age&quot; formControlName&#x3D;&quot;Age&quot; [placeholder]&#x3D;&quot;[loggedInPerson.Age]&quot;&gt;&lt;/ion-input&gt;
+        &lt;/ion-card&gt;
+      &lt;/ion-col&gt;
+      &lt;ion-col size&#x3D;&quot;0.5&quot;&gt;&lt;/ion-col&gt;
+    &lt;/ion-row&gt;
+
+    &lt;ion-row&gt;
+      &lt;ion-col size&#x3D;&quot;12&quot;&gt;
+        &lt;ion-card-title class&#x3D;&quot;ion-text-center b&quot;&gt;Music genre&lt;/ion-card-title&gt;
+      &lt;/ion-col&gt;
+      &lt;ion-grid&gt;
+        &lt;ion-row class&#x3D;&quot;chips-row&quot;&gt;
+          &lt;ion-chip *ngFor&#x3D;&quot;let music of musicGenre; let i &#x3D; index&quot; [attr.data-index]&#x3D;&quot;i&quot; [outline]&#x3D;&quot;!chosenMusic[i]&quot; (click)&#x3D;&quot;chosenChip(music)&quot; class&#x3D;&quot;chip&quot;&gt;{{music}}&lt;/ion-chip&gt;
+        &lt;/ion-row&gt;
+      &lt;/ion-grid&gt;
+    &lt;/ion-row&gt;
+    &lt;br&gt;
+    &lt;ion-row&gt;
+      &lt;ion-col size&#x3D;&quot;12&quot;&gt;
+      &lt;ion-card-title class&#x3D;&quot;ion-text-center b&quot;&gt;Film genre&lt;/ion-card-title&gt;
+    &lt;/ion-col&gt;
+    &lt;ion-grid&gt;
+      &lt;ion-row class&#x3D;&quot;chips-row&quot;&gt;
+        &lt;ion-chip *ngFor&#x3D;&quot;let movie of movieGenre; let i &#x3D; index&quot; [attr.data-index]&#x3D;&quot;i&quot; [outline]&#x3D;&quot;!chosenMovie[i]&quot; (click)&#x3D;&quot;chosenChip(movie)&quot; class&#x3D;&quot;chip&quot;&gt;{{movie}}&lt;/ion-chip&gt;
+      &lt;/ion-row&gt;
+    &lt;/ion-grid&gt;
+  &lt;/ion-row&gt;
+  &lt;br&gt;
+    &lt;ion-row&gt;
+      &lt;ion-col size&#x3D;&quot;12&quot;&gt;
+      &lt;ion-card-title class&#x3D;&quot;ion-text-center b&quot;&gt;Aktiviteter&lt;/ion-card-title&gt;
+    &lt;/ion-col&gt;
+    &lt;ion-grid&gt;
+      &lt;ion-row class&#x3D;&quot;chips-row&quot;&gt;
+        &lt;ion-chip *ngFor&#x3D;&quot;let active of activity; let i &#x3D; index&quot; [attr.data-index]&#x3D;&quot;i&quot; [outline]&#x3D;&quot;!chosenActivity[i]&quot; (click)&#x3D;&quot;chosenChip(active)&quot; class&#x3D;&quot;chip&quot;&gt;{{active}}&lt;/ion-chip&gt;
+      &lt;/ion-row&gt;
+    &lt;/ion-grid&gt;
+    &lt;/ion-row&gt;
+    &lt;ion-col class&#x3D;&quot;chips-row&quot; size&#x3D;&quot;12&quot;&gt;&lt;ion-button type&#x3D;&quot;submit&quot; class&#x3D;&quot;centered-div-bottom&quot;&gt;&lt;ion-icon name&#x3D;&quot;save&quot;&gt;&lt;/ion-icon&gt;&lt;/ion-button&gt;&lt;/ion-col&gt;
+  &lt;/form&gt;
+  &lt;/ion-grid&gt;
+&lt;/ion-content&gt;
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-styleData">
+                <p class="comment">
+                    <code>./editing.page.scss</code>
+                </p>
+                <pre class="line-numbers"><code class="language-scss">ion-content {
+  --background: #EFE8DE;
+}
+
+.profileImage {
+  width: 50px;
+  height: 50px;
+}
+
+ion-card-title {
+  color: #2F4858;
+  font-weight: 600;
+}
+
+.typingBox {
+  display: flex;
+  align-items: center;
+  background-color: #ECE5DD;
+  border-radius: 20px;
+  padding: 10px;
+  margin-bottom: 10px;
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+  border: 5px solid #2f4858;
+
+}
+
+.typingBox .typingInput {
+  flex-grow: 1;
+}
+
+.backButton {
+  color: white;
+  scale: 1.5;
+}
+
+.b {
+  font-weight: bold;
+}
+
+.chip {
+  height: 30px;
+
+  --background: #EFE8DE;
+  color: #2F4858;
+
+  box-shadow: none;
+  border-radius: 7px;
+  border: solid 2px #2F4858;
+
+  font-weight: bold;
+  font-size: 12px;
+  text-align: center;
+
+}
+
+ion-footer {
+  // don&#x27;t know why but the footer is somehow not at the bottom by default on this page
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
+.centered-div-bottom {
+  color: #2F4858;
+  --background: #EFE8DE;
+  box-shadow: none;
+  border-radius: 1px;
+
+  border: solid 2px #2F4858;
+  scale: 1.5;
+}
+
+.navbarImage {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  margin-right: 10px; // doesn&#x27;t do anything it seems
+  position: absolute;
+  right: 50%;
+  top: 8px;
+  margin: 0;
+
+}
+
+.chips-row{
+  // center the ion-chips inside the ion-row
+  display: flex;
+  justify-content: center;
+}</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><ion-header [translucent]="true">  <ion-toolbar>    <ion-title class="ion-text-center">      <ion-avatar>        <img class="navbarImage" [src]="loggedInPerson.PngPath">      </ion-avatar>    </ion-title>    <ion-buttons slot="start">      <ion-back-button class="backButton" routerLink="../../tabs1"></ion-back-button>    </ion-buttons>    <ion-buttons slot="end">      <ion-back-button class="backButton" style="visibility: hidden;"></ion-back-button>    </ion-buttons>  </ion-toolbar></ion-header><ion-content [fullscreen]="true">  <ion-header collapse="condense">    <ion-toolbar>      <ion-title size="large">Tab 1</ion-title>    </ion-toolbar>  </ion-header>  <ion-grid>    <form class="centered-div" [formGroup]="changeForm" (ngSubmit)="saveChanges()">    <ion-row>      <ion-col size="0.5"></ion-col>      <ion-col size="5.5">        <ion-card-title class="ion-text-center">Fornavn </ion-card-title>      </ion-col>      <ion-col size="5.5">        <ion-card-title class="ion-text-center">Alder </ion-card-title>      </ion-col>      <ion-col size="0.5"></ion-col>    </ion-row>    <ion-row>      <ion-col size="0.5"></ion-col>      <ion-col size="5.5">        <ion-card class="typingBox">          <ion-input class="typingInput" type="text" [(ngModel)]="loggedInPerson.Name" formControlName="Name" [placeholder]="[loggedInPerson.Name]"></ion-input>          <ng-container *ngFor="let validation of validationMessages?.Name">            <div class="error-message" *ngIf="changeForm.get(\'Name\')                 ?.hasError(validation.type)                  && (changeForm.get(\'Name\')?.dirty                  && changeForm.get(\'Name\')?.touched)">              <ion-icon name="flash"></ion-icon>              {{ validation.message }}             </div>          </ng-container>        </ion-card>      </ion-col>      <ion-col size="5.5">        <ion-card class="typingBox">          <ion-input class="typingInput" type="number" [(ngModel)]="loggedInPerson.Age" formControlName="Age" [placeholder]="[loggedInPerson.Age]"></ion-input>        </ion-card>      </ion-col>      <ion-col size="0.5"></ion-col>    </ion-row>    <ion-row>      <ion-col size="12">        <ion-card-title class="ion-text-center b">Music genre</ion-card-title>      </ion-col>      <ion-grid>        <ion-row class="chips-row">          <ion-chip *ngFor="let music of musicGenre; let i = index" [attr.data-index]="i" [outline]="!chosenMusic[i]" (click)="chosenChip(music)" class="chip">{{music}}</ion-chip>        </ion-row>      </ion-grid>    </ion-row>    <br>    <ion-row>      <ion-col size="12">      <ion-card-title class="ion-text-center b">Film genre</ion-card-title>    </ion-col>    <ion-grid>      <ion-row class="chips-row">        <ion-chip *ngFor="let movie of movieGenre; let i = index" [attr.data-index]="i" [outline]="!chosenMovie[i]" (click)="chosenChip(movie)" class="chip">{{movie}}</ion-chip>      </ion-row>    </ion-grid>  </ion-row>  <br>    <ion-row>      <ion-col size="12">      <ion-card-title class="ion-text-center b">Aktiviteter</ion-card-title>    </ion-col>    <ion-grid>      <ion-row class="chips-row">        <ion-chip *ngFor="let active of activity; let i = index" [attr.data-index]="i" [outline]="!chosenActivity[i]" (click)="chosenChip(active)" class="chip">{{active}}</ion-chip>      </ion-row>    </ion-grid>    </ion-row>    <ion-col class="chips-row" size="12"><ion-button type="submit" class="centered-div-bottom"><ion-icon name="save"></ion-icon></ion-button></ion-col>  </form>  </ion-grid></ion-content></div>'
+    var COMPONENTS = [{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'ChatPage', 'selector': 'app-chat'},{'name': 'EditingPage', 'selector': 'app-editing'},{'name': 'MatchProfileComponent', 'selector': 'app-match-profile'},{'name': 'Tab1Page', 'selector': 'app-tab1'},{'name': 'Tab2Page', 'selector': 'app-tab2'},{'name': 'Tab3Page', 'selector': 'app-tab3'},{'name': 'TabsPage', 'selector': 'app-tabs'}];
+    var DIRECTIVES = [];
+    var ACTUAL_COMPONENT = {'name': 'EditingPage'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'EditingPage.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

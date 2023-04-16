@@ -3,13 +3,7 @@ import { IonicModule } from '@ionic/angular';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ProfileService } from '../../services/profile.service';
-import {
-  FormBuilder,
-  FormGroup,
-  FormControl,
-  Validators,
-} from '@angular/forms';
-import { RouterModule } from '@angular/router';
+import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
 import chipsData from '../../jsonData/chips.json';
 
 @Component({
@@ -22,7 +16,6 @@ import chipsData from '../../jsonData/chips.json';
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
-    RouterModule,
   ],
 })
 export class EditingPage implements OnInit {
@@ -73,7 +66,9 @@ export class EditingPage implements OnInit {
 
     //alert(JSON.stringify( this.loggedInPerson.Chips));
 
-    let myChips = this.loggedInPerson.Chips;
+    //for (let i = 0; i < this.
+
+    //let myChips = this.loggedInPerson.Chips;
 
     // this.chosenMusic = this.checkList(this.musicGenre, myChips);
     // this.chosenMovie = this.checkList(this.movieGenre, myChips);
@@ -94,36 +89,36 @@ export class EditingPage implements OnInit {
     //   }
     // }
 
-    for (let i = 0; i < this.musicGenre.length; i++) {
+    // for (let i = 0; i < this.musicGenre.length; i++) {
       
-      for (let j = 0; j < myChips.length; j++) {
-        //alert(' myChip' + myChips[j] + ' moviechip' + this.movieGenre[i]);
-        if (myChips[j] == this.musicGenre[i]) {
-          alert("succes" + myChips[j]);
-          this.chosenMusic.push(true);
-        } else {
-          this.chosenMusic.push(false);
-        }
-      }
-    }
+    //   for (let j = 0; j < myChips.length; j++) {
+    //     //alert(' myChip' + myChips[j] + ' moviechip' + this.movieGenre[i]);
+    //     if (myChips[j] == this.musicGenre[i]) {
+    //       alert("succes" + myChips[j]);
+    //       this.chosenMusic.push(true);
+    //     } else {
+    //       this.chosenMusic.push(false);
+    //     }
+    //   }
+    // }
 
-    alert(JSON.stringify(this.chosenMusic));
+    // alert(JSON.stringify(this.chosenMusic));
 
-    for (let i = 0; i < this.movieGenre.length; i++) {
-      if (myChips[i] == this.movieGenre[i]) {
-        this.chosenMovie.push(true);
-      } else {
-        this.chosenMovie.push(false);
-      }
-    }
+    // for (let i = 0; i < this.movieGenre.length; i++) {
+    //   if (myChips[i] == this.movieGenre[i]) {
+    //     this.chosenMovie.push(true);
+    //   } else {
+    //     this.chosenMovie.push(false);
+    //   }
+    // }
 
-    for (let i = 0; i < this.activity.length; i++) {
-      if (myChips[i] == this.movieGenre[i]) {
-        this.chosenActivity.push(true);
-      } else {
-        this.chosenActivity.push(false);
-      }
-    }
+    // for (let i = 0; i < this.activity.length; i++) {
+    //   if (myChips[i] == this.movieGenre[i]) {
+    //     this.chosenActivity.push(true);
+    //   } else {
+    //     this.chosenActivity.push(false);
+    //   }
+    // }
 
     // alert(JSON.stringify(this.chosenMusic));
     // alert(JSON.stringify(this.chosenMovie));
