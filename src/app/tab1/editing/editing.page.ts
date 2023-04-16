@@ -1,24 +1,76 @@
-import { Component} from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { IonicModule } from '@ionic/angular';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ProfileService } from '../../services/profile.service';
+import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-editing',
   templateUrl: './editing.page.html',
   styleUrls: ['./editing.page.scss'],
   standalone: true,
-  imports: [IonicModule, CommonModule, FormsModule]
+  imports: [IonicModule, CommonModule, FormsModule, ReactiveFormsModule]
 })
-export class EditingPage{
+export class EditingPage implements OnInit{
 
+ // loggedInPerson: any = {"Chips":["Rock","Pop","Action"],"ContactId":1,"PngPath":"https://images.unsplash.com/photo-1581382575275-97901c2635b7","Name":"Gary","Age":23}
   loggedInPerson: any;
-  nameChangeText: string = "";
-  ageChangeText: string = "";
 
-  constructor(public profileService: ProfileService) {
-    this.loggedInPerson = this.profileService.getMyProfile();
+  changeForm!: FormGroup;
+  validationMessages: { Name: { type: string; message: string; }[]; Age: { type: string; message: string; }[]; } | undefined;
+
+  constructor(public profileService: ProfileService, private formBuilder: FormBuilder) {}
+
+  ngOnInit(): void {
+    this.loggedInPerson = this.profileService.getMyProfile(); // super laggy
+    //alert(JSON.stringify(this.loggedInPerson));
+    this.changeForm = this.formBuilder.group({
+      Name: ['', [Validators.required, Validators.minLength(2)]],
+      Age: ['', [Validators.required, Validators.min(0), Validators.max(120)]],
+      // Sound: ['', [Validators.required, Validators.minLength(1)]]
+    });
+
+
+    this.validationMessages = {
+      'Name': [
+        {
+          type: 'required',
+          message: 'Name is required.'
+        },
+        {
+          type: 'minlength',
+          message: 'Name requires minimum 2 characters.'
+        }
+      ],
+      'Age': [
+        {
+          type: 'required',
+          message: 'Age is required.'
+        },
+        {
+          type: 'min',
+          message: 'Age most be greater than 0.'
+        },
+        {
+          type: 'max',
+          message: 'Age most be less than 100.'
+        }
+      ],
+    }
+  }
+
+  
+
+  saveChanges(){
+    // push changes to firebase
+    this.changeForm.value;
+    alert(JSON.stringify(this.changeForm.value));
+  }
+
+
+  confirmChange(){
+    alert(JSON.stringify(this.changeForm.value));
   }
 
 }
