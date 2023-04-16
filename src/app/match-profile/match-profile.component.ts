@@ -28,7 +28,7 @@ export class MatchProfileComponent implements AfterViewInit {
       else {
         this.loadRealData();
       }
-    }, 100);
+    }, 200);
 
   }
 

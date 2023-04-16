@@ -4,7 +4,7 @@ import { Message } from 'src/app/interfaces/message';
 import contact from 'src/app/jsonData/contact.json';
 import messageData from 'src/app/jsonData/message.json';
 import matchData from 'src/app/jsonData/match.json';
-import { Firestore, addDoc, collection, collectionData, deleteDoc, doc } from '@angular/fire/firestore';
+import { Firestore, addDoc, collection, collectionData, deleteDoc } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -19,7 +19,7 @@ export class ProfileService {
   observableMatches: Observable<any[]>;
   loggedInId: number = 1;
   firestore: Firestore = inject(Firestore);
-  lastContact: number = -1;
+  lastContact: number[] = [-1,-1,-1];
 
   constructor() {
     this.observableMatches = collectionData(collection(this.firestore, 'matches'));
@@ -67,8 +67,11 @@ export class ProfileService {
   getRandomProfile(): any {
     let randomId = Math.floor(Math.random() * this.contacts.length);
     for (let i = 0; i < this.contacts.length; i++) {
-      if (i == randomId && this.contacts[i].ContactId != this.loggedInId && !this.checkViewed(this.contacts[i].ContactId)) {
-        this.lastContact = this.contacts[i].ContactId;
+      if (i == randomId && this.contacts[i].ContactId != this.loggedInId && !this.checkViewed(this.contacts[i].ContactId) && !this.lastContact.includes(this.contacts[i].ContactId)) {
+        if (this.contacts[i].ContactId != 0) {
+          this.lastContact.push(this.contacts[i].ContactId);
+          this.lastContact.shift();
+        }
         return this.contacts[i];
       }
     }
