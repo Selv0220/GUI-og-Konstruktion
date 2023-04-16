@@ -3,9 +3,8 @@ import { Contact } from 'src/app/interfaces/contact';
 import { Message } from 'src/app/interfaces/message';
 import contact from 'src/app/jsonData/contact.json';
 import messageData from 'src/app/jsonData/message.json';
-import { Firestore, addDoc, collection, collectionData, deleteDoc } from '@angular/fire/firestore';
+import { Firestore, addDoc, collection, collectionData, updateDoc, deleteDoc } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
-import { updateDoc } from 'firebase/firestore';
 
 @Injectable({
   providedIn: 'root'
@@ -89,7 +88,7 @@ export class ProfileService {
   }
 
   updateProfile(profile: Contact){
-    //updateDoc(collection(this.firestore, 'contacts'),{ profile}); usually you update by id and send the new object values
+    //updateDoc(collection(this.firestore, 'matches'), { profile }); //usually you update by id and send the new object values
   }
 
   getContacts(): any[] {

@@ -48,7 +48,10 @@ ion-card-title{
     border: solid 2px #2F4858;
 
     font-weight: bold;
-    font-size: 10px;
+    font-size: 12px;
+    text-align: center;
+    margin-left: -4px;
+    margin-right: -4px;
     
   }
 
@@ -66,17 +69,17 @@ ion-card-title{
 
     border: solid 2px #2F4858;
     scale: 1.5;
-    transform: translate(110px, 80px);
+    transform: translate(110px, 40px);
   }
 
   .navbarImage {
     width: 48px;
     height: 48px;
     border-radius: 50%;
-    margin-left: 10px;
+    margin-left: 10px;  // doesn't do anything it seems
     position: absolute;
     left: 50%;
     top: 8px;
     margin: 0;
-    transform: translateX(-50%);
+    transform: translateX(-100%);
   }

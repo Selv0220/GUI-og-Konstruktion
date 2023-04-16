@@ -26,6 +26,10 @@ export class EditingPage implements OnInit{
   movieGenre: string[] = chips.movie;
   activity: string[] = chips.activity;
 
+  chosenMusic: boolean[] = []; // dude this is so wrong
+  chosenMovie: boolean[] = [];
+  chosenActivity: boolean[] = [];
+
   constructor(public profileService: ProfileService, private formBuilder: FormBuilder) {}
 
   ngOnInit(): void {
@@ -36,6 +40,17 @@ export class EditingPage implements OnInit{
       Age: ['', [Validators.required, Validators.min(0), Validators.max(120)]],
       // Sound: ['', [Validators.required, Validators.minLength(1)]]
     });
+
+
+    for (let i = 0; i < this.musicGenre.length; i++){ // but we need to get the users chips true or false
+      this.chosenMusic.push(true);
+    }
+    for (let i = 0; i < this.movieGenre.length; i++){
+      this.chosenMovie.push(true);
+    }
+    for (let i = 0; i < this.activity.length; i++){
+      this.chosenActivity.push(false);
+    }
 
     this.validationMessages = {
       'Name': [
@@ -63,6 +78,10 @@ export class EditingPage implements OnInit{
         }
       ],
     }
+  }
+
+  chosenChip(name: string){
+    alert(name);
   }
 
   saveChanges(){
