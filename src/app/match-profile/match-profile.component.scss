@@ -32,6 +32,13 @@ ion-card {
   visibility: hidden;
   opacity:0;
   transition:visibility 0.5s linear,opacity 0.5s linear;
+  background-color: #EFE8DE;
+  color: #2F4858;
+  padding-bottom:2rem;
+}
+
+ion-card-title {
+  color: #2F4858;
 }
 
 ion-icon {
@@ -48,9 +55,27 @@ ion-icon {
 }
 
 #yes {
-  color: #4cd964;
+  color: #3ec975;
 }
 
 #no {
-  color: #ff3b30;
+  color: #e9443c;
+}
+
+.chip-outline {
+  --background: invisible;
+  --color: #2F4858;
+  border-width: 2px !important;
+}
+
+.music {
+  border-color: #3D8BFF !important;
+}
+
+.movie {
+  border-color: #ff9b3d !important;
+}
+
+.activity {
+  border-color: #30c050 !important;
 }

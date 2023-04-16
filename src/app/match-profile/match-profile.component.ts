@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, Input, AfterViewInit, ViewChildren, ElementRef, QueryList, NgZone } from '@angular/core';
 import { GestureController, IonCard, IonicModule } from '@ionic/angular';
 import { ProfileService } from '../services/profile.service';
-import { addDoc } from '@angular/fire/firestore';
+import chipsData from 'src/app/jsonData/chips.json';
 
 @Component({
   selector: 'app-match-profile',
@@ -13,6 +13,8 @@ import { addDoc } from '@angular/fire/firestore';
 })
 export class MatchProfileComponent implements AfterViewInit {
   contacts: any[] = [];
+
+  chipsData: any = chipsData;
 
   @ViewChildren(IonCard, { read: ElementRef }) cards!: QueryList<ElementRef>;
 
@@ -92,5 +94,26 @@ export class MatchProfileComponent implements AfterViewInit {
         this.useSwipe(card);
       }
     });
+  }
+
+  getChips(contactChips: any[]) {
+    let chips: any[] = [];
+    let profile = this.profile.getMyProfile();
+    for (let index = 0; index < contactChips.length; index++) {
+      if (profile.Chips.includes(contactChips[index])) {
+        let chip = {"name": contactChips[index], "type": ""};
+        if (this.chipsData.music.includes(contactChips[index])) {
+          chip.type = 'music';
+          chips.push(chip);
+        } else if (this.chipsData.movie.includes(contactChips[index])) {
+          chip.type = 'movie';
+          chips.push(chip);
+        } else {
+          chip.type = 'activity';
+          chips.push(chip);
+        }
+      }
+    }
+    return chips;
   }
 }

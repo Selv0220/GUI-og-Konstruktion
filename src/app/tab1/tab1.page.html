@@ -21,7 +21,7 @@
             <img [src]="loggedInPerson.PngPath" alt="Profile Image" style="width: 400px; height: 265px; border-radius: 50%;">
           </ion-avatar>
         </div>
-        <ion-card-title class="ion-text-center">Amalie, 23 </ion-card-title>
+        <ion-card-title class="ion-text-center">{{loggedInPerson.Name}}, {{loggedInPerson.Age}} </ion-card-title>
       </ion-col>
     </ion-row>
   </ion-grid>

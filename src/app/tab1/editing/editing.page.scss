@@ -21,8 +21,26 @@ ion-card-title{
     margin-bottom: 10px;
     box-shadow: 0px 2px 2px rgba(0,0,0,0.3);
     border: 5px solid #2f4858;
+
   }
 
   .typingBox .typingInput{
     flex-grow: 1;
+  }
+
+  .backButton{
+    color:white;
+    scale: 1.5;
+  }
+
+  .centered-div-bottom{
+    color: #2F4858;
+    --background: #EFE8DE;
+    box-shadow: none;
+    border-radius: 1px;
+
+    border: solid 2px #2F4858;
+    scale: 1.5;
+    transform: translate(110px,30px);
+
   }

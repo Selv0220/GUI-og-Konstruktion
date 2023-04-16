@@ -1,5 +1,8 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button class="backButton" defaultHref="" routerLink="../../tabs1"></ion-back-button>
+    </ion-buttons>
     <ion-title>chat</ion-title>
   </ion-toolbar>
 </ion-header>
@@ -10,7 +13,6 @@
       <ion-title size="large">chat</ion-title>
     </ion-toolbar>
   </ion-header>
-  
   
   <ion-item>
     <ion-card-header>
@@ -50,7 +52,7 @@
 
   <ion-card class="typingBox">
     <ion-input class="typingInput" icon-only type="text" [(ngModel)]="messageToSend" [placeholder]="['Sig hej til ' + otherContact.Name]">
-      <ion-button (click)="sendMessage()"><ion-icon slot="end" class="sendBtn" (click)="sendMessage()" name="send-outline"></ion-icon></ion-button>
     </ion-input>
+    <ion-button (click)="sendMessage()"><ion-icon slot="end" class="sendBtn" (click)="sendMessage()" name="send-outline"></ion-icon></ion-button>
   </ion-card>
 </ion-content>
