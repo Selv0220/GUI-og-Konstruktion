@@ -6,7 +6,7 @@
       </ion-avatar>
     </ion-title>
     <ion-buttons slot="start">
-      <ion-back-button class="backButton" defaultHref="" routerLink="../../"></ion-back-button>
+      <ion-back-button class="backButton" routerLink="../../"></ion-back-button>
     </ion-buttons>
     <ion-buttons slot="end">
       <ion-back-button class="backButton" style="visibility: hidden;"></ion-back-button>
@@ -40,12 +40,17 @@
       </ng-template>
     </ion-item>
   </ion-list>
+</ion-content> 
 
-  <ion-card class="typingBox">
-    <ion-input class="typingInput" icon-only type="text" [(ngModel)]="messageToSend"
-      [placeholder]="['Sig hej til ' + otherContact.Name]">
-    </ion-input>
-    <ion-button (click)="sendMessage()"><ion-icon slot="end" class="sendBtn" (click)="sendMessage()"
-        name="send-outline"></ion-icon></ion-button>
-  </ion-card>
-</ion-content>
+<ion-footer class="footerTypingBar bottombar">
+  <ion-buttons slot="start">
+    <ion-icon class="specialIcon" size="large" name="earth-outline"></ion-icon>
+  </ion-buttons>
+  <ion-buttons slot="end">
+    <ion-card class="typingBox">
+      <ion-input class="typingInput" icon-only type="text" [(ngModel)]="messageToSend" [placeholder]="['Sig hej til ' + otherContact.Name]">
+      </ion-input>
+      <ion-button (click)="sendMessage()"><ion-icon slot="end" size="large" class="sendBtn" (click)="sendMessage()" name="send-outline"></ion-icon></ion-button>
+    </ion-card>
+  </ion-buttons>
+</ion-footer>
