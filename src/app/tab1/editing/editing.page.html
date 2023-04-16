@@ -63,10 +63,8 @@
         <ion-card-title class="ion-text-center b">Music genre</ion-card-title>
       </ion-col>
       <ion-grid>
-        <ion-row>
-            <ion-col *ngFor="let music of musicGenre; let i = index" [attr.data-index]="i">
-              <ion-chip disabled]="[chosenMusic[i]" [outline]="[chosenMusic[i]]" (click)="chosenChip(music)" class="chip">{{music}}</ion-chip>
-            </ion-col>
+        <ion-row class="chips-row">
+          <ion-chip *ngFor="let music of musicGenre; let i = index" [attr.data-index]="i" [disabled]="chosenMusic[i]" [outline]="chosenMusic[i]" (click)="chosenChip(music)" class="chip">{{music}}</ion-chip>
         </ion-row>
       </ion-grid>
     </ion-row>
@@ -76,10 +74,8 @@
       <ion-card-title class="ion-text-center b">Film genre</ion-card-title>
     </ion-col>
     <ion-grid>
-      <ion-row>
-          <ion-col *ngFor="let movie of movieGenre; let i = index" [attr.data-index]="i">
-              <ion-chip [disabled]="[chosenMovie[i]]" [outline]="[chosenMovie[i]]" (click)="chosenChip(movie)" class="chip">{{movie}}</ion-chip>
-          </ion-col>
+      <ion-row class="chips-row">
+        <ion-chip *ngFor="let movie of movieGenre; let i = index" [attr.data-index]="i" [disabled]="chosenMovie[i]" [outline]="chosenMovie[i]" (click)="chosenChip(movie)" class="chip">{{movie}}</ion-chip>
       </ion-row>
     </ion-grid>
   </ion-row>
@@ -89,14 +85,12 @@
       <ion-card-title class="ion-text-center b">Aktiviteter</ion-card-title>
     </ion-col>
     <ion-grid>
-      <ion-row>
-          <ion-col *ngFor="let activ of activity; let i = index" [attr.data-index]="i">
-            <ion-chip disabled]="[chosenActivity[i]]" [outline]="[chosenActivity[i]]" (click)="chosenChip(activ)" class="chip">{{activ}}</ion-chip>
-          </ion-col>
+      <ion-row class="chips-row">
+        <ion-chip *ngFor="let acti of activity; let i = index" [attr.data-index]="i" [disabled]="chosenActivity[i]" [outline]="chosenActivity[i]" (click)="chosenChip(acti)" class="chip">{{acti}}</ion-chip>
       </ion-row>
     </ion-grid>
     </ion-row>
-    <ion-col size="12"><ion-button class="centered-div-bottom" type="submit"><ion-icon name="save"></ion-icon></ion-button></ion-col>
+    <ion-col class="chips-row" size="12"><ion-button type="submit" class="centered-div-bottom"><ion-icon name="save"></ion-icon></ion-button></ion-col>
   </form>
   </ion-grid>
 </ion-content>

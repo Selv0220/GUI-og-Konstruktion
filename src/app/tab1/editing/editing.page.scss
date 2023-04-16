@@ -1,85 +1,89 @@
 ion-content {
-    --background: #EFE8DE;
-  }
-
-  .profileImage{
-    width: 50px;
-    height: 50px;
+  --background: #EFE8DE;
 }
 
-ion-card-title{
-    color: #2F4858;
-    font-weight: 600;
+.profileImage {
+  width: 50px;
+  height: 50px;
+}
+
+ion-card-title {
+  color: #2F4858;
+  font-weight: 600;
 }
 
 .typingBox {
-    display: flex;
-    align-items: center;
-    background-color: #ECE5DD;
-    border-radius: 20px;
-    padding: 10px;
-    margin-bottom: 10px;
-    box-shadow: 0px 2px 2px rgba(0,0,0,0.3);
-    border: 5px solid #2f4858;
+  display: flex;
+  align-items: center;
+  background-color: #ECE5DD;
+  border-radius: 20px;
+  padding: 10px;
+  margin-bottom: 10px;
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+  border: 5px solid #2f4858;
 
-  }
+}
 
-  .typingBox .typingInput{
-    flex-grow: 1;
-  }
+.typingBox .typingInput {
+  flex-grow: 1;
+}
 
-  .backButton{
-    color:white;
-    scale: 1.5;
-  }
+.backButton {
+  color: white;
+  scale: 1.5;
+}
 
-  .b{
-    font-weight: bold;
-  }
+.b {
+  font-weight: bold;
+}
 
-  .chip{
-    height: 30px;
+.chip {
+  height: 30px;
 
-    --background: #EFE8DE;
-    color:  #2F4858;
+  --background: #EFE8DE;
+  color: #2F4858;
 
-    box-shadow: none;
-    border-radius: 7px;
-    border: solid 2px #2F4858;
+  box-shadow: none;
+  border-radius: 7px;
+  border: solid 2px #2F4858;
 
-    font-weight: bold;
-    font-size: 12px;
-    text-align: center;
-    margin-left: -4px;
-    margin-right: -4px;
-    
-  }
+  font-weight: bold;
+  font-size: 12px;
+  text-align: center;
 
-  ion-footer { // don't know why but the footer is somehow not at the bottom by default on this page
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-  }
+}
 
-  .centered-div-bottom{
-    color: #2F4858;
-    --background: #EFE8DE;
-    box-shadow: none;
-    border-radius: 1px;
+ion-footer {
+  // don't know why but the footer is somehow not at the bottom by default on this page
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
 
-    border: solid 2px #2F4858;
-    scale: 1.5;
-    transform: translate(110px, 40px);
-  }
+.centered-div-bottom {
+  color: #2F4858;
+  --background: #EFE8DE;
+  box-shadow: none;
+  border-radius: 1px;
 
-  .navbarImage {
-    width: 48px;
-    height: 48px;
-    border-radius: 50%;
-    margin-left: 10px;  // doesn't do anything it seems
-    position: absolute;
-    left: 50%;
-    top: 8px;
-    margin: 0;
-    transform: translateX(-100%);
-  }
+  border: solid 2px #2F4858;
+  scale: 1.5;
+}
+
+.navbarImage {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  margin-left: 10px; // doesn't do anything it seems
+  position: absolute;
+  left: 50%;
+  top: 8px;
+  margin: 0;
+
+}
+
+.chips-row{
+  // center the ion-chips inside the ion-row
+  display: flex;
+  justify-content: center;
+}
