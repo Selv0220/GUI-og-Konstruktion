@@ -6,7 +6,7 @@
       </ion-avatar>
     </ion-title>
     <ion-buttons slot="start">
-      <ion-back-button class="backButton" defaultHref="" routerLink="../../tabs1"></ion-back-button>
+      <ion-back-button class="backButton" defaultHref="" routerLink="../tabs/tab1"></ion-back-button>
     </ion-buttons>
     <ion-buttons slot="end">
       <ion-back-button class="backButton" style="visibility: hidden;"></ion-back-button>
@@ -15,12 +15,6 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 1</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
   <ion-grid>
     <form class="centered-div" [formGroup]="changeForm" (ngSubmit)="saveChanges()">
     <ion-row>
@@ -64,7 +58,7 @@
       </ion-col>
       <ion-grid>
         <ion-row class="chips-row">
-          <ion-chip *ngFor="let music of musicGenre; let i = index" [attr.data-index]="i" [outline]="!chosenMusic[i]" (click)="chosenChip(music)" class="chip">{{music}}</ion-chip>
+          <ion-chip *ngFor="let music of musicGenre; let i = index" [attr.data-index]="i" class="chip">{{music}}</ion-chip>
         </ion-row>
       </ion-grid>
     </ion-row>
@@ -75,7 +69,7 @@
     </ion-col>
     <ion-grid>
       <ion-row class="chips-row">
-        <ion-chip *ngFor="let movie of movieGenre; let i = index" [attr.data-index]="i" [outline]="!chosenMovie[i]" (click)="chosenChip(movie)" class="chip">{{movie}}</ion-chip>
+        <ion-chip *ngFor="let movie of movieGenre; let i = index" [attr.data-index]="i" class="chip">{{movie}}</ion-chip>
       </ion-row>
     </ion-grid>
   </ion-row>
@@ -86,7 +80,7 @@
     </ion-col>
     <ion-grid>
       <ion-row class="chips-row">
-        <ion-chip *ngFor="let active of activity; let i = index" [attr.data-index]="i" [outline]="!chosenActivity[i]" (click)="chosenChip(active)" class="chip">{{active}}</ion-chip>
+        <ion-chip *ngFor="let active of activity; let i = index" [attr.data-index]="i" class="chip">{{active}}</ion-chip>
       </ion-row>
     </ion-grid>
     </ion-row>
