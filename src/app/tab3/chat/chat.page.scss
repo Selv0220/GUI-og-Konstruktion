@@ -115,7 +115,6 @@ ion-list {
 .message-list {
   ion-item.message-item {
     div.message-bubble {
-      display: flex;
       align-items: center;
       margin-top: 0.5rem;
       margin-bottom: 0.5rem;
@@ -138,8 +137,8 @@ ion-list {
       ion-label.date-time {
         font-size: 0.8rem;
         color: #9B9B9B;
-        margin-left: 0.5rem;
-        margin-top: 2rem;
+        margin-top: 1rem;
+        margin-left: auto;
       }
 
       ion-text.message-text {
@@ -162,4 +161,8 @@ ion-list {
   top: 8px;
   margin: 0;
   transform: translateX(-50%);
+}
+
+.message-item:last-child {
+  margin-bottom: 100px;
 }
