@@ -3,8 +3,8 @@ import { Contact } from 'src/app/interfaces/contact';
 import { Message } from 'src/app/interfaces/message';
 import contact from 'src/app/jsonData/contact.json';
 import messageData from 'src/app/jsonData/message.json';
-import { Firestore, addDoc, collection, collectionData, updateDoc, deleteDoc } from '@angular/fire/firestore';
-import { Observable } from 'rxjs';
+import { Firestore, addDoc, collection, collectionData, updateDoc, deleteDoc, getDocs, query, getDoc } from '@angular/fire/firestore';
+import { Observable, map } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -33,6 +33,15 @@ export class ProfileService {
     this.observableMessages.subscribe(data => {
       this.messages = data;
     });
+    this.getIds();
+  }
+
+  async getIds(): Promise<any> {
+    const q = query(collection(this.firestore, 'contacts'));
+    const querySnapshot = await getDocs(q);
+    querySnapshot.forEach((doc) => {
+      console.log(doc.id);
+    });
   }
 
   sendMessage(contactId: number, message: string): void {
@@ -47,7 +56,8 @@ export class ProfileService {
   }
 
   addMatch(ContactId: number, Match: boolean): void {
-    console.log("Match added: " + ContactId + " " + Match)
+    console.log("Match added: " + ContactId + " " + Match);
+
     //addDoc(collection(this.firestore, 'matches'), { ContactId: this.loggedInId, MatchedContactId: ContactId, Match: Match, Datetime: new Date() });
     //deleteDoc(collection(this.firestore, 'matches'));
   }
@@ -89,7 +99,8 @@ export class ProfileService {
   }
 
   updateProfile(profile: Contact){
-    //updateDoc(collection(this.firestore, 'matches'), { profile }); //usually you update by id and send the new object values
+    console.log(profile);
+    
   }
 
   getContacts(): any[] {

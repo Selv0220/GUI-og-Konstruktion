@@ -1,5 +1,5 @@
-import { Component, OnInit} from '@angular/core';
-import { IonicModule } from '@ionic/angular';
+import { AfterViewInit, Component, ElementRef, OnInit, QueryList, ViewChildren } from '@angular/core';
+import { IonChip, IonicModule } from '@ionic/angular';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ProfileService } from '../../services/profile.service';
@@ -15,9 +15,9 @@ import chipsData from '../../jsonData/chips.json';
   ],
 })
 
-export class EditingPage implements OnInit{
+export class EditingPage implements OnInit, AfterViewInit {
 
- // loggedInPerson: any = {"Chips":["Rock","Pop","Action"],"ContactId":1,"PngPath":"https://images.unsplash.com/photo-1581382575275-97901c2635b7","Name":"Gary","Age":23}
+  // loggedInPerson: any = {"Chips":["Rock","Pop","Action"],"ContactId":1,"PngPath":"https://images.unsplash.com/photo-1581382575275-97901c2635b7","Name":"Gary","Age":23}
   loggedInPerson: any;
 
   changeForm!: FormGroup;
@@ -26,79 +26,30 @@ export class EditingPage implements OnInit{
   musicGenre: string[] = chipsData.music;
   movieGenre: string[] = chipsData.movie;
   activity: string[] = chipsData.activity;
+  chosenMusic: string[] = [];
+  chosenMovie: string[] = [];
+  chosenActivity: string[] = [];
 
-  constructor(public profileService: ProfileService, private formBuilder: FormBuilder) {}
+  @ViewChildren(IonChip, { read: ElementRef }) htmlChips!: QueryList<ElementRef>;
+
+  constructor(public profileService: ProfileService, private formBuilder: FormBuilder) { }
 
   ngOnInit(): void {
     this.loggedInPerson = this.profileService.getMyProfile(); // super laggy
     //alert(JSON.stringify(this.loggedInPerson));
     this.changeForm = this.formBuilder.group({
       Name: ['', [Validators.required, Validators.minLength(2)]],
-      Age: ['', [Validators.required, Validators.min(0), Validators.max(120)]],
+      Age: ['', [Validators.required, Validators.min(0), Validators.max(120)]]
       // Sound: ['', [Validators.required, Validators.minLength(1)]]
     });
 
-    //alert(JSON.stringify( this.loggedInPerson.Chips));
+    // Foreach chips in loggedInPerson.Chips check if it is in musicGenre, movieGenre or activity
 
-    //for (let i = 0; i < this.
+    //this.chosenMusic = this.checkList(this.musicGenre, this.loggedInPerson.Chips);
+    //this.chosenMovie = this.checkList(this.movieGenre, this.loggedInPerson.Chips);
+    //this.chosenActivity = this.checkList(this.activity, this.loggedInPerson.Chips);
 
-    //let myChips = this.loggedInPerson.Chips;
-
-    // this.chosenMusic = this.checkList(this.musicGenre, myChips);
-    // this.chosenMovie = this.checkList(this.movieGenre, myChips);
-    // this.chosenActivity = this.checkList(this.activity, myChips);
-    // alert(JSON.stringify(this.chosenMovie));
-    // alert(JSON.stringify(this.chosenMusic));
-    // alert(JSON.stringify(this.chosenActivity));
-
-
-    // for (let j = 0; j < myChips.length; j++) {
-    //   for (let i = 0; i < this.musicGenre.length; i++) {
-    //     if (myChips[j] == this.musicGenre[i]) {
-    //       this.chosenMusic.push(true);
-    //       alert("succes");
-    //     } else {
-    //       this.chosenMusic.push(false);
-    //     }
-    //   }
-    // }
-
-    // for (let i = 0; i < this.musicGenre.length; i++) {
-      
-    //   for (let j = 0; j < myChips.length; j++) {
-    //     //alert(' myChip' + myChips[j] + ' moviechip' + this.movieGenre[i]);
-    //     if (myChips[j] == this.musicGenre[i]) {
-    //       alert("succes" + myChips[j]);
-    //       this.chosenMusic.push(true);
-    //     } else {
-    //       this.chosenMusic.push(false);
-    //     }
-    //   }
-    // }
-
-    // alert(JSON.stringify(this.chosenMusic));
-
-    // for (let i = 0; i < this.movieGenre.length; i++) {
-    //   if (myChips[i] == this.movieGenre[i]) {
-    //     this.chosenMovie.push(true);
-    //   } else {
-    //     this.chosenMovie.push(false);
-    //   }
-    // }
-
-    // for (let i = 0; i < this.activity.length; i++) {
-    //   if (myChips[i] == this.movieGenre[i]) {
-    //     this.chosenActivity.push(true);
-    //   } else {
-    //     this.chosenActivity.push(false);
-    //   }
-    // }
-
-    // alert(JSON.stringify(this.chosenMusic));
-    // alert(JSON.stringify(this.chosenMovie));
-    // alert(JSON.stringify(this.chosenActivity));
-
- this.validationMessages = {
+    this.validationMessages = {
       'Name': [
         {
           type: 'required',
@@ -126,9 +77,38 @@ export class EditingPage implements OnInit{
     }
   }
 
-  saveChanges(){
+  ngAfterViewInit(): void {
+    const chipsArray = this.htmlChips.toArray();
+    for (let i = 0; i < chipsArray.length; i++) {
+      if (!this.loggedInPerson.Chips.includes(chipsArray[i].nativeElement.innerText)) {
+        chipsArray[i].nativeElement.classList.add('chosen');
+      }
+    }
+  }
+
+  toggleChip(chipValue: string) {
+    const chipsArray = this.htmlChips.toArray();
+    for (let i = 0; i < chipsArray.length; i++) {
+      if (chipsArray[i].nativeElement.innerText === chipValue) {
+        chipsArray[i].nativeElement.classList.toggle('chosen');
+      }
+    }
+  }
+
+  saveChanges() {
     // push changes to firebase
-    this.profileService.updateProfile(this.changeForm.value); /// NOT IMPLEMENTED
-    alert(JSON.stringify(this.changeForm.value)); 
+
+    // Chips without chosen
+    const chipsArray = this.htmlChips.toArray();
+    const chips = [];
+    for (let i = 0; i < chipsArray.length; i++) {
+      if (!chipsArray[i].nativeElement.classList.contains('chosen')) {
+        chips.push(chipsArray[i].nativeElement.innerText);
+      }
+    }
+    let saveObject = this.changeForm.value;
+    saveObject.Chips = chips;
+
+    this.profileService.updateProfile(saveObject); /// NOT IMPLEMENTED YET
   }
 }
