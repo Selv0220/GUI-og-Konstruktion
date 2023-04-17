@@ -100,6 +100,10 @@ export class ProfileService {
 
   updateProfile(profile: Contact){
     console.log(profile);
+          
+    // should update the matching profile by it's document id or add if no match is found 
+    // when I update the profile on the page I don't see the new value on the profile, but bastion saw it in his database
+    //await setDoc(doc(this.firestore, "contacts"), profile);
     
   }
 
