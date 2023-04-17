@@ -37,22 +37,6 @@ ion-card-title {
   font-weight: bold;
 }
 
-.chip {
-  height: 30px;
-
-  --background: #EFE8DE;
-  color: #2F4858;
-
-  box-shadow: none;
-  border-radius: 7px;
-  border: solid 2px #2F4858;
-
-  font-weight: bold;
-  font-size: 12px;
-  text-align: center;
-
-}
-
 ion-footer {
   // don't know why but the footer is somehow not at the bottom by default on this page
   position: fixed;

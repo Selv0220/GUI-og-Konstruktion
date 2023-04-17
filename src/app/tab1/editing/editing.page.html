@@ -58,7 +58,7 @@
       </ion-col>
       <ion-grid>
         <ion-row class="chips-row">
-          <ion-chip *ngFor="let music of musicGenre; let i = index" [attr.data-index]="i" class="chip">{{music}}</ion-chip>
+          <ion-chip *ngFor="let music of musicGenre; let i = index" [attr.data-index]="i" class="music">{{music}}</ion-chip>
         </ion-row>
       </ion-grid>
     </ion-row>
@@ -69,7 +69,7 @@
     </ion-col>
     <ion-grid>
       <ion-row class="chips-row">
-        <ion-chip *ngFor="let movie of movieGenre; let i = index" [attr.data-index]="i" class="chip">{{movie}}</ion-chip>
+        <ion-chip *ngFor="let movie of movieGenre; let i = index" [attr.data-index]="i" class="movie">{{movie}}</ion-chip>
       </ion-row>
     </ion-grid>
   </ion-row>
@@ -80,7 +80,7 @@
     </ion-col>
     <ion-grid>
       <ion-row class="chips-row">
-        <ion-chip *ngFor="let active of activity; let i = index" [attr.data-index]="i" class="chip">{{active}}</ion-chip>
+        <ion-chip *ngFor="let active of activity; let i = index" [attr.data-index]="i" class="activity">{{active}}</ion-chip>
       </ion-row>
     </ion-grid>
     </ion-row>

@@ -31,13 +31,41 @@
 ion-title {
     color: #2F4858;
 }
-  
+
 .bottombar {
-    background: rgb(119,215,178);
-    background: linear-gradient(120deg, rgba(119,215,178,1) 0%, rgba(96,186,207,1) 100%);
+    background: rgb(119, 215, 178);
+    background: linear-gradient(120deg, rgba(119, 215, 178, 1) 0%, rgba(96, 186, 207, 1) 100%);
     color: #2F4858;
 }
 
 * {
     font-family: "Raleway", sans-serif;
+}
+
+.music {
+    border-color: #3D8BFF !important;
+}
+
+.movie {
+    border-color: #ff9b3d !important;
+}
+
+.activity {
+    border-color: #30c050 !important;
+}
+
+ion-chip {
+    height: 30px;
+
+    --background: #EFE8DE;
+    color: #2F4858;
+
+    box-shadow: none;
+    border-radius: 7px;
+    border: solid 2px #2F4858;
+
+    font-weight: bold;
+    font-size: 12px;
+    text-align: center;
+
 }
