@@ -37,10 +37,11 @@
         </div>
       </ng-template>
       <div *ngIf="message.SenderContactId === otherContact.ContactId; else elsePic">
-        <img class="profile-image other-profile" [src]="otherContact.PngPath">
+        <ion-avatar><img class="profile-image other-profile" [src]="otherContact.PngPath"></ion-avatar>
+        
       </div>
       <ng-template #elsePic>
-        <img class="profile-image me-profile" [src]="loggedInPerson.PngPath">
+        <ion-avatar><img class="profile-image me-profile" [src]="loggedInPerson.PngPath"></ion-avatar>
       </ng-template>
     </ion-item>
   </ion-list>
