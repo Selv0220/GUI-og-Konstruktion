@@ -299,12 +299,6 @@ export class Tab1Page {
 &lt;/ion-header&gt;
 
 &lt;ion-content [fullscreen]&#x3D;&quot;true&quot;&gt;
-  &lt;ion-header collapse&#x3D;&quot;condense&quot;&gt;
-    &lt;ion-toolbar&gt;
-      &lt;ion-title size&#x3D;&quot;large&quot;&gt;Tab 1&lt;/ion-title&gt;
-    &lt;/ion-toolbar&gt;
-  &lt;/ion-header&gt;
-  
   &lt;ion-grid&gt;
     &lt;ion-row&gt;
       &lt;ion-col size-md&#x3D;&quot;6&quot; offset-md&#x3D;&quot;3&quot;&gt;
@@ -415,7 +409,7 @@ export class Tab1Page {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><ion-header [translucent]="true">  <ion-toolbar>    <ion-title>      Profil    </ion-title>  </ion-toolbar></ion-header><ion-content [fullscreen]="true">  <ion-header collapse="condense">    <ion-toolbar>      <ion-title size="large">Tab 1</ion-title>    </ion-toolbar>  </ion-header>    <ion-grid>    <ion-row>      <ion-col size-md="6" offset-md="3">        <div class="profile-image-container">          <ion-avatar class="profile-image">            <img [src]="loggedInPerson.PngPath" alt="Profile Image" style="position: absolute;width: 65vw; height: 65vw; border-radius: 50%;left: 50%;            margin: 0;            transform: translateX(-50%);">          </ion-avatar>        </div>        <ion-card-title class="ion-text-center">{{loggedInPerson.Name}}, {{loggedInPerson.Age}} </ion-card-title>      </ion-col>    </ion-row>  </ion-grid>  <div class="icon-container">      <ion-icon name="create" class="edit-icon" routerLink="/editing"></ion-icon>      <ion-icon name="camera" class="camera-icon" routerLink="/camera"></ion-icon>      <ion-icon name="settings" class="custom-icon" routerLink="/settings"></ion-icon>  </div></ion-content></div>'
+        var COMPONENT_TEMPLATE = '<div><ion-header [translucent]="true">  <ion-toolbar>    <ion-title>      Profil    </ion-title>  </ion-toolbar></ion-header><ion-content [fullscreen]="true">  <ion-grid>    <ion-row>      <ion-col size-md="6" offset-md="3">        <div class="profile-image-container">          <ion-avatar class="profile-image">            <img [src]="loggedInPerson.PngPath" alt="Profile Image" style="position: absolute;width: 65vw; height: 65vw; border-radius: 50%;left: 50%;            margin: 0;            transform: translateX(-50%);">          </ion-avatar>        </div>        <ion-card-title class="ion-text-center">{{loggedInPerson.Name}}, {{loggedInPerson.Age}} </ion-card-title>      </ion-col>    </ion-row>  </ion-grid>  <div class="icon-container">      <ion-icon name="create" class="edit-icon" routerLink="/editing"></ion-icon>      <ion-icon name="camera" class="camera-icon" routerLink="/camera"></ion-icon>      <ion-icon name="settings" class="custom-icon" routerLink="/settings"></ion-icon>  </div></ion-content></div>'
     var COMPONENTS = [{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'ChatPage', 'selector': 'app-chat'},{'name': 'EditingPage', 'selector': 'app-editing'},{'name': 'MatchProfileComponent', 'selector': 'app-match-profile'},{'name': 'Tab1Page', 'selector': 'app-tab1'},{'name': 'Tab2Page', 'selector': 'app-tab2'},{'name': 'Tab3Page', 'selector': 'app-tab3'},{'name': 'TabsPage', 'selector': 'app-tabs'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'Tab1Page'};
