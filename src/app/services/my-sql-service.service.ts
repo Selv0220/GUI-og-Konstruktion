@@ -5,7 +5,6 @@ import { Message } from 'src/app/interfaces/message';
 import { Contact } from '../models/contact'; // class        // neither the interface nor the class makes it work
 
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
-import { Firestore, addDoc, collection, collectionData, updateDoc, deleteDoc, getDocs, query, getDoc } from '@angular/fire/firestore';
 import { Observable, catchError, map, retry, throwError } from 'rxjs';
 
 @Injectable({
@@ -16,9 +15,7 @@ export class MySqlServiceService {
   contacts: any[] = [];
   //contacts: Contact[] = [];
   loggedInId: number = 1;
-  firestore: Firestore = inject(Firestore);
   lastContact: number[] = [-1, -1, -1];
-
   
   constructor(public http: HttpClient) {
     // Http Options
@@ -58,14 +55,6 @@ export class MySqlServiceService {
     return MyContacts;
   }
   
-  async getIds(): Promise<any> {
-    const q = query(collection(this.firestore, 'contacts'));
-    const querySnapshot = await getDocs(q);
-    querySnapshot.forEach((doc) => {
-      console.log(doc.id);
-    });
-  }
-  
   getMyProfile(): any {
     for (let i = 0; i < this.contacts.length; i++) {
       alert(this.contacts[i].ContactId);
@@ -93,9 +82,7 @@ export class MySqlServiceService {
         updateProfile(profile: Contact) {
           console.log(profile);
           
-          // should update the matching profile by it's document id or add if no match is found
-          // when I update the profile on the page I don't see the new value on the profile, but bastion saw it in his database
-          //await setDoc(doc(this.firestore, "contacts"), profile);
+          
         }
         
         // getContacts(): any[] {
