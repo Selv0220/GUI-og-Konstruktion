@@ -2,11 +2,11 @@
   <ion-toolbar>
     <ion-title class="ion-text-center">
       <ion-avatar>
-        <img class="navbarImage" [src]="loggedInPerson.PngPath">
+        <img class="navbarImage" [src]="loggedInPerson?.PngPath">
       </ion-avatar>
     </ion-title>
     <ion-buttons slot="start">
-      <ion-back-button class="backButton" routerLink="../../tabs1"></ion-back-button>
+      <ion-back-button class="backButton" routerLink="../../"></ion-back-button>
     </ion-buttons>
     <ion-buttons slot="end">
       <ion-back-button class="backButton" style="visibility: hidden;"></ion-back-button>
@@ -32,7 +32,7 @@
       <ion-col size="0.5"></ion-col>
       <ion-col size="5.5">
         <ion-card class="typingBox">
-          <ion-input class="typingInput" type="text" [(ngModel)]="loggedInPerson.Name" formControlName="Name" [placeholder]="[loggedInPerson.Name]"></ion-input>
+          <ion-input class="typingInput" type="text" [(ngModel)]="loggedInName" formControlName="Name" [placeholder]="[loggedInPerson?.Name]"></ion-input>
           <ng-container *ngFor="let validation of validationMessages?.Name">
             <div class="error-message" *ngIf="changeForm.get('Name')
                  ?.hasError(validation.type) 
@@ -46,7 +46,7 @@
       </ion-col>
       <ion-col size="5.5">
         <ion-card class="typingBox">
-          <ion-input class="typingInput" type="number" [(ngModel)]="loggedInPerson.Age" formControlName="Age" [placeholder]="[loggedInPerson.Age]"></ion-input>
+          <ion-input class="typingInput" type="number" [(ngModel)]="loggedInAge" formControlName="Age" [placeholder]="[loggedInPerson?.Age]"></ion-input>
         </ion-card>
       </ion-col>
       <ion-col size="0.5"></ion-col>
