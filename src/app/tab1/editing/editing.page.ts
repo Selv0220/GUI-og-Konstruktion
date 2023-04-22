@@ -2,7 +2,7 @@ import { AfterViewInit, Component, ElementRef, OnInit, QueryList, ViewChildren }
 import { IonChip, IonicModule } from '@ionic/angular';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { ProfileService } from '../../services/profile.service';
+import { MySqlServiceService } from 'src/app/services/my-sql-service.service';
 import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
 import chipsData from '../../jsonData/chips.json';
 
@@ -32,22 +32,17 @@ export class EditingPage implements OnInit, AfterViewInit {
 
   @ViewChildren(IonChip, { read: ElementRef }) htmlChips!: QueryList<ElementRef>;
 
-  constructor(public profileService: ProfileService, private formBuilder: FormBuilder) { }
+  constructor(public mysqlService: MySqlServiceService, private formBuilder: FormBuilder) { }
 
   ngOnInit(): void {
-    this.loggedInPerson = this.profileService.getMyProfile(); // super laggy
+    //this.loggedInPerson = this.mysqlService.getMyProfile(); // super laggy
     //alert(JSON.stringify(this.loggedInPerson));
     this.changeForm = this.formBuilder.group({
       Name: ['', [Validators.required, Validators.minLength(2)]],
       Age: ['', [Validators.required, Validators.min(0), Validators.max(120)]]
       // Sound: ['', [Validators.required, Validators.minLength(1)]]
     });
-
-    // Foreach chips in loggedInPerson.Chips check if it is in musicGenre, movieGenre or activity
-
-    //this.chosenMusic = this.checkList(this.musicGenre, this.loggedInPerson.Chips);
-    //this.chosenMovie = this.checkList(this.movieGenre, this.loggedInPerson.Chips);
-    //this.chosenActivity = this.checkList(this.activity, this.loggedInPerson.Chips);
+    
 
     this.validationMessages = {
       'Name': [
@@ -109,6 +104,6 @@ export class EditingPage implements OnInit, AfterViewInit {
     let saveObject = this.changeForm.value;
     saveObject.Chips = chips;
 
-    this.profileService.updateProfile(saveObject); /// NOT IMPLEMENTED YET
+    this.mysqlService.updateProfile(saveObject); /// NOT IMPLEMENTED YET
   }
 }

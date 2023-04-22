@@ -9,6 +9,8 @@ import { environment } from './environments/environment';
 import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
 import { provideFirestore,getFirestore } from '@angular/fire/firestore';
 
+import { provideHttpClient } from '@angular/common/http'; 
+
 if (environment.production) {
   enableProdMode();
 }
@@ -19,5 +21,6 @@ bootstrapApplication(AppComponent, {
     importProvidersFrom(IonicModule.forRoot({}), provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideFirestore(() => getFirestore())),
     provideRouter(routes),
+    provideHttpClient()
   ],
 });
