@@ -16,7 +16,6 @@ import { RouterModule } from '@angular/router';
 export class LoginPage implements OnInit {
 
   loggedInPerson: any; 
-  contacts: any;
 
   name = "";
   telephone = "";

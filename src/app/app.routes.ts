@@ -17,10 +17,10 @@ export const routes: Routes = [
     path: 'editing',
     loadComponent: () => import('./tab1/editing/editing.page').then( m => m.EditingPage)
   },
-  // {
-  //   path: 'login',
-  //   loadComponent: () => import('./login/login.page').then( m => m.LoginPage)
-  // },
+  {
+    path: 'login',
+    loadComponent: () => import('./login/login.page').then( m => m.LoginPage)
+  },
   {
     path: 'admin-page',
     loadComponent: () => import('./admin-page/admin-page.page').then( m => m.AdminPagePage)
