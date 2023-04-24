@@ -129,6 +129,14 @@ export class ProfileService {
     return null;
   }
 
+  getContactByTelephone(telephone: string): any {
+    return this.contactService.findByTelephone(telephone);
+  }
+
+  loginContact(id: number){
+    this.loggedInId = id;
+  }
+
   getMessagesBetweenContacts(ohterContactId: number): Message[] {
     let myMessages: Message[] = [];
     let allMessages: Message[] = this.messages;

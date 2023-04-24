@@ -1,0 +1,59 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title class="ion-text-center">
+      Login
+    </ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button class="backButton" routerLink="../../"></ion-back-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-back-button class="backButton" style="visibility: hidden;"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-grid>
+    <form class="centered-div" [formGroup]="loginForm" (ngSubmit)="login()">
+      <ion-row>
+        <ion-col size="0.5"></ion-col>
+        <ion-col size="5.5">
+          <ion-card-title class="ion-text-center">Name </ion-card-title>
+        </ion-col>
+        <ion-col size="5.5">
+          <ion-card-title class="ion-text-center">Telephone </ion-card-title>
+        </ion-col>
+        <ion-col size="0.5"></ion-col>
+      </ion-row>
+  
+      <ion-row>
+        <ion-col size="0.5"></ion-col>
+        <ion-col size="5.5">
+          <ion-card class="typingBox">
+            <ion-input class="typingInput" type="text" [(ngModel)]="name" formControlName="Name" [placeholder]="[loggedInPerson?.Name]"></ion-input>
+            <ng-container *ngFor="let validation of validationMessages?.Name">
+              <div class="error-message" *ngIf="loginForm.get('Name')
+                   ?.hasError(validation.type) 
+                   && (loginForm.get('Name')?.dirty 
+                   && loginForm.get('Name')?.touched)">
+                <ion-icon name="flash"></ion-icon>
+                {{ validation.message }} 
+              </div>
+            </ng-container>
+          </ion-card>
+        </ion-col>
+        <ion-col size="5.5">
+          <ion-card class="typingBox">
+            <ion-input class="typingInput" type="text" [(ngModel)]="telephone" formControlName="Telephone" [placeholder]="[loggedInPerson?.Telephone]"></ion-input>
+          </ion-card>
+        </ion-col>
+        <ion-col size="0.5"></ion-col>
+      </ion-row>
+      <ion-col class="chips-row" size="12"><ion-button type="submit" class="centered-div-bottom"><ion-icon name="log-in-outline"></ion-icon></ion-button></ion-col>
+    </form>
+    </ion-grid>
+
+    
+    <ion-button routerLink="../../"> go to standard site</ion-button>
+    <!-- <h1>{{loggedInPerson | json}} hello</h1> -->
+  </ion-content>

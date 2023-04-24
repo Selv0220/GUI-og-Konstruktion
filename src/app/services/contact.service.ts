@@ -32,7 +32,9 @@ export class ContactService {
     return this.http.delete(`${baseUrl}/${id}`);
   }
 
-  findByTelephone(title: any): Observable<Contact[]> {
+  findByTelephone(title: string): Observable<Contact[]> {
+    console.log(title);
+    console.log(`${baseUrl}?Telephone=${title}`);
     return this.http.get<Contact[]>(`${baseUrl}?Telephone=${title}`);
   }
 }

@@ -21,11 +21,6 @@ export const routes: Routes = [
         loadComponent: () =>
           import('../tab3/tab3.page').then((m) => m.Tab3Page),
       },
-      // {
-      //   path: 'tab3/chat/:ContactId',
-      //   loadComponent: () =>
-      //     import('../tab3//chat/chat.page').then((m) => m.ChatPage),
-      // },
       {
         path: '',
         redirectTo: '/tabs/tab2',
@@ -35,9 +30,9 @@ export const routes: Routes = [
   },
   {
     path: '',
-    redirectTo: '/tabs/tab2',
-    pathMatch: 'full',
+    loadComponent: () => import('../login/login.page').then((m) => m.LoginPage),
   },
+
   {
     path: 'tabs/tab3/chat/:ContactId',
     loadComponent: () =>
