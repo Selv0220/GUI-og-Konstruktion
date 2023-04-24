@@ -3,6 +3,7 @@ import { IonicModule } from '@ionic/angular';
 import { CommonModule } from '@angular/common';
 import { ProfileService } from '../services/profile.service';
 import { RouterModule } from '@angular/router';
+import { MySqlServiceService } from 'src/app/services/my-sql-service.service';
 
 @Component({
   selector: 'app-tab1',
@@ -15,8 +16,15 @@ export class Tab1Page {
 
   loggedInPerson: any;
 
-  constructor(public profileService: ProfileService) {
-    this.loggedInPerson = this.profileService.getMyProfile(); // if you start on this page you won't get you profile data
+  constructor(public mysqlService: MySqlServiceService) {
+    this.getMyProfile();
   }
 
+
+  getMyProfile(){
+    this.mysqlService.getMyProfile().subscribe(response => {
+      console.log(response); 
+      this.loggedInPerson = response;
+    })
+  }
 }
