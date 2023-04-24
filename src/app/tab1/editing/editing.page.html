@@ -58,7 +58,7 @@
       </ion-col>
       <ion-grid>
         <ion-row class="chips-row">
-          <ion-chip *ngFor="let music of showChips('Music'); let i = index" [attr.data-index]="music.ChipId" (click)="toggleChip(music.Name)" class="Music">{{music.Name}}</ion-chip>
+          <ion-chip *ngFor="let music of showChips('Music'); let i = index" [attr.data-index]="music.ChipId" (click)="toggleChip(music.Name)" class="Music chosen">{{music.Name}}</ion-chip>
         </ion-row>
       </ion-grid>
     </ion-row>
@@ -69,7 +69,7 @@
     </ion-col>
     <ion-grid>
       <ion-row class="chips-row">
-        <ion-chip *ngFor="let movie of showChips('Movie'); let i = index" [attr.data-index]="movie.ChipId" (click)="toggleChip(movie.Name)" class="Movie">{{movie.Name}}</ion-chip>
+        <ion-chip *ngFor="let movie of showChips('Movie'); let i = index" [attr.data-index]="movie.ChipId" (click)="toggleChip(movie.Name)" class="Movie chosen">{{movie.Name}}</ion-chip>
       </ion-row>
     </ion-grid>
   </ion-row>
@@ -80,7 +80,7 @@
     </ion-col>
     <ion-grid>
       <ion-row class="chips-row">
-        <ion-chip *ngFor="let active of showChips('Activity'); let i = index" [attr.data-index]="active.ChipId" (click)="toggleChip(active.Name)" class="Activity">{{active.Name}}</ion-chip>
+        <ion-chip *ngFor="let active of showChips('Activity'); let i = index" [attr.data-index]="active.ChipId" (click)="toggleChip(active.Name)" class="Activity chosen">{{active.Name}}</ion-chip>
       </ion-row>
     </ion-grid>
     </ion-row>

@@ -22,7 +22,7 @@ export class EditingPage implements OnInit, AfterViewInit {
   contacts: any;
 
   loggedInName = "";
-  loggedInAge = 0;
+  loggedInAge = "";
 
   changeForm!: FormGroup;
   validationMessages: { Name: { type: string; message: string; }[]; Age: { type: string; message: string; }[]; } | undefined;
@@ -39,8 +39,13 @@ export class EditingPage implements OnInit, AfterViewInit {
 
   ngOnInit() {
     this.loggedInPerson = this.profileService.getMyProfile();
-    this.loggedInPerson.Chips = this.loggedInPerson.Chips.split(",");
-    //this.loggedInPerson.Chips = (this.chipsData.find(x => x.ChipId == contactChips[index]));
+    this.loggedInName = this.loggedInPerson.Name;
+    this.loggedInAge = this.loggedInPerson.Age;
+    try {
+      this.loggedInPerson.Chips = this.loggedInPerson.Chips.split(",");
+    } catch (error) {
+      //console.log(error);
+    }
     this.changeForm = this.formBuilder.group({
       Name: ['', [Validators.required, Validators.minLength(2)]],
       Age: ['', [Validators.required, Validators.min(0), Validators.max(120)]]
@@ -82,12 +87,23 @@ export class EditingPage implements OnInit, AfterViewInit {
 
 
   ngAfterViewInit(): void {
-    const chipsArray = this.htmlChips.toArray();
-    for (let i = 0; i < chipsArray.length; i++) {
-      if (!this.loggedInPerson?.Chips.includes(chipsArray[i].nativeElement.innerText)) {
-        chipsArray[i].nativeElement.classList.add('chosen');
+    this.toggleAllChips();
+  }
+
+  toggleAllChips() {
+    setTimeout(() => {
+      const chipsArray = this.htmlChips.toArray();
+      if (chipsArray != null && chipsArray.length > 0) {
+        for (let i = 0; i < chipsArray.length; i++) {
+          if (this.loggedInPerson?.Chips.includes(chipsArray[i].nativeElement.getAttribute("data-index"))) {
+            chipsArray[i].nativeElement.classList.remove('chosen');
+          }
+        }
       }
-    }
+      else {
+        this.toggleAllChips();
+      }
+    }, 200);
   }
 
   toggleChip(chipValue: string) {
@@ -112,6 +128,8 @@ export class EditingPage implements OnInit, AfterViewInit {
     }
     let saveObject = this.changeForm.value;
     saveObject.Chips = chips;
+
+    console.log(saveObject)
 
     //this.mysqlService.updateProfile(saveObject); /// NOT IMPLEMENTED YET
   }
