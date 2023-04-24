@@ -18,7 +18,7 @@
       <div>
         <p *ngIf="actionState === 1; else togg">Delete</p>
         <ng-template #togg><p>Edit</p></ng-template>
-        <ion-toggle (click)="toggle()"></ion-toggle>
+        <ion-toggle (click)="toggle()" color="danger"></ion-toggle>
       </div>
 
       <ion-row>
@@ -78,3 +78,37 @@
       </form>
   </ion-grid>
 </ion-content>
+
+<ion-popover [isOpen]="popUpDeleteIsOpen" (didDismiss)="popUpDeleteIsOpen = false">
+  <ng-template>
+    <ion-content class="pop ion-padding">
+      <ion-label position="floating">Are you sure you want to delete: {{selectedChip.Name}}?</ion-label>
+      <br>
+      <ion-button class="deleteYes" (click)="acceptDelete(true)">Yes</ion-button>
+      <ion-button class="deleteNo" (click)="acceptDelete(false)">No</ion-button>
+    </ion-content>
+      </ng-template>
+</ion-popover>
+
+<ion-popover [isOpen]="popUpEditIsOpen" (didDismiss)="popUpEditIsOpen = false">
+  <ng-template>
+    <ion-content class="pop ion-padding">
+      <ion-icon size="large" (click)="cancel()" name="close-outline"></ion-icon>
+      <form class="centered-div" [formGroup]="changeForm" (ngSubmit)="updateChip()">
+        
+        <ion-item>
+          <ion-label position="floating">Type</ion-label>
+          <ion-input type="text" [ngModel]="selectedChip.Type" formControlName="Type"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="floating">Name</ion-label>
+          <ion-input type="text" [ngModel]="selectedChip.Name" formControlName="Name"></ion-input>
+        </ion-item>
+  
+        <ion-button class="centered-div-bottom" type="submit">Update chip</ion-button>
+      </form>
+
+    </ion-content>
+  </ng-template>
+</ion-popover>

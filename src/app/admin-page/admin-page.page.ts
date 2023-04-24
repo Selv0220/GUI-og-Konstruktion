@@ -23,6 +23,9 @@ export class AdminPagePage implements OnInit {
 
   actionState = actionState.Edit;
 
+  popUpDeleteIsOpen: boolean = false;
+  popUpEditIsOpen: boolean = false;
+
   selectedChip!: Chip;
   chipsData: any[] = [];
   changeForm!: FormGroup;
@@ -41,7 +44,7 @@ export class AdminPagePage implements OnInit {
   ngOnInit() {
       this.changeForm = this.formBuilder.group({
         Type: ['', [Validators.required, Validators.minLength(2)]],
-        Name: ['', [Validators.required, Validators.min(0), Validators.max(120)]]
+        Name: ['', [Validators.required, Validators.minLength(1), Validators.maxLength(20)]]
       });
     this.selectedChip
   }
@@ -50,6 +53,14 @@ export class AdminPagePage implements OnInit {
     this.actionState++;
     if(this.actionState > 1) this.actionState = 0;
   }
+
+  acceptDelete(doDelete: boolean){
+    this.popUpDeleteIsOpen = false;
+    if(!doDelete) return;
+
+    this.deleteChip();
+  }
+
 
   showChips(type: string): any[] {
     // return all chips of type
@@ -61,36 +72,38 @@ export class AdminPagePage implements OnInit {
     this.selectedChip = chipId;
 
     if(this.actionState == 1){
-      alert("Time to delete");
+      this.popUpDeleteIsOpen = true;
     }
     else 
-      alert("Time to edit");
-
-    // this.updateChipChanges();
+      this.popUpEditIsOpen = true;
   }
 
-  updateChip() {
-    console.log(this.changeForm.value.Type);
-
-    this.chipService.update(this.selectedChip.ChipId, this.selectedChip).subscribe(
-      (data: any) => {
-        let i = data[0]
-        console.log(i);
-        this.getAllChips(); // gotta get it again, not live like firebase
-        },
-      (error: any) => { console.log(error); });
-  }
-
+  
   createChip() { // you should probably just select the genre instead
     console.log(this.changeForm.value);
     this.chipService.create(this.changeForm.value).subscribe(
       (data: any) => {
-        let i = data[0]
+        let i = data[0] // not using the return value, but hey it's here
         console.log(i); 
         this.getAllChips();
       },
       (error: any) => { console.log(error); });
-  }
+    }
+
+    updateChip() {
+      this.popUpEditIsOpen = false;
+
+      this.selectedChip.Name = this.changeForm.value.Name;
+      this.selectedChip.Type = this.changeForm.value.Type;
+
+      this.chipService.update(this.selectedChip.ChipId, this.selectedChip).subscribe(
+        (data: any) => {
+          let i = data[0]
+          console.log(i);
+          this.getAllChips(); // gotta get it again, not live like firebase
+          },
+        (error: any) => { console.log(error); });
+    }
 
   deleteChip() {
     this.chipService.delete(this.selectedChip.ChipId).subscribe(
@@ -102,6 +115,9 @@ export class AdminPagePage implements OnInit {
       (error: any) => { console.log(error); });
   }
   
-
+  cancel(){
+    this.popUpDeleteIsOpen = false;
+    this.popUpEditIsOpen = false;
+  }
 }
 

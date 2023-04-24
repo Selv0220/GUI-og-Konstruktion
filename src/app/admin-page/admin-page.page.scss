@@ -77,3 +77,20 @@ ion-content {
   .chosen {
     border-color: #92949c !important;
   }
+
+  .delete {
+    color: #a0041e;
+  }
+
+  .deleteYes{
+    --background: #A0041E;
+  }
+  
+  .deleteNo{
+    transform: translate(105px,0);
+    //--background: #02756A; // change button color
+  }
+
+  .centered-div-bottom{
+    margin-left: 3vh;
+  }
