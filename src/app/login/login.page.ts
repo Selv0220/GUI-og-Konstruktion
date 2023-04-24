@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 import { ProfileService } from '../services/profile.service';
-import { RouterModule } from '@angular/router';
+import { Router, RouterLink, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -22,8 +22,9 @@ export class LoginPage implements OnInit {
 
   loginForm!: FormGroup;
   validationMessages: { Name: { type: string; message: string; }[]; Telephone: { type: string; message: string; }[]; } | undefined;
+  route: any;
 
-  constructor(private profileService: ProfileService, private formBuilder: FormBuilder) { }
+  constructor(private router: Router, private profileService: ProfileService, private formBuilder: FormBuilder) { }
 
   ngOnInit() {
     this.loginForm = this.formBuilder.group({
@@ -65,14 +66,24 @@ export class LoginPage implements OnInit {
         if(this.loggedInPerson != undefined && this.loggedInPerson.length > 0){
           console.log("Lets login");
           this.profileService.loginContact(this.loggedInPerson.ContactId);
+          this.router.navigate([`./tabs/tab2`], { relativeTo: this.route });
           // go to admin page? or just show button to admin page when admin?
+          this.successLogin();
           
         }
       },
       (error: any) => {
         console.log(error);
-      });
 
+      });
+  }
+
+  successLogin(){
+    
+  }
+
+  navigate(){
+    setTimeout(()=>{ this.router.navigate([`./tabs/tab2`], { relativeTo: this.route });}, 1000);
   }
 
 }
