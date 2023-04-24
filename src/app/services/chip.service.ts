@@ -16,19 +16,20 @@ export class ChipService {
     return this.http.get<Chip[]>(baseUrl);
   }
 
-  get(id: any): Observable<Chip> {
+  get(id: number): Observable<Chip> {
     return this.http.get<Chip>(`${baseUrl}/${id}`);
   }
 
-  create(data: any): Observable<any> {
+  create(data: Chip): Observable<any> {
     return this.http.post(baseUrl, data);
   }
 
-  update(id: any, data: any): Observable<any> {
-    return this.http.put(`${baseUrl}/${id}`, data);
+  update(id: number, data: Chip): Observable<any> {
+    console.log(data)
+    return this.http.put(`${baseUrl}/${id}`, data); // the url is correct, the data is correct, yet it doesn't get updated
   }
 
-  delete(id: any): Observable<any> {
+  delete(id: number): Observable<any> {
     return this.http.delete(`${baseUrl}/${id}`);
   }
 }

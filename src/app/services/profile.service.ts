@@ -134,11 +134,13 @@ export class ProfileService {
   }
 
   getContactByTelephone(telephone: string): any {
+    if(telephone.length  != 8) return null;
     return this.contactService.findByTelephone(telephone);
   }
 
   loginContact(id: number){
     this.loggedInId = id;
+    console.log(this.loggedInId);
   }
 
   getMessagesBetweenContacts(ohterContactId: number): Message[] {

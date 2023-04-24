@@ -19,8 +19,6 @@ export class Tab1Page {
     this.loggedInPerson = this.profileService.getMyProfile();
   }
 
-
-
   ngDoCheck(){
     this.loggedInPerson = this.profileService.getMyProfile();
   }

@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } 
 import { IonicModule } from '@ionic/angular';
 import { ProfileService } from '../services/profile.service';
 import { Router, RouterModule } from '@angular/router';
+import { Contact } from '../models/contact';
 
 @Component({
   selector: 'app-login',
@@ -15,7 +16,7 @@ import { Router, RouterModule } from '@angular/router';
 })
 export class LoginPage implements OnInit {
 
-  loggedInPerson: any; 
+  loggedInPerson!: Contact; 
 
   name = "";
   telephone = "";
@@ -73,10 +74,6 @@ export class LoginPage implements OnInit {
         console.log(error);
 
       });
-  }
-
-  navigate(){
-    setTimeout(()=>{ this.router.navigate([`./tabs/tab2`], { relativeTo: this.route });}, 1000);
   }
 
 }

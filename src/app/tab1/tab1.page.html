@@ -3,6 +3,10 @@
     <ion-title>
       Profil
     </ion-title>
+
+    <ion-button *ngIf="loggedInPerson.Admin"  routerLink="../../admin-page"><ion-icon
+      name="lock-closed-outline"></ion-icon>Go to admin page</ion-button>
+      
     <ion-buttons slot="end">
       <ion-button routerLink="../../">
         <ion-icon name="log-out-outline"></ion-icon>
