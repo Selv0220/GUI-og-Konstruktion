@@ -4,37 +4,5 @@
       "ReceiverContactId": 2,
       "Message": "Haya",
       "DateTime": "2023-04-15 08:26"
-    },
-    {
-        "SenderContactId": 1,
-        "ReceiverContactId": 2,
-        "Message": "Hai",
-        "DateTime": "2023-04-15 08:31"
-    },
-    {
-        "SenderContactId": 1,
-        "ReceiverContactId": 3,
-        "Message": "Halløjsa",
-        "DateTime": "2023-04-15 08:40"
-    },
-    {
-        "SenderContactId": 2,
-        "ReceiverContactId": 1,
-        "Message": "yo",
-        "DateTime": "2023-04-15 08:27"
-    }
-    ,
-    {
-        "SenderContactId": 3,
-        "ReceiverContactId": 1,
-        "Message": "Hej :)",
-        "DateTime": "2023-04-15 09:27"
-    }
-    ,
-    {
-        "SenderContactId": 3,
-        "ReceiverContactId": 1,
-        "Message": "Hej igen :D",
-        "DateTime": "2023-04-15 12:27"
     }
 ]

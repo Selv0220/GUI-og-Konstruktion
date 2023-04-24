@@ -5,13 +5,14 @@ import contact from 'src/app/jsonData/contact.json';
 import messageData from 'src/app/jsonData/message.json';
 import { Firestore, addDoc, collection, collectionData, updateDoc, deleteDoc, getDocs, query, getDoc } from '@angular/fire/firestore';
 import { Observable, map } from 'rxjs';
+import { ContactService } from './contact.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProfileService {
   contacts: any[] = contact;
-  observableContacts: Observable<any[]>;
+  //observableContacts: Observable<any[]>;
   messages: Message[] = messageData;
   observableMessages: Observable<any[]>;
   matches: any[] = [];
@@ -20,27 +21,23 @@ export class ProfileService {
   firestore: Firestore = inject(Firestore);
   lastContact: number[] = [-1,-1,-1];
 
-  constructor() {
+  constructor(private contactService: ContactService) {
     this.observableMatches = collectionData(collection(this.firestore, 'matches'));
     this.observableMatches.subscribe(data => {
       this.matches = data;
     });
-    this.observableContacts = collectionData(collection(this.firestore, 'contacts'));
-    this.observableContacts.subscribe(data => {
-      this.contacts = data;
-    });
+    this.contactService.getAll()
+      .subscribe(
+        data => {
+          this.contacts = data;
+          console.log(data);
+        },
+        error => {
+          console.log(error);
+        });
     this.observableMessages = collectionData(collection(this.firestore, 'messages'));
     this.observableMessages.subscribe(data => {
       this.messages = data;
-    });
-    this.getIds();
-  }
-
-  async getIds(): Promise<any> {
-    const q = query(collection(this.firestore, 'contacts'));
-    const querySnapshot = await getDocs(q);
-    querySnapshot.forEach((doc) => {
-      console.log(doc.id);
     });
   }
 
@@ -92,7 +89,13 @@ export class ProfileService {
           this.lastContact.push(this.contacts[i].ContactId);
           this.lastContact.shift();
         }
-        return this.contacts[i];
+        let temp: any = this.contacts[i];
+        try {
+          temp.Chips = temp.Chips.split(",");
+        } catch (error) {
+          //console.log(error);
+        }
+        return temp;
       }
     }
     return this.getRandomProfile();

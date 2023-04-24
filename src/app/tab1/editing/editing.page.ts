@@ -2,9 +2,9 @@ import { AfterViewInit, Component, ElementRef, OnInit, QueryList, ViewChildren }
 import { IonChip, IonicModule } from '@ionic/angular';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { MySqlServiceService } from 'src/app/services/my-sql-service.service';
 import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
-import chipsData from '../../jsonData/chips.json';
+import { ChipService } from 'src/app/services/chip.service';
+import { ProfileService } from 'src/app/services/profile.service';
 
 @Component({
   selector: 'app-editing',
@@ -27,21 +27,20 @@ export class EditingPage implements OnInit, AfterViewInit {
   changeForm!: FormGroup;
   validationMessages: { Name: { type: string; message: string; }[]; Age: { type: string; message: string; }[]; } | undefined;
 
-  musicGenre: string[] = chipsData.music;
-  movieGenre: string[] = chipsData.movie;
-  activity: string[] = chipsData.activity;
-  chosenMusic: string[] = [];
-  chosenMovie: string[] = [];
-  chosenActivity: string[] = [];
+  chipsData: any[] = [];
 
   @ViewChildren(IonChip, { read: ElementRef }) htmlChips!: QueryList<ElementRef>;
 
-  constructor(public mysqlService: MySqlServiceService, private formBuilder: FormBuilder) {
-    this.getAllContacts();
-    this.getMyProfile();
-   }
+  constructor(public profileService: ProfileService, private formBuilder: FormBuilder, private chipService: ChipService) {
+    chipService.getAll().subscribe((data: any) => {
+      this.chipsData = data;
+    });
+  }
 
   ngOnInit() {
+    this.loggedInPerson = this.profileService.getMyProfile();
+    this.loggedInPerson.Chips = this.loggedInPerson.Chips.split(",");
+    //this.loggedInPerson.Chips = (this.chipsData.find(x => x.ChipId == contactChips[index]));
     this.changeForm = this.formBuilder.group({
       Name: ['', [Validators.required, Validators.minLength(2)]],
       Age: ['', [Validators.required, Validators.min(0), Validators.max(120)]]
@@ -76,22 +75,11 @@ export class EditingPage implements OnInit, AfterViewInit {
     }
   }
 
-  getAllContacts(){
-    this.mysqlService.getContacts().subscribe(response => { 
-      console.log(response); 
-      this.contacts = response; 
-    })
-
+  showChips(type: string): any[] {
+    // return all chips of type
+    return this.chipsData.filter((chip: any) => chip.Type === type);
   }
 
-  getMyProfile(){
-    this.mysqlService.getMyProfile().subscribe(response => {
-      console.log(response); 
-      this.loggedInPerson = response;
-      this.loggedInName = this.loggedInPerson.Name;
-      this.loggedInAge = this.loggedInPerson.Age;
-    })
-  }
 
   ngAfterViewInit(): void {
     const chipsArray = this.htmlChips.toArray();
@@ -125,6 +113,6 @@ export class EditingPage implements OnInit, AfterViewInit {
     let saveObject = this.changeForm.value;
     saveObject.Chips = chips;
 
-    this.mysqlService.updateProfile(saveObject); /// NOT IMPLEMENTED YET
+    //this.mysqlService.updateProfile(saveObject); /// NOT IMPLEMENTED YET
   }
 }

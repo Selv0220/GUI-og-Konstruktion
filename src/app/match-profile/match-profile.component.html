@@ -8,6 +8,6 @@
         {{p.Name}}, {{p.Age}}
       </ion-card-title>
     </ion-card-header>
-    <ion-chip *ngFor="let c of getChips(p.Chips)" [outline]="true" class="{{c.type}}">{{c.name}}</ion-chip>
+    <ion-chip *ngFor="let c of getChips(p.Chips)" [outline]="true" class="{{c.Type}}">{{c.Name}}</ion-chip>
   </ion-card>
 </div>

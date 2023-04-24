@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, Input, AfterViewInit, ViewChildren, ElementRef, QueryList, NgZone } from '@angular/core';
 import { GestureController, IonCard, IonicModule } from '@ionic/angular';
 import { ProfileService } from '../services/profile.service';
-import chipsData from 'src/app/jsonData/chips.json';
+import { ChipService } from '../services/chip.service';
 
 @Component({
   selector: 'app-match-profile',
@@ -14,12 +14,15 @@ import chipsData from 'src/app/jsonData/chips.json';
 export class MatchProfileComponent implements AfterViewInit {
   contacts: any[] = [];
 
-  chipsData: any = chipsData;
+  chipsData: any[] = [];
 
   @ViewChildren(IonCard, { read: ElementRef }) cards!: QueryList<ElementRef>;
 
-  constructor(private gestureCtrl: GestureController, private profile: ProfileService, private ngZone: NgZone) {
+  constructor(private gestureCtrl: GestureController, private profile: ProfileService, private ngZone: NgZone, private chipService: ChipService) {
     this.loadRealData();
+    chipService.getAll().subscribe((data: any) => {
+      this.chipsData = data;
+    });
   }
 
   loadRealData() {
@@ -99,19 +102,10 @@ export class MatchProfileComponent implements AfterViewInit {
   getChips(contactChips: any[]) {
     let chips: any[] = [];
     let profile = this.profile.getMyProfile();
+    let chipsList = profile.Chips.split(',');
     for (let index = 0; index < contactChips.length; index++) {
-      if (profile.Chips.includes(contactChips[index])) {
-        let chip = {"name": contactChips[index], "type": ""};
-        if (this.chipsData.music.includes(contactChips[index])) {
-          chip.type = 'music';
-          chips.push(chip);
-        } else if (this.chipsData.movie.includes(contactChips[index])) {
-          chip.type = 'movie';
-          chips.push(chip);
-        } else {
-          chip.type = 'activity';
-          chips.push(chip);
-        }
+      if (chipsList.includes(contactChips[index])) {
+        chips.push(this.chipsData.find(x => x.ChipId == contactChips[index]));
       }
     }
     return chips;
