@@ -78,7 +78,6 @@ export class ProfileService {
 
   
   getMyProfile(): any {
-    console.log(this.loggedInId)
     for (let i = 0; i < this.contacts.length; i++) {
       if (this.contacts[i].ContactId == this.loggedInId) {
         return this.contacts[i];
