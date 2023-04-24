@@ -17,7 +17,7 @@ export class ProfileService {
   observableMessages: Observable<any[]>;
   matches: any[] = [];
   observableMatches: Observable<any[]>;
-  loggedInId: number = 1;
+  loggedInId: number = 0;
   firestore: Firestore = inject(Firestore);
   lastContact: number[] = [-1,-1,-1];
 
@@ -78,6 +78,7 @@ export class ProfileService {
 
   
   getMyProfile(): any {
+    console.log(this.loggedInId)
     for (let i = 0; i < this.contacts.length; i++) {
       if (this.contacts[i].ContactId == this.loggedInId) {
         return this.contacts[i];

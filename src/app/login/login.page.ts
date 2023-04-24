@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 import { ProfileService } from '../services/profile.service';
-import { Router, RouterLink, RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -61,25 +61,18 @@ export class LoginPage implements OnInit {
     this.profileService.getContactByTelephone(this.loginForm.value.Telephone)
     .subscribe(
       (data: any) => {
-        this.loggedInPerson = data
-        console.log(this.loggedInPerson);
-        if(this.loggedInPerson != undefined && this.loggedInPerson.length > 0){
+        this.loggedInPerson = data[0]
+        if(this.loggedInPerson != undefined && data.length == 1){
           console.log("Lets login");
+          console.log(this.loggedInPerson.ContactId);
           this.profileService.loginContact(this.loggedInPerson.ContactId);
           this.router.navigate([`./tabs/tab2`], { relativeTo: this.route });
-          // go to admin page? or just show button to admin page when admin?
-          this.successLogin();
-          
         }
       },
       (error: any) => {
         console.log(error);
 
       });
-  }
-
-  successLogin(){
-    
   }
 
   navigate(){
