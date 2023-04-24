@@ -16,7 +16,13 @@ export class Tab1Page {
   loggedInPerson: any;
 
   constructor(public profileService: ProfileService) {
-    this.loggedInPerson = this.profileService.getMyProfile(); // if you start on this page you won't get you profile data
+    this.loggedInPerson = this.profileService.getMyProfile();
+  }
+
+
+
+  ngDoCheck(){
+    this.loggedInPerson = this.profileService.getMyProfile();
   }
 
 }

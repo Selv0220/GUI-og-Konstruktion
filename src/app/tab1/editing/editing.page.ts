@@ -5,6 +5,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
 import { ChipService } from 'src/app/services/chip.service';
 import { ProfileService } from 'src/app/services/profile.service';
+import { ContactService } from 'src/app/services/contact.service';
 
 @Component({
   selector: 'app-editing',
@@ -31,7 +32,7 @@ export class EditingPage implements OnInit, AfterViewInit {
 
   @ViewChildren(IonChip, { read: ElementRef }) htmlChips!: QueryList<ElementRef>;
 
-  constructor(public profileService: ProfileService, private formBuilder: FormBuilder, private chipService: ChipService) {
+  constructor(public profileService: ProfileService, private formBuilder: FormBuilder, private chipService: ChipService, private contactService: ContactService) {
     chipService.getAll().subscribe((data: any) => {
       this.chipsData = data;
     });
@@ -123,14 +124,15 @@ export class EditingPage implements OnInit, AfterViewInit {
     const chips = [];
     for (let i = 0; i < chipsArray.length; i++) {
       if (!chipsArray[i].nativeElement.classList.contains('chosen')) {
-        chips.push(chipsArray[i].nativeElement.innerText);
+        chips.push(chipsArray[i].nativeElement.getAttribute("data-index"));
       }
     }
     let saveObject = this.changeForm.value;
-    saveObject.Chips = chips;
+    saveObject.Chips = chips.toString();
 
-    console.log(saveObject)
-
-    //this.mysqlService.updateProfile(saveObject); /// NOT IMPLEMENTED YET
+    this.contactService.update(this.loggedInPerson.ContactId, saveObject).subscribe((data: any) => {
+      console.log(data);
+      this.profileService.updateAll();
+    });
   }
 }
