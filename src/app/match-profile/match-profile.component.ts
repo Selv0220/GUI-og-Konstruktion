@@ -102,7 +102,13 @@ export class MatchProfileComponent implements AfterViewInit {
   getChips(contactChips: any[]) {
     let chips: any[] = [];
     let profile = this.profile.getMyProfile();
-    let chipsList = profile.Chips.split(',');
+    
+    let chipsList = profile.Chips;
+    try {
+      chipsList = profile.Chips.split(',');
+    } catch (error) {
+      //console.log(error);
+    }
     for (let index = 0; index < contactChips.length; index++) {
       if (chipsList.includes(contactChips[index])) {
         chips.push(this.chipsData.find(x => x.ChipId == contactChips[index]));

@@ -26,19 +26,22 @@ export class ProfileService {
     this.observableMatches.subscribe(data => {
       this.matches = data;
     });
-    this.contactService.getAll()
-      .subscribe(
-        data => {
-          this.contacts = data;
-          console.log(data);
-        },
-        error => {
-          console.log(error);
-        });
+    this.updateAll();
     this.observableMessages = collectionData(collection(this.firestore, 'messages'));
     this.observableMessages.subscribe(data => {
       this.messages = data;
     });
+  }
+
+  updateAll(): void {
+    this.contactService.getAll()
+      .subscribe(
+        data => {
+          this.contacts = data;
+        },
+        error => {
+          console.log(error);
+        });
   }
 
   sendMessage(contactId: number, message: string): void {
@@ -73,6 +76,7 @@ export class ProfileService {
     return false;
   }
 
+  
   getMyProfile(): any {
     for (let i = 0; i < this.contacts.length; i++) {
       if (this.contacts[i].ContactId == this.loggedInId) {
