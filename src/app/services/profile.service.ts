@@ -143,12 +143,12 @@ export class ProfileService {
     console.log(this.loggedInId);
   }
 
-  getMessagesBetweenContacts(ohterContactId: number): Message[] {
+  getMessagesBetweenContacts(otherContactId: number): Message[] {
     let myMessages: Message[] = [];
     let allMessages: Message[] = this.messages;
 
     for (let i = 0; i < allMessages.length; i++) {
-      if (allMessages[i].SenderContactId == ohterContactId || allMessages[i].ReceiverContactId == ohterContactId) {
+      if (allMessages[i].SenderContactId == otherContactId && allMessages[i].ReceiverContactId == this.loggedInId || allMessages[i].ReceiverContactId == otherContactId && allMessages[i].SenderContactId == this.loggedInId) {
         myMessages.push(allMessages[i]);
       }
     }
