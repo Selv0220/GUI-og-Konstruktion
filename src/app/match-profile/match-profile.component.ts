@@ -26,15 +26,16 @@ export class MatchProfileComponent implements AfterViewInit {
   }
 
   loadRealData() {
-    setTimeout(() => {
-      if (this.profile.getRandomProfile().Name != "Error") {
-        this.addCard();
-      }
-      else {
-        this.loadRealData();
-      }
-    }, 200);
-
+    if (this.profile.loggedInId != 0) {
+      setTimeout(() => {
+        if (this.profile.getRandomProfile().Name != "Error") {
+          this.addCard();
+        }
+        else {
+          this.loadRealData();
+        }
+      }, 200);
+    }
   }
 
   ngAfterViewInit(): void {

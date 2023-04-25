@@ -24,7 +24,7 @@ export class ProfileService {
 
   constructor(private contactService: ContactService, private router: Router) {
     if (this.loggedInId == 0 && this.router.url != '') {
-      this.router.navigate(['']);
+      this.router.navigate(['']); // Need to fix Tab2
     }
     this.observableMatches = collectionData(collection(this.firestore, 'matches'));
     this.observableMatches.subscribe(data => {
