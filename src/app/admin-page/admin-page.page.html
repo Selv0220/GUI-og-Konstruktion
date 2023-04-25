@@ -20,44 +20,47 @@
       <ion-col size="12">
         <div class="ion-text-center">
           <ion-card-title class="b" *ngIf="actionState === 1; else togg">Current mode: Delete</ion-card-title>
-          <ng-template #togg><ion-card-title class="b" >Current mode: Edit</ion-card-title></ng-template>
+          <ng-template #togg><ion-card-title class="b">Current mode: Edit</ion-card-title></ng-template>
           <ion-toggle (click)="toggle()" color="danger"></ion-toggle>
         </div>
       </ion-col>
     </ion-row>
 
-      <ion-row>
-        <ion-col size="12">
-          <ion-card-title class="ion-text-center b">Music genre</ion-card-title>
-        </ion-col>
-        <ion-grid>
-          <ion-row class="chips-row">
-            <ion-chip *ngFor="let music of showChips('Music'); let i = index" [attr.data-index]="music.ChipId" (click)="chooseChip(music)" class="Music chosen">{{music.Name}}</ion-chip>
-          </ion-row>
-        </ion-grid>
-      </ion-row>
-      <br>
-      <ion-row>
-        <ion-col size="12">
-        <ion-card-title class="ion-text-center b">Film genre</ion-card-title>
+    <ion-row>
+      <ion-col size="12">
+        <ion-card-title class="ion-text-center b">Music genre</ion-card-title>
       </ion-col>
       <ion-grid>
         <ion-row class="chips-row">
-          <ion-chip *ngFor="let movie of showChips('Movie'); let i = index" [attr.data-index]="movie.ChipId" (click)="chooseChip(movie)" class="Movie chosen">{{movie.Name}}</ion-chip>
+          <ion-chip *ngFor="let music of showChips('Music'); let i = index" [attr.data-index]="music.ChipId"
+            (click)="chooseChip(music)" class="Music chosen">{{music.Name}}</ion-chip>
         </ion-row>
       </ion-grid>
     </ion-row>
     <br>
-      <ion-row>
-        <ion-col size="12">
+    <ion-row>
+      <ion-col size="12">
+        <ion-card-title class="ion-text-center b">Film genre</ion-card-title>
+      </ion-col>
+      <ion-grid>
+        <ion-row class="chips-row">
+          <ion-chip *ngFor="let movie of showChips('Movie'); let i = index" [attr.data-index]="movie.ChipId"
+            (click)="chooseChip(movie)" class="Movie chosen">{{movie.Name}}</ion-chip>
+        </ion-row>
+      </ion-grid>
+    </ion-row>
+    <br>
+    <ion-row>
+      <ion-col size="12">
         <ion-card-title class="ion-text-center b">Aktiviteter</ion-card-title>
       </ion-col>
       <ion-grid>
         <ion-row class="chips-row">
-          <ion-chip *ngFor="let active of showChips('Activity'); let i = index" [attr.data-index]="active.ChipId" (click)="chooseChip(active)" class="Activity chosen">{{active.Name}}</ion-chip>
+          <ion-chip *ngFor="let active of showChips('Activity'); let i = index" [attr.data-index]="active.ChipId"
+            (click)="chooseChip(active)" class="Activity chosen">{{active.Name}}</ion-chip>
         </ion-row>
       </ion-grid>
-      </ion-row>
+    </ion-row>
 
   </ion-grid>
   <ion-fab vertical="bottom" horizontal="end" slot="fixed">
@@ -70,11 +73,12 @@
 <ion-popover [isOpen]="popUpDeleteIsOpen" (didDismiss)="popUpDeleteIsOpen = false">
   <ng-template>
     <ion-content class="pop ion-padding">
-      <div style="padding-bottom: 1rem;" class="ion-text-center"><ion-label position="floating" >Are you sure you want to delete: {{selectedChip.Name}}?</ion-label></div>
+      <div style="padding-bottom: 1rem;" class="ion-text-center"><ion-label position="floating">Are you sure you want to
+          delete: {{selectedChip.Name}}?</ion-label></div>
       <ion-button class="deleteYes" (click)="acceptDelete(true)">Yes</ion-button>
       <ion-button class="deleteNo" (click)="acceptDelete(false)">No</ion-button>
     </ion-content>
-      </ng-template>
+  </ng-template>
 </ion-popover>
 
 <ion-popover [isOpen]="popUpEditIsOpen" (didDismiss)="popUpEditIsOpen = false">
@@ -82,7 +86,7 @@
     <ion-content class="pop ion-padding">
       <ion-icon size="large" (click)="cancel()" name="close-outline"></ion-icon>
       <form class="centered-div" [formGroup]="changeForm" (ngSubmit)="updateChip()">
-        
+
         <ion-item>
           <ion-label position="floating">Type</ion-label>
           <ion-input type="text" [ngModel]="selectedChip.Type" formControlName="Type"></ion-input>
@@ -92,7 +96,7 @@
           <ion-label position="floating">Name</ion-label>
           <ion-input type="text" [ngModel]="selectedChip.Name" formControlName="Name"></ion-input>
         </ion-item>
-  
+
         <ion-button class="centered-div-bottom" type="submit">Update chip</ion-button>
       </form>
 
@@ -102,34 +106,36 @@
 
 <ion-modal trigger="open-modal">
   <ng-template>
- <ion-header>
-    <ion-toolbar>
-      <ion-buttons slot="start">
-        <ion-button (click)="cancel()">Cancel</ion-button>
-      </ion-buttons>
-    </ion-toolbar>
-  </ion-header>
-    <form class="centered-div" [formGroup]="changeForm" (ngSubmit)="createChip()">
-      <ion-row>
-        <ion-col>
-          <ion-card-title class="ion-text-center b">Add new chip</ion-card-title>
-        </ion-col>
-      </ion-row>
-    <ion-row>
-      <ion-col class="chips-row" size="12">
-      <ion-card class="typingBox">
-        <ion-input class="typingInput" type="text" formControlName="Type" placeholder="Write chip type"></ion-input>
-      </ion-card>
-    </ion-col>
-    </ion-row> 
-    <ion-row>
-      <ion-col class="chips-row" size="12">
-      <ion-card class="typingBox">
-        <ion-input class="typingInput" type="text" formControlName="Name" placeholder="Write chip name"></ion-input>
-      </ion-card>
-    </ion-col>
-    </ion-row> 
-    <ion-col class="chips-row" size="12"><ion-button type="submit" class="centered-div-bottom"><ion-icon name="save"></ion-icon></ion-button></ion-col>
-    </form>
+    <ion-header>
+      <ion-toolbar>
+        <ion-title class="ion-text-center">Add new chip</ion-title>
+        <ion-buttons slot="start">
+          <ion-button (click)="cancel()">Cancel</ion-button>
+        </ion-buttons>
+        <ion-buttons slot="end">
+          <ion-button style="visibility: hidden;">Cancel</ion-button>
+        </ion-buttons>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content>
+      <form class="centered-div" [formGroup]="changeForm" (ngSubmit)="createChip()">
+        <ion-row>
+          <ion-col class="chips-row" size="12">
+            <ion-card class="typingBox">
+              <ion-input class="typingInput" type="text" formControlName="Type" placeholder="Write chip type"></ion-input>
+            </ion-card>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col class="chips-row" size="12">
+            <ion-card class="typingBox">
+              <ion-input class="typingInput" type="text" formControlName="Name" placeholder="Write chip name"></ion-input>
+            </ion-card>
+          </ion-col>
+        </ion-row>
+        <ion-col class="chips-row" size="12"><ion-button type="submit" class="centered-div-bottom"><ion-icon
+              name="save"></ion-icon></ion-button></ion-col>
+      </form>
+    </ion-content>
   </ng-template>
 </ion-modal>
