@@ -26,9 +26,10 @@ export class AdminPagePage implements OnInit {
   popUpDeleteIsOpen: boolean = false;
   modalEditIsOpen: boolean = false;
 
-  selectedChip!: Chip;
+  selectedChip: Chip = new Chip();
   chipsData: any[] = [];
-  changeForm!: FormGroup;
+  changeForm1!: FormGroup;
+  changeForm2!: FormGroup;
   @ViewChildren(IonChip, { read: ElementRef }) htmlChips!: QueryList<ElementRef>;
 
   constructor(public profileService: ProfileService, private formBuilder: FormBuilder, private chipService: ChipService) { 
@@ -42,7 +43,11 @@ export class AdminPagePage implements OnInit {
   }
 
   ngOnInit() {
-      this.changeForm = this.formBuilder.group({
+      this.changeForm1 = this.formBuilder.group({
+        Type: ['', [Validators.required, Validators.minLength(2)]],
+        Name: ['', [Validators.required, Validators.minLength(1), Validators.maxLength(20)]]
+      });
+      this.changeForm2 = this.formBuilder.group({
         Type: ['', [Validators.required, Validators.minLength(2)]],
         Name: ['', [Validators.required, Validators.minLength(1), Validators.maxLength(20)]]
       });
@@ -77,17 +82,15 @@ export class AdminPagePage implements OnInit {
   }
   
   createChip() { // you should probably just select the genre instead
-    console.log(this.changeForm.value);
-    this.selectedChip.Name = this.changeForm.value.Name;
-    this.selectedChip.Type = this.changeForm.value.Type;
+    console.log(this.changeForm1.value);
+    this.selectedChip.Name = this.changeForm1.value.Name;
+    this.selectedChip.Type = this.changeForm1.value.Type;
     this.chipService.create(this.selectedChip).subscribe(
       (data: any) => {
         let i = data[0] // not using the return value, but hey it's here
         console.log(i); 
-        // this.modal.dismiss(null, 'cancel');
-        this.modalEditIsOpen = false;
+        this.cancel()
         this.getAllChips();
-       // this.changeForm.value.setValue = null;
       },
       (error: any) => { console.log(error); });
     }
@@ -95,15 +98,15 @@ export class AdminPagePage implements OnInit {
     updateChip() {
       this.modalEditIsOpen = false;
 
-      this.selectedChip.Name = this.changeForm.value.Name;
-      this.selectedChip.Type = this.changeForm.value.Type;
+      this.selectedChip.Name = this.changeForm2.value.Name;
+      this.selectedChip.Type = this.changeForm2.value.Type;
 
       this.chipService.update(this.selectedChip.ChipId, this.selectedChip).subscribe(
         (data: any) => {
           let i = data[0]
           console.log(i);
           this.getAllChips(); // gotta get it again, not live like firebase
-          this.changeForm.value.setValue = null;
+          this.changeForm2.value.setValue = null;
           },
         (error: any) => { console.log(error); });
     }
@@ -113,8 +116,7 @@ export class AdminPagePage implements OnInit {
       (data: any) => {
         let i = data[0]
         console.log(i);
-        this.getAllChips();
-        this.changeForm.value.setValue = null;
+        this.cancel();
         },
       (error: any) => { console.log(error); });
   }
@@ -122,10 +124,13 @@ export class AdminPagePage implements OnInit {
   @ViewChild(IonModal) modal!: IonModal;
   
   cancel(){
+    this.getAllChips();
     this.modal.dismiss(null, 'cancel');
     this.popUpDeleteIsOpen = false;
     this.modalEditIsOpen = false;
-    this.changeForm.value.setValue = null;
+    this.changeForm1.value.setValue = null;
+    this.changeForm2.value.setValue = null;
+    this.selectedChip = new Chip();
   }
 }
 

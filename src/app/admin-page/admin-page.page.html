@@ -95,12 +95,12 @@
       </ion-toolbar>
     </ion-header>
     <ion-content>
-      <form class="centered-div" [formGroup]="changeForm" (ngSubmit)="createChip()">
+      <form class="centered-div" [formGroup]="changeForm1" (ngSubmit)="createChip()">
         <ion-row>
           <ion-col class="chips-row" size="12">
             <ion-list>
               <ion-item>
-                <ion-select aria-label="type" [ngModel]="selectedChip.Type" formControlName="Type" placeholder="Select type">
+                <ion-select aria-label="type" [ngModel]="selectedChip.Type" formControlName="Type" placeholder="Select type" value="Music">
                   <ion-select-option value="Music">Music</ion-select-option><!--hardcoded values for now-->
                   <ion-select-option value="Movie">Movie</ion-select-option>
                   <ion-select-option value="Activity">Activity</ion-select-option>
@@ -112,7 +112,7 @@
         <ion-row>
           <ion-col class="chips-row" size="12">
             <ion-card class="typingBox">
-              <ion-input class="typingInput" type="text" formControlName="Name" placeholder="Write chip name"></ion-input>
+              <ion-input class="typingInput" type="text" [ngModel]="selectedChip.Name" formControlName="Name" placeholder="Write chip name"></ion-input>
             </ion-card>
           </ion-col>
         </ion-row>
@@ -125,34 +125,41 @@
 
 <ion-modal trigger="open-modal-edit" [isOpen]="modalEditIsOpen">
   <ng-template>
- <ion-header>
-    <ion-toolbar>
-      <ion-buttons (click)="cancel()" slot="start">
-        <ion-icon size="large" name="close-outline"></ion-icon>
-        <ion-button >Cancel</ion-button>
-      </ion-buttons>
-    </ion-toolbar>
-  </ion-header>
+    <ion-header>  
+      <ion-toolbar>
+        <ion-title class="ion-text-center">Edit Chip</ion-title>
+        <ion-buttons slot="start">
+          <ion-button (click)="cancel()">Cancel</ion-button>
+        </ion-buttons>
+        <ion-buttons slot="end">
+          <ion-button style="visibility: hidden;">Cancel</ion-button>
+        </ion-buttons>
+      </ion-toolbar>
+    </ion-header>
   <ion-content class="pop ion-padding">
-    <form class="centered-div" [formGroup]="changeForm" (ngSubmit)="updateChip()">   
-      <ion-item>
-        <ion-list>
-          <ion-item>
-            <ion-select aria-label="type" [ngModel]="selectedChip.Type" formControlName="Type" placeholder="Select type">
-              <ion-select-option value="Music">Music</ion-select-option><!--hardcoded values for now-->
-              <ion-select-option value="Movie">Movie</ion-select-option>
-              <ion-select-option value="Activity">Activity</ion-select-option>
-            </ion-select>
-          </ion-item>
-        </ion-list>
-        <!-- <ion-label position="floating">Type</ion-label>
-        <ion-input type="text" [ngModel]="selectedChip.Type" formControlName="Type"></ion-input> -->
-      </ion-item>
-      <ion-item>
-        <ion-label position="floating">Name</ion-label>
-        <ion-input type="text" [ngModel]="selectedChip.Name" formControlName="Name"></ion-input>
-      </ion-item>
-      <ion-button class="centered-div-bottom" type="submit">Update chip</ion-button>
+    <form class="centered-div" [formGroup]="changeForm2" (ngSubmit)="updateChip()">   
+      <ion-row>
+        <ion-col class="chips-row" size="12">
+          <ion-list>
+            <ion-item>
+              <ion-select aria-label="type" [ngModel]="selectedChip.Type" formControlName="Type" placeholder="Select type" value="Music">
+                <ion-select-option value="Music">Music</ion-select-option><!--hardcoded values for now-->
+                <ion-select-option value="Movie">Movie</ion-select-option>
+                <ion-select-option value="Activity">Activity</ion-select-option>
+              </ion-select>
+            </ion-item>
+          </ion-list>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col class="chips-row" size="12">
+          <ion-card class="typingBox">
+            <ion-input class="typingInput" type="text" [ngModel]="selectedChip.Name" formControlName="Name" placeholder="Write chip name"></ion-input>
+          </ion-card>
+        </ion-col>
+      </ion-row>
+      <ion-col class="chips-row" size="12"><ion-button type="submit" class="centered-div-bottom"><ion-icon
+              name="save"></ion-icon></ion-button></ion-col>
     </form>
   </ion-content>
   </ng-template>
