@@ -65,8 +65,6 @@ export class LoginPage implements OnInit {
         (data: any) => {
           this.loggedInPerson = data[0]
           if(this.loggedInPerson != undefined && data.length == 1){
-            console.log("Lets login");
-            console.log(this.loggedInPerson.ContactId);
             this.profileService.loginContact(this.loggedInPerson.ContactId);
             this.router.navigate([`./tabs/tab2`], { relativeTo: this.route });
           }
