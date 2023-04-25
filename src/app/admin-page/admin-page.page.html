@@ -98,15 +98,13 @@
       <form class="centered-div" [formGroup]="changeForm1" (ngSubmit)="createChip()">
         <ion-row>
           <ion-col class="chips-row" size="12">
-            <ion-list>
-              <ion-item>
-                <ion-select aria-label="type" [ngModel]="selectedChip.Type" formControlName="Type" placeholder="Select type" value="Music">
-                  <ion-select-option value="Music">Music</ion-select-option><!--hardcoded values for now-->
-                  <ion-select-option value="Movie">Movie</ion-select-option>
-                  <ion-select-option value="Activity">Activity</ion-select-option>
-                </ion-select>
-              </ion-item>
-            </ion-list>
+            <ion-card class="typingBox">
+              <ion-select aria-label="type" [ngModel]="selectedChip.Type" formControlName="Type" placeholder="Select type" style="max-height: 36px;width: 178px">
+                <ion-select-option value="Music">Music</ion-select-option><!--hardcoded values for now-->
+                <ion-select-option value="Movie">Movie</ion-select-option>
+                <ion-select-option value="Activity">Activity</ion-select-option>
+              </ion-select>
+            </ion-card>
           </ion-col>
         </ion-row>
         <ion-row>
@@ -140,15 +138,13 @@
     <form class="centered-div" [formGroup]="changeForm2" (ngSubmit)="updateChip()">   
       <ion-row>
         <ion-col class="chips-row" size="12">
-          <ion-list>
-            <ion-item>
-              <ion-select aria-label="type" [ngModel]="selectedChip.Type" formControlName="Type" placeholder="Select type" value="Music">
-                <ion-select-option value="Music">Music</ion-select-option><!--hardcoded values for now-->
-                <ion-select-option value="Movie">Movie</ion-select-option>
-                <ion-select-option value="Activity">Activity</ion-select-option>
-              </ion-select>
-            </ion-item>
-          </ion-list>
+          <ion-card class="typingBox">
+            <ion-select aria-label="type" [ngModel]="selectedChip.Type" formControlName="Type" placeholder="Select type" style="max-height: 36px;width: 178px">
+              <ion-select-option value="Music">Music</ion-select-option><!--hardcoded values for now-->
+              <ion-select-option value="Movie">Movie</ion-select-option>
+              <ion-select-option value="Activity">Activity</ion-select-option>
+            </ion-select>
+          </ion-card>
         </ion-col>
       </ion-row>
       <ion-row>
