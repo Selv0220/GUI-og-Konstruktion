@@ -87,8 +87,7 @@
 <ion-popover [isOpen]="popUpDeleteIsOpen" (didDismiss)="popUpDeleteIsOpen = false">
   <ng-template>
     <ion-content class="pop ion-padding">
-      <ion-label position="floating">Are you sure you want to delete: {{selectedChip.Name}}?</ion-label>
-      <br>
+      <div style="padding-bottom: 1rem;" class="ion-text-center"><ion-label position="floating" >Are you sure you want to delete: {{selectedChip.Name}}?</ion-label></div>
       <ion-button class="deleteYes" (click)="acceptDelete(true)">Yes</ion-button>
       <ion-button class="deleteNo" (click)="acceptDelete(false)">No</ion-button>
     </ion-content>
