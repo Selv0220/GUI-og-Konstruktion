@@ -1,7 +1,7 @@
-import { Component, ElementRef, OnInit, QueryList, ViewChildren } from '@angular/core';
+import { Component, ElementRef, OnInit, QueryList, ViewChild, ViewChildren } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
-import { IonChip, IonicModule } from '@ionic/angular';
+import { IonChip, IonModal, IonicModule } from '@ionic/angular';
 import { ChipService } from '../services/chip.service';
 import { ProfileService } from '../services/profile.service';
 import { Chip } from '../models/chip';
@@ -61,7 +61,6 @@ export class AdminPagePage implements OnInit {
     this.deleteChip();
   }
 
-
   showChips(type: string): any[] {
     // return all chips of type
     return this.chipsData.filter((chip: any) => chip.Type === type);
@@ -85,6 +84,7 @@ export class AdminPagePage implements OnInit {
       (data: any) => {
         let i = data[0] // not using the return value, but hey it's here
         console.log(i); 
+        this.modal.dismiss(null, 'cancel');
         this.getAllChips();
       },
       (error: any) => { console.log(error); });
@@ -115,7 +115,14 @@ export class AdminPagePage implements OnInit {
       (error: any) => { console.log(error); });
   }
   
+  @ViewChild(IonModal) modal!: IonModal;
+
+  // onWillDismiss(event: Event) {
+
+  //   }
+  
   cancel(){
+    this.modal.dismiss(null, 'cancel');
     this.popUpDeleteIsOpen = false;
     this.popUpEditIsOpen = false;
   }
