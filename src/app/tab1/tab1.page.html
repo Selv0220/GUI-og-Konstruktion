@@ -3,10 +3,6 @@
     <ion-title>
       Profil
     </ion-title>
-
-    <ion-button *ngIf="loggedInPerson.Admin"  routerLink="../../admin-page"><ion-icon
-      name="lock-closed-outline"></ion-icon>Go to admin page</ion-button>
-      
     <ion-buttons slot="end">
       <ion-button routerLink="../../">
         <ion-icon name="log-out-outline"></ion-icon>
@@ -36,4 +32,11 @@
       <ion-icon name="camera" class="camera-icon" routerLink="/camera"></ion-icon>
       <ion-icon name="settings" class="custom-icon" routerLink="/settings"></ion-icon>
   </div>
+  <div *ngIf="loggedInPerson.Admin" style="margin-top: 5rem;">
+    <ion-card-title class="ion-text-center" style="margin-top: 0px;margin-bottom: 1rem;">Admin Page</ion-card-title>
+    <div class="icon-container">
+      <ion-icon  name="construct" routerLink="../../admin-page"></ion-icon>
+    </div>
+  </div>
+
 </ion-content>
