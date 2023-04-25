@@ -24,7 +24,7 @@ export class AdminPagePage implements OnInit {
   actionState = actionState.Edit;
 
   popUpDeleteIsOpen: boolean = false;
-  popUpEditIsOpen: boolean = false;
+  modalEditIsOpen: boolean = false;
 
   selectedChip!: Chip;
   chipsData: any[] = [];
@@ -67,31 +67,33 @@ export class AdminPagePage implements OnInit {
   }
 
   chooseChip(chipId: any) {  // if edit show edit if delete show delete
-
     this.selectedChip = chipId;
 
     if(this.actionState == 1){
       this.popUpDeleteIsOpen = true;
     }
     else 
-      this.popUpEditIsOpen = true;
+      this.modalEditIsOpen = true;
   }
-
   
   createChip() { // you should probably just select the genre instead
     console.log(this.changeForm.value);
-    this.chipService.create(this.changeForm.value).subscribe(
+    this.selectedChip.Name = this.changeForm.value.Name;
+    this.selectedChip.Type = this.changeForm.value.Type;
+    this.chipService.create(this.selectedChip).subscribe(
       (data: any) => {
         let i = data[0] // not using the return value, but hey it's here
         console.log(i); 
-        this.modal.dismiss(null, 'cancel');
+        // this.modal.dismiss(null, 'cancel');
+        this.modalEditIsOpen = false;
         this.getAllChips();
+       // this.changeForm.value.setValue = null;
       },
       (error: any) => { console.log(error); });
     }
 
     updateChip() {
-      this.popUpEditIsOpen = false;
+      this.modalEditIsOpen = false;
 
       this.selectedChip.Name = this.changeForm.value.Name;
       this.selectedChip.Type = this.changeForm.value.Type;
@@ -101,6 +103,7 @@ export class AdminPagePage implements OnInit {
           let i = data[0]
           console.log(i);
           this.getAllChips(); // gotta get it again, not live like firebase
+          this.changeForm.value.setValue = null;
           },
         (error: any) => { console.log(error); });
     }
@@ -111,20 +114,18 @@ export class AdminPagePage implements OnInit {
         let i = data[0]
         console.log(i);
         this.getAllChips();
+        this.changeForm.value.setValue = null;
         },
       (error: any) => { console.log(error); });
   }
   
   @ViewChild(IonModal) modal!: IonModal;
-
-  // onWillDismiss(event: Event) {
-
-  //   }
   
   cancel(){
     this.modal.dismiss(null, 'cancel');
     this.popUpDeleteIsOpen = false;
-    this.popUpEditIsOpen = false;
+    this.modalEditIsOpen = false;
+    this.changeForm.value.setValue = null;
   }
 }
 
