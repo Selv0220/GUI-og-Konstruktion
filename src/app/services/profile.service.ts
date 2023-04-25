@@ -6,6 +6,7 @@ import messageData from 'src/app/jsonData/message.json';
 import { Firestore, addDoc, collection, collectionData, updateDoc, deleteDoc, getDocs, query, getDoc } from '@angular/fire/firestore';
 import { Observable, map } from 'rxjs';
 import { ContactService } from './contact.service';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -21,7 +22,10 @@ export class ProfileService {
   firestore: Firestore = inject(Firestore);
   lastContact: number[] = [-1,-1,-1];
 
-  constructor(private contactService: ContactService) {
+  constructor(private contactService: ContactService, private router: Router) {
+    if (this.loggedInId == 0 && this.router.url != '') {
+      this.router.navigate(['']);
+    }
     this.observableMatches = collectionData(collection(this.firestore, 'matches'));
     this.observableMatches.subscribe(data => {
       this.matches = data;
