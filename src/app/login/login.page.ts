@@ -59,21 +59,23 @@ export class LoginPage implements OnInit {
 
   login(){
     // check if phone nr exist in database
-    this.profileService.getContactByTelephone(this.loginForm.value.Telephone)
-    .subscribe(
-      (data: any) => {
-        this.loggedInPerson = data[0]
-        if(this.loggedInPerson != undefined && data.length == 1){
-          console.log("Lets login");
-          console.log(this.loggedInPerson.ContactId);
-          this.profileService.loginContact(this.loggedInPerson.ContactId);
-          this.router.navigate([`./tabs/tab2`], { relativeTo: this.route });
-        }
-      },
-      (error: any) => {
-        console.log(error);
+    let call = this.profileService.getContactByTelephone(this.loginForm.value.Telephone)
+    if (call != null) {
+      call.subscribe(
+        (data: any) => {
+          this.loggedInPerson = data[0]
+          if(this.loggedInPerson != undefined && data.length == 1){
+            console.log("Lets login");
+            console.log(this.loggedInPerson.ContactId);
+            this.profileService.loginContact(this.loggedInPerson.ContactId);
+            this.router.navigate([`./tabs/tab2`], { relativeTo: this.route });
+          }
+        },
+        (error: any) => {
+          console.log(error);
+  
+        });
+    }
 
-      });
   }
-
 }

@@ -30,7 +30,7 @@ export const routes: Routes = [
   },
   {
     path: '',
-    loadComponent: () => import('../admin-page/admin-page.page').then((m) => m.AdminPagePage),
+    loadComponent: () => import('../login/login.page').then((m) => m.LoginPage),
   },
 
   {
