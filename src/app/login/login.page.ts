@@ -66,7 +66,11 @@ export class LoginPage implements OnInit {
           this.loggedInPerson = data[0]
           if(this.loggedInPerson != undefined && data.length == 1){
             this.profileService.loginContact(this.loggedInPerson.ContactId);
-            this.router.navigate([`./tabs/tab2`], { relativeTo: this.route });
+            if (this.loggedInPerson.Admin) {
+              this.router.navigate([`./admin-page`], { relativeTo: this.route });
+            } else {
+              this.router.navigate([`./tabs/tab2`], { relativeTo: this.route });
+            }
           }
         },
         (error: any) => {
