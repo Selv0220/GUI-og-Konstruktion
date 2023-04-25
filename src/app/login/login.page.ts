@@ -16,7 +16,7 @@ import { Contact } from '../models/contact';
 })
 export class LoginPage implements OnInit {
 
-  loggedInPerson!: Contact; 
+  loggedInPerson?: Contact; 
 
   name = "";
   telephone = "";
