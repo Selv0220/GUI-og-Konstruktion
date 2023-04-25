@@ -141,6 +141,7 @@ export class ProfileService {
   loginContact(id: number){
     this.loggedInId = id;
     console.log(this.loggedInId);
+    this.updateAll();
   }
 
   getMessagesBetweenContacts(otherContactId: number): Message[] {
